@@ -13,4 +13,4 @@
 \contentsline {subsection}{\numberline {\unhbox \voidb@x \hbox {IV-B}}Medical Imaging}{5}
 \contentsline {subsection}{\numberline {\unhbox \voidb@x \hbox {IV-C}}Evaluating Rainbow Colormaps}{6}
 \contentsline {section}{\numberline {V}Conclusion}{7}
-\contentsline {section}{References}{8}
+\contentsline {section}{References}{7}

@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2015.7.30)  10 APR 2017 17:50
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2015.7.30)  10 APR 2017 23:50
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -315,56 +315,45 @@ LaTeX Font Info:    External font `cmex10' loaded for size
 File: calf_original.png Graphic file (type png)
 
 <use calf_original.png>
-Package pdftex.def Info: calf_original.png used on input line 274.
+Package pdftex.def Info: calf_original.png used on input line 272.
 (pdftex.def)             Requested size: 144.54pt x 108.40472pt.
  <calf_sequential.png, id=18, 578.16pt x 433.62pt>
 File: calf_sequential.png Graphic file (type png)
 
 <use calf_sequential.png>
-Package pdftex.def Info: calf_sequential.png used on input line 275.
+Package pdftex.def Info: calf_sequential.png used on input line 273.
 (pdftex.def)             Requested size: 144.54pt x 108.40472pt.
  <calf_diverging.png, id=19, 578.16pt x 433.62pt>
 File: calf_diverging.png Graphic file (type png)
 
 <use calf_diverging.png>
-Package pdftex.def Info: calf_diverging.png used on input line 276.
+Package pdftex.def Info: calf_diverging.png used on input line 274.
 (pdftex.def)             Requested size: 144.54pt x 108.40472pt.
  <calf_rainbow.png, id=20, 578.16pt x 433.62pt>
 File: calf_rainbow.png Graphic file (type png)
 
 <use calf_rainbow.png>
-Package pdftex.def Info: calf_rainbow.png used on input line 277.
+Package pdftex.def Info: calf_rainbow.png used on input line 275.
 (pdftex.def)             Requested size: 144.54pt x 108.40472pt.
  [3 <./calf_original.png> <./calf_sequential.png> <./calf_diverging.png> <./cal
 f_rainbow.png>]
-Underfull \hbox (badness 1365) in paragraph at lines 310--314
+Underfull \hbox (badness 1365) in paragraph at lines 306--310
 []\OT1/ptm/m/n/12 When col-ors are placed near each other, it
  []
 
 <colordress.png, id=28, 430.60875pt x 648.4225pt>
 File: colordress.png Graphic file (type png)
  <use colordress.png>
-Package pdftex.def Info: colordress.png used on input line 317.
+Package pdftex.def Info: colordress.png used on input line 313.
 (pdftex.def)             Requested size: 144.54pt x 217.6508pt.
-
-
-LaTeX Warning: Citation `colorofthedress' on page 4 undefined on input line 322
-.
-
-[4 <./colordress.png>] <colorblind_rainbow1.png, id=33, 462.528pt x 346.896pt>
+ [4 <./colordress.png>] <colorblind_rainbow1.png, id=33, 462.528pt x 346.896pt>
 File: colorblind_rainbow1.png Graphic file (type png)
 
 <use colorblind_rainbow1.png>
 Package pdftex.def Info: colorblind_rainbow1.png used on input line 366.
 (pdftex.def)             Requested size: 144.54pt x 108.40472pt.
-Missing character: There is no ‚ in font ptmr7t!
-Missing character: There is no Ä in font ptmr7t!
-Missing character: There is no ú in font ptmr7t!
-Missing character: There is no ‚ in font ptmr7t!
-Missing character: There is no Ä in font ptmr7t!
-Missing character: There is no ù in font ptmr7t!
  [5 <./colorblind_rainbow1.png>]
-Underfull \hbox (badness 3657) in paragraph at lines 500--508
+Underfull \hbox (badness 3657) in paragraph at lines 499--507
 []\OT1/ptm/m/n/12 Many rec-og-nize that choos-ing stan-dards is
  []
 
@@ -372,39 +361,44 @@ Underfull \hbox (badness 3657) in paragraph at lines 500--508
 Underfull \vbox (badness 5359) has occurred while \output is active []
 
  [6]
+(./litreview.bbl
+Underfull \hbox (badness 10000) in paragraph at lines 4--6
+[]\OT1/ptm/m/n/9 S. van der Walt and N. Smith, ``mpl col-ormaps.''
+ []
 
-LaTeX Warning: Citation `tufte' on page 7 undefined on input line 537.
 
-[7] (./litreview.bbl
+Underfull \hbox (badness 10000) in paragraph at lines 58--60
+[]\OT1/ptm/m/n/9 C. Hold-er-ness, ``What col-ors are this dress?.''
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 58--60
+\OT1/ptm/m/n/9 https://www.buzzfeed.com/catesish/help-am-i-going-insane-
+ []
+
 Missing character: There is no √ in font ptmr7t!
 Missing character: There is no ∂ in font ptmr7t!
 Missing character: There is no ‚ in font ptmr7t!
 Missing character: There is no Ä in font ptmr7t!
 Missing character: There is no ê in font ptmr7t!
-) [8
-
-] (./litreview.aux)
-
-LaTeX Warning: There were undefined references.
-
- ) 
+) [7] (./litreview.aux) ) 
 Here is how much of TeX's memory you used:
- 4042 strings out of 493304
- 62286 string characters out of 6139871
- 147362 words of memory out of 5000000
- 7439 multiletter control sequences out of 15000+600000
+ 4041 strings out of 493304
+ 62279 string characters out of 6139871
+ 147366 words of memory out of 5000000
+ 7438 multiletter control sequences out of 15000+600000
  38017 words of font info for 71 fonts, out of 8000000 for 9000
  960 hyphenation exceptions out of 8191
  38i,6n,23p,798b,278s stack positions out of 5000i,500n,10000p,200000b,80000s
-{/usr/share/texlive/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/share/texliv
-e/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/share/texlive/texmf
--dist/fonts/type1/urw/times/utmb8a.pfb></usr/share/texlive/texmf-dist/fonts/typ
-e1/urw/times/utmr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/ut
-mri8a.pfb>
-Output written on litreview.pdf (9 pages, 2220586 bytes).
+{/usr/share/texlive/texmf-dist/fonts/enc/dvips/base/8r
+.enc}</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></
+usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/share/texli
+ve/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/share/texlive/texmf-dist/f
+onts/type1/urw/times/utmri8a.pfb>
+Output written on litreview.pdf (8 pages, 2219588 bytes).
 PDF statistics:
- 64 PDF objects out of 1000 (max. 8388607)
- 36 compressed objects within 1 object stream
+ 61 PDF objects out of 1000 (max. 8388607)
+ 34 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
  31 words of extra memory for PDF output out of 10000 (max. 10000000)
 

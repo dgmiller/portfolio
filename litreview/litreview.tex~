@@ -39,24 +39,22 @@
 %\vspace*{\fill}
 
 \begin{abstract}
-This document addresses the controversies and contradictions
-surrounding colormaps in data visualization.
+Controversies and contradictions
+surround the choice of colormaps in data visualization.
 Colormaps are used to display complex data sets by
 representing data points as colors on a continuous color scale. The scientific
-community is divided on whether the default 'jet' or rainbow colormap
-is best for data visualization. Some point to evidence in medical imaging
+community is divided on whether rainbow colormaps
+adequately represent data in colored visualizations. Some point to evidence in medical imaging
 that suggests the rainbow colormap distorts data, resulting in slower and 
 less accurate data interpretation. Others have shown that the
 scientific community is used to reading graphics with rainbow
 color schemes and are no less accurate than others who use
-a different color scheme. This document finds that rainbow colormaps
-are generally inferior to perceptually uniform colormaps. However, it
-seems that rainbow colormaps are not the main cause of diagnostic error,
-though there is sufficient evidence showing that diagnostic errors do occur.
+a different color scheme. This document compares rainbow colormaps
+to perceptually uniform colormaps.
 To avoid errors in data interpretation, some scientific software programs
 have changed their default colormap away from the rainbow scheme.
-Nevertheless, many find the rainbow colormap to be aesthetically pleasing
-and continues to be used extensively in medical imaging.
+Nevertheless, the rainbow colormap
+and continues to be used in scientific literature.
 \end{abstract}
 \tableofcontents
 \vspace*{\fill}
@@ -83,15 +81,15 @@ One of the dominant controversies in scientific visualization involves the use o
 A colormap is a function that assigns data points to
 an ordering of colors. Nathaniel Smith
 calls them ``an interface between the data and your
-brain \cite{viridis}'' since they allow the user to interact with the data in a visual form.
+brain \cite{viridis}'' since they allow the user to interact with data in a visual form.
 When judiciously chosen, colormaps reveal hidden structure that would go unnoticed
-otherwise. A careless colormap selection, on the other hand, may distort the data and
-lead viewers to misinterpret the data. This has
+otherwise. On the other hand, a careless colormap selection may distort the data,
+leading viewers to false insights. This has
 serious consequences, especially in medicine and public health \cite{arteryvis,choropleth}.
 Doctors rely on visualization software to interpret medical
 data correctly and properly diagnose and treat disease.
 Citizens and politicians vote on public health policy based on data presented 
-in visual form. Each scientific discipline has developed standards that determine
+in visual form. These scientific disciplines have developed standards that determine
 how to perform rigorous, consistent, and reproducible data analysis. However,
 there is debate among scientists about colormap standards in data visualization---or
 whether there should be colormap standards at all.
@@ -135,23 +133,23 @@ rainbow-colored data visualizations.
 This literature review explores the advantages and disadvantages
 of rainbow colormaps, why they are preferred by some
 scientists and discouraged by others, and how spectral color schemes are used
-in applied data analysis. First, I will give a basic summary 
-of the color theoretic properties of rainbow colormaps. Then, I will
-address color perception issues of spectral color schemes, including
-color vision impairment. Finally, I discuss rainbow colormap applications
+in applied data analysis. First, this review covers important aspects of color science
+necessary for effective colormap creation. Then, it will
+address perception issues that affect color interpretation. 
+Finally, the rainbow colormap will be evaluated alongside a discussion of rainbow colormap applications
 in medical imaging and cartography.
 
 \section{Colormap Fundamentals}
 
-Colormaps assign data points to colors. This seems straightforward but color assignment
+Colormaps assign data points to colors. This seems straightforward, but color assignment
 depends on sophisticated mathematics and research in human perception. 
 Color is both a physical phenomenon and a perceptual illusion \cite{endofrainbow}.
-When light reaches our eyes, photorecpetors called cones detect light at certain wavelengths.
+When light reaches our eyes, photoreceptors called cones detect light at certain wavelengths.
 The cones send signals to the brain, which interprets the information,
 and generates the perception we call color \cite{viridis}. Humans sometimes perceive the same
-colors differently. In fact, the question of whether two colors are equal has motivated
+colors differently. In fact, the question of whether two colors are the same has motivated
 research in color theory for decades and continues to play a central role in colormap 
-evaluation---especially rainbow colormaps.
+evaluation.
 
 \subsection{Color Models and Spaces}
 
@@ -206,15 +204,14 @@ divides up the colors humans are capable of perceiving
 into equal perceptual divisions of color lightness and
 color saturation for each color hue. \cite{colormapping}''
 Hue refers to the attribute generally associated with the color name (i.e. red,
-orange, yellow, green, blue). On a color wheel, hue is the position of the color
-on the color wheel. Saturation is the intensity of the hue. In
+orange, yellow, green, blue). Saturation is the intensity of the hue. In
 physical terms, it is the purity of the light wave frequency. Lightness is the
-amount of light emitted by a color. Low lightness results in a darker color;
-high lightness results in a lighter color. \cite{colorguidelines}.
+amount of light emitted by a color \cite{colorguidelines}. Low lightness results in a darker color;
+high lightness results in a lighter color.
 
 The Munsell color system was a good way to describe the appearance of color but it did
 not prescribe a way to create the same colors consistently.
-This required rigorous and more precise color models. In the early twentieth century,
+This required more precise color models. In the early twentieth century,
 The Commision Internationale de l'Eclairage (CIE) began developing robust color models
 that allowed for color consistency. It was CIE who first developed the first reliable
 RBG color model \cite{colorimetry}.
@@ -222,12 +219,13 @@ After the RGB model, CIE developed the CIEXYZ model in 1931
 which became widely accepted. It is still used today and is critical to colormap creation
 and evalutation. Many colormaps use models built with CIEXYZ as their foundation \cite{viridis}.
 This model is particularly important because it has an objective scientific interpretation.
-It's development focused on testing measurable, physical properties of light
+Its development focused on testing measurable, physical properties of light
 against human color perception by way of color matching experiments 
 \cite{colorimetry}. The results found that some colors look identical despite having very different physical
 properties. This model specifies which wavelengths of light humans 
-are capable of seeing known as the visible electromagnetic
-spectrum \cite{colormapping}. This spectrum is also known as the rainbow.
+are capable of seeing. This set of wavelengths is known as the visible electromagnetic
+spectrum and is the physical description of the rainbow \cite{colormapping}. This is the model
+that describes a rainbow colormap.
 
 \subsection{Perceptually Uniform Models}
 
@@ -245,9 +243,9 @@ would be called a perceptually uniform color sequence. Perceptual uniformity mea
 In 1976, CIE produced two perceptually uniform color models, CIELUV and CIELAB \cite{colorimetry}.
 These are both commonly used as reliable models of color distance. Some have used these models
 to create perceptually uniform colormaps \cite{viridis,matlab}.
-However, CIE sought to adjust some deficiencies in these models and
+After adjusting some deficiencies, CIE
 released new perceptually uniform color models in 2002. These models are collectively known as 
-CIECAM02 color models. In particular, CIE recommends using CIECAM02-UCS as the best
+the CIECAM02 color model family. In particular, CIE recommends using CIECAM02-UCS as the best
 performing model of color distance \cite{ciecam02}.
 One of the primary differences between CIELAB and CIECAM02-UCS is that the latter
 is more perceptually uniform between similar colors than distant colors \cite{ciecam02}.
@@ -288,9 +286,7 @@ starting with red, then orange,
 yellow, green, blue, and so forth \cite{colormapping}.
 This was especially popular among physicists and rainbow colormaps soon became the default
 in many scientific software applications \cite{rainbowstill,matlab}.
-This colormap was not created for data representation. It was designed based
-on accurately representing light waves, not data.
-An alternative is to construct a color ordering by choosing a color scheme that matches the data.
+An alternative method of constructing a color ordering is to choose a color scheme that matches the data.
 
 There are three main types of color schemes used to create a colormap.
 Sequential color schemes vary in lightness but do not
@@ -310,7 +306,7 @@ sequential, diverging, and rainbow colormaps.
 When colors are placed near each other, it changes the way our eyes see that color,
 a phenomenon called simultaneous contrast.
 This makes colors appear more bright under diffused light
-and competing bright colors diminish their perceived brightness.
+and competing bright colors lose their perceived brightness.
 
 \begin{figure}
 \centering
@@ -319,7 +315,8 @@ and competing bright colors diminish their perceived brightness.
 \end{figure}
 
 An example of simultaneous contrast is the 
-color-of-the-dress meme that became popular in 2015 \cite{colorofthedress}. The picture
+color-of-the-dress meme that became popular in 2015 \cite{colorofthedress}. A picture of a dress
+(shown in Figure 2)
 circulated on social media sites asking whether the dress was black-and-blue
 or white-and-gold. This effect happens because our eyes perform a kind 
 of normalization under different light conditions and alters
@@ -328,13 +325,15 @@ The same shade of gray can appear very different as the surrounding color change
 Even though the colors are the same, they appear to be 
 different because of the context that they are in. This means that sometimes
 our eyes may detect color differences even when there are none.
-Other times, color differences can't be detected easily or at all. This is 
-especially common among people who have some form of color deficiency,
-better known as colorblindness.
+Other times, color differences can't be detected easily or at all.
+Colormaps with several highly saturated colors are particularly prone to the effects
+of simultaneous contrast. If care is taken when looking at a visualization,
+most people can correct for this issue.
+However, this is more difficult for people who are color deficient.
 
 \subsection{Color Deficiency}
 
-Colorblindness results in colors falling on confusion lines---lines in which it
+Color deficiency, better known as colorblindness, results in colors falling on confusion lines---lines in which it
 is difficult or impossible to distinguish between two colors in a color perception model \cite{colormapping}.
 Color deficient viewers do not see the normal range of colors as their peers.
 Full color deficiency results in black-and-white vision and is very rare.
@@ -348,11 +347,12 @@ high numeric values are displayed in reds and
 the variation in green is not easy to interpret \cite{mapcvi}. The red and green
 combination creates unnecessary confusion.
 
-Color deficient viewers use clues to distinguish between colors that easily confuse them.
+To correct for their deficiency, colorblind viewers use context
+clues to distinguish between colors that easily confuse them.
 Brewer has conducted extensive research into how color deficient
-viewers interpret color-encoded information. She has suggested several ways in which 
-maps and information visualizations can be designed to help color deficient viewers.
-A common theme in her research, as well as others, is that colormaps are greatly
+viewers interpret color-encoded information. She suggested several ways in which 
+maps and information visualizations can be designed to be more colorblind friendly.
+A common finding in her research, as well as others, is that colormaps are greatly
 improved when the dark-to-light variation is controlled and used to show progression \cite{mapcvi}.
 When converted to black and white, the visuals still preserve the nature of the data and are easy to interpret.
 Caution is needed, however, when color encodings are converted to
@@ -387,8 +387,8 @@ their respective fields \cite{colorguidelines, standardmedimg}. Even within
 
 Maps are used to show public health information, the spread of disease, weather
 forecasts, and other demographic data. This information is important to
- public policy and public awareness. This information is almost always shown
- using color. Choosing an appropriate color scheme is not a trivial task. In her
+ public policy and public awareness and is frequently shown
+ using colored visualizations. Choosing an appropriate color scheme is not a trivial task. In her
 article \textit{Mapping Mortality: Evaluating Color Schemes for Choropleth
 Maps}, Cynthia Brewer shows that a judicious choice of color is ``worth 
 the extra effort and expense'' because ``it permits greater accuracy in map
@@ -399,13 +399,12 @@ Rainbows are not always good for maps, however. An assortment of colormaps were
 developed and shown to be superior to rainbow schemes when used for oceaonography.
 Sea level is an important metric in these contexts and a rainbow colormap poorly 
 represents the coastline where land and sea meet. In this context, customized colormaps
-outperform most other colormaps \cite{oceanography}. In contexts where the data are in a particular form
-that the scientist knows, it is best to create a customized colormap that gives 
-more accurate results.
+outperform most other colormaps \cite{oceanography}. If the scientist knows that the data are in a particular form,
+a customized colormap gives the best results.
 
 \subsection{Medical Imaging}
 
-The consequences for color misuse in medical imaging are more severe. Research
+The consequences for color misuse in medical imaging are severe. Research
 already shows that the potential for diagnostic errors increases when 
 rainbow color schemes are used \cite{arteryvis}. Color may not
 be necessary and only used for convenience. However, some procedures (like virtual diagnosis) require 
@@ -425,7 +424,7 @@ are being created now to analyze the vast amount of data that can be collected
 in genetics. One such tool uses clustering techniques to find biomarkers in 
 gene data. This software is written in MATLAB and designed to run on Microsoft
 Windows and Linux x86 \cite{marvis}. This specific choice of software uses an
-older vesion with the \textit{jet} rainbow colormap. 
+older vesion of MATLAB with a rainbow colormap as the default. 
 Software updates and hardware limitations make it difficult to change 
 the visualization system. This may be another reason why doctors prefer grayscale and
 rainbow visualizations---it is too difficult to change.
@@ -437,11 +436,11 @@ One paper evaluated color schemes in terms of
 three variables of the CIELUV color model. The first
 is color distance. Since CIELUV is a model of color distance,
 equally spaced colors on a colormap is considered desireable. The second variable is linear separation.
-This refers to “the ability to separate targets
+This refers to ``the ability to separate targets
 from non-targets in the colour model being
-used \cite{colorchoice}.” If the
+used \cite{colorchoice}.'' If the
 colors are not linearly separable, it
-will be more difficult to identify important insights in the data even though the
+will be difficult to identify important insights in the data even though the
 colors are mathematically different. The third variable
 is color category, which refers to color regions where
 there are both target and non-target elements \cite{colorchoice}.
@@ -453,8 +452,8 @@ scientists want multidimensional visualizations \cite{checkviz}.
 However, the most practical way to evaluate a colormap is to consider whether the color
 model, color space, and color scheme reflect the nature of the data being visualized.
 
-Rainbow colormaps use a qualitative, spectral color scheme and appears to be defined
-in terms of the CIEXYZ color model. It is not perceptually uniform because
+Rainbow colormaps use a qualitative, spectral color scheme and appear to be defined
+in terms of the CIEXYZ color model. They are not perceptually uniform because
 the variation in lightness is inconsistent.
 This has not stopped some from attempting to modify---and therefore preserve---the
 rainbow colormap.
@@ -510,12 +509,12 @@ software across all platforms and technologies.
 
 Color is an essential attribute of data visualizations. Representing data
 with color is best done through a colormap designed specifically for the data set to be visualized.
-Colormaps require a vast amount of knowledge to be thoroughly constructed and evaluated. Yet,
-data visualization is important to many disciplines and involves subjects
+To be thoroughly constructed and evaluated, colormaps require a vast amount of knowledge.
+Data visualization is important to many disciplines and involves subjects
 as different as engineering, computer science, graphic design,
 and psychology \cite{choropleth}. The recent development in color rendering technology has made it 
-possible to develop and test many different colormaps. In particular, it seems clear
-the rainbow colormap has many undesirable properties when trying to represent data.
+possible to develop and test many different colormaps. In particular, it seems clear that
+the rainbow colormap has many undesirable properties for data representation.
 It takes more time for viewers to interpret data with this colormap and they tend to
 make mistakes when the data fall in areas where the color changes do not match 
 equivalent changes in the data. There does not seem to be a problem in cartography
@@ -527,15 +526,14 @@ in scientific software, as in Matplotlib's \textit{viridis} and MATLAB's \textit
 These alternatives are perceptually uniform and tend to represent generic data better.
 The variety of colors is diminished and the darkness-to-lightness progression
 is more consistent with human perception of color change.
-There has been little to no research on the effects of using this most recent model on colormap
-development.
+There has been little to no research on the effects of using these new colormaps.
 
 Perceptually uniform colormaps are more friendly to color
 impaired individuals. When colors cannot be changed
 to accomodate for color impairment, redundancy can be added to the visualization
 so as to encode the same information the color represents as a small icon or by using
-a different visual variable such as position or size \cite{tufte}. In contexts where data
-interpretation is to be precise and time-efficient, rainbow colormaps should be discouraged.
+a different visual variable such as position or size. In contexts where data
+interpretation needs to be precise and time-efficient, rainbow colormaps should be discouraged.
 In applications where user preferences are valued over representational accuracy,
 the rainbow colormap is acceptable. Scientists should 
 encourage the use of perceptually uniform colormaps as the default colormap choice and phase out the rainbow colormap

@@ -1,10 +1,9 @@
 @misc{viridis,
-	author={Stéfan van der Walt and Nathaniel Smith},
-	year={2015},
-	title={mpl colormaps},
-	volume={2017},
-	number={March 1,},
-	url={https://bids.github.io/colormap/}
+	author = "Stéfan van der Walt and Nathaniel Smith",
+	title = "mpl colormaps",
+	howpublished = "https://bids.github.io/colormap/",
+	url = "https://bids.github.io/colormap/",
+	keywords = "matplotlib,viridis",
 }
 @article{marvis,
 	author={Alexander Kaever and Thomas Lingner and Kirstin Feussner and Cornelia Göbel and Ivo Feussner and Peter Meinicke},
@@ -33,15 +32,20 @@
 	language={English},
 	doi={10.1029/2004EO400002}
 }
-@misc{chasingrainbows,
+@article{chasingrainbows,
 	author = 	 {Robert SisnerosB and Mohammad Raji and Mark W. Van Moer and David Bock},
 	title = 	 {Chasing Rainbows: A Color-Theoretic Framework for Improving and Preserving Bad Colormaps},
+	year={2016},
+	journal={Advances in Visual Computing},
+	volume={10072},
+	pages={391-402},
 	abstract = 	 {Abstract.  The  scientiﬁc  visualization  community  increasingly  ques- tions the use of rainbow colormaps. This is not unfounded as signiﬁ- cant problems are readily seen in a luminance plot of the rainbow col- ormap. Many good, generally applicable colormaps are proposed as direct replacements for the rainbow. However, there are still many who choose rainbows and like them. Would a colormap with perfect luminance and the chromaticity of a rainbow ﬁnd a wider audience? This was our moti- vation in studying the range of chromatic eﬀects arising from luminance corrections. Consequently we developed a framework for adjusting col- ormaps to various degrees which produces favorable results on a wide range of colormaps. In this work we will detail this framework and demon- strate its eﬀectiveness on several colormaps.},
 	doi={10.1007/978-3-319-50835-1}
 }
 @misc{matlab,
 	author = 	 {Steve Eddins},
-	title = 	 {Rainbow Color Map Critiques: An Overview and Annotated Bibliography}
+	title = 	 {Rainbow Color Map Critiques: An Overview and Annotated Bibliography},
+	publisher = {MathWorks},
 }
 @misc{visvars,
 	author = 	 {Łukasz Halik},
@@ -52,7 +56,10 @@
 }
 @misc{colorvblackwhite,
 	author = 	 {Haim Levkowitz},
-	title = 	 {Color vs. Black-and-White in Visualization}
+	title = 	 {Color vs. Black-and-White in Visualization},
+	year={1991},
+	publisher={IEEE},
+	journal={Proceedings to IEEE Conference on Visualization, 1991}
 }
 @article{simultaneouscontrast,
 	author={Cynthia A. Brewer},
@@ -237,9 +244,13 @@
 	url={http://ieeexplore.ieee.org/document/568118},
 	doi={10.1109/VISUAL.1996.568118}
 }
-@misc{ciecam02,
+@inbook{ciecam02,
 	author = 	 {Ming Ronnier Luo and Changjun Li},
-	title = 	 {CIECAM02 and Its Recent Developments},
+	year={2013},
+	title = {Advanced Color Image Processing and Analysis},
+	chapter = 	 {CIECAM02 and Its Recent Developments},
+	publisher = {Springer Science + Business Media},
+	address = {New York, New York},
 	abstract = 	 {Abstract  The development of colorimetry can be divided into three stages: colour speciﬁcation, colour difference evaluation and colour appearance modelling. Stage 1 considers the communication of colour information by numbers. The second stage is colour difference evaluation. While the CIE system has been successfully applied for over 80 years, it can only be used under quite limited viewing conditions, e.g.,  daylight  illuminant,  high  luminance  level,  and  some  standardised  view- ing/illuminating geometries. However, with recent demands on crossmedia colour reproduction, e.g., to match the appearance of a colour or an image on a display to that on hard copy paper, conventional colorimetry is becoming insufﬁcient. It requires a colour appearance model capable of predicting colour appearance across a wide range of viewing conditions so that colour appearance modelling becomes the third stage of colorimetry. Some call this as advanced colorimetry. This chapter will focused on the recent developments based on CIECAM02.},
 	doi={10.1007/978-1-4419-6190-7}
 }
@@ -300,16 +311,24 @@
 	url={http://dx.doi.org/10.1117/12.175328},
 	doi={10.1117/12.175328}
 }
-@misc{oceanography,
+@article{oceanography,
 	author = 	 {Kelly Grove},
-	year = 	 {2017},
-	month = 	 {Feb 14,},
-	title = 	 {Oceanography},
-	abstract = 	 {Oceanography research @ FSU},
-	language = 	 {English},
-	url = 	 {http://guides.lib.fsu.edu/oceanography}
+	year = 	 {2016},
+	title = 	 {True Colors of Oceanography: Guidelines for Effective and Accurate Colormap Selection},
+	journal={Oceanography},
+	volume={29},
+	number={3},
 }
 @book{colorimetry,
-	author = {MISSING},
-	title={Colorimetry: Fundamentals and Applications}
+	author = {Eng. Noboru Ohta, Alan R. Robertson},
+	title={Colorimetry: Fundamentals and Applications},
+	year = "2005",
+	publisher = "John Wiley and Sons Ltd.",
+	address = "Hoboken, NJ"
+}
+@misc{colorofthedress,
+	author = "Cates Holderness",
+	title = "What Colors Are This Dress?",
+	howpublished = {https://www.buzzfeed.com/catesish/help-am-i-going-insane-its-definitely-blue},
+	keywords = "buzzfeed,color,dress",
 }

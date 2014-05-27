@@ -3,52 +3,48 @@ Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
 The top-level auxiliary file: litreview.aux
 The style file: ieeetr.bst
 Database file #1: litreview.bib
-Warning--I didn't find a database entry for "colorofthedress"
-Warning--I didn't find a database entry for "tufte"
-Warning--empty publisher in colorimetry
-Warning--empty year in colorimetry
 Warning--can't use both author and editor fields in colormapping
 Warning--empty booktitle in colorguidelines
 Warning--empty booktitle in colorchoice
-You've used 19 entries,
+You've used 20 entries,
             1876 wiz_defined-function locations,
-            583 strings with 6267 characters,
-and the built_in function-call counts, 4835 in all, are:
-= -- 429
-> -- 228
+            599 strings with 6757 characters,
+and the built_in function-call counts, 5225 in all, are:
+= -- 480
+> -- 232
 < -- 0
-+ -- 85
-- -- 66
-* -- 345
-:= -- 693
-add.period$ -- 16
-call.type$ -- 19
++ -- 87
+- -- 67
+* -- 372
+:= -- 753
+add.period$ -- 22
+call.type$ -- 20
 change.case$ -- 17
 chr.to.int$ -- 0
-cite$ -- 24
-duplicate$ -- 223
-empty$ -- 467
-format.name$ -- 66
-if$ -- 1183
+cite$ -- 23
+duplicate$ -- 251
+empty$ -- 503
+format.name$ -- 67
+if$ -- 1286
 int.to.chr$ -- 0
-int.to.str$ -- 19
-missing$ -- 15
-newline$ -- 61
-num.names$ -- 19
-pop$ -- 71
+int.to.str$ -- 20
+missing$ -- 19
+newline$ -- 66
+num.names$ -- 20
+pop$ -- 67
 preamble$ -- 1
 purify$ -- 0
 quote$ -- 0
-skip$ -- 194
+skip$ -- 195
 stack$ -- 0
-substring$ -- 268
-swap$ -- 92
+substring$ -- 296
+swap$ -- 103
 text.length$ -- 0
 text.prefix$ -- 0
 top$ -- 0
 type$ -- 0
-warning$ -- 5
-while$ -- 40
-width$ -- 21
-write$ -- 168
-(There were 7 warnings)
+warning$ -- 3
+while$ -- 43
+width$ -- 22
+write$ -- 190
+(There were 3 warnings)
