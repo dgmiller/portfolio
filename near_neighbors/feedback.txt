@@ -1,0 +1,90 @@
+11/6/2015 2:51
+
+Problem 1 (5 points):
+Score += 5
+
+Problem 2 (15 points):
+Score += 15
+
+Problem 3 (30 points):
+	Error while removing 11: None is not in the tree.
+Previous tree:
+[4]
+[3, 11]
+[1, 5, 16]
+[6, 14]
+[9, 12]
+[7]
+
+	BST.remove(10) failed.
+Previous tree:
+[10]
+
+Correct response:
+[]
+Student response:
+[None]
+
+	Error while removing 10: Incorrect tree.
+Previous tree:
+[10]
+
+	Error while removing 2: None is not in the tree.
+Previous tree:
+[2]
+[1, 7]
+[6]
+[5]
+[4]
+[3]
+
+Score += 21
+
+Problem 4 (10 points):
+	Need to plot search times, and build times for all structures
+Score += 3
+
+Total score: 44/60 = 73.3333333333%
+
+
+Comments:
+	Significant improvement :D
+
+-------------------------------------------------------
+
+12/10/15 16:19 
+
+Problem 1 (5 points):
+Score += 5
+
+Problem 2 (15 points):
+Score += 15
+
+Problem 3 (30 points):
+	Error while removing 11: None is not in the tree.
+Previous tree:
+[4]
+[3, 11]
+[1, 5, 16]
+[6, 14]
+[9, 12]
+[7]
+
+	Error while removing 2: None is not in the tree.
+Previous tree:
+[2]
+[1, 7]
+[6]
+[5]
+[4]
+[3]
+
+Score += 27
+
+Problem 4 (10 points):
+Error: 
+
+Total score: 47/60 = 78.3333333%
+
+-------------------------------------------------------
+
