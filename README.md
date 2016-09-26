@@ -1,5 +1,7 @@
 
-# Decagon Marketing Tools
+# Derek Miller: Portfolio
+
+I turn business problems into math problems and solve them with code.
 
 ## Introduction
 
@@ -253,22 +255,3 @@ N.worldplot(kmeans=12)
 
 
 
-## File Structure
-
-In the main directory, there are four subdirectories: `code`, `data`, `images_graphs`, and `presentation`.
-
-### code
-The `code` directory contains the functions used above as well as some alternative and auxiliary files. In `code/misc/`, there are files that contain customer names that lie within a certain range of gps coordinates of certain cities.
-
-### data
-This contains all the datafiles produced by the files in the `code` directory. There are two subdirectories.
-
-The first, `data/CLV/` contains clv analyses I ran and analyzed. They should be not be used to draw conclusions as some of them were experimental. They are still useful, however, to see how the output should look when running a CLV analysis.
-
-The second, `data/GPS/` contains files I used to geocode addresses. Files named `retry*.csv` were used for experimentation and should not be used. The file `allgps.csv` and `address.csv` are complete and reliable. The other files may be useful, but not necessarily reliable.
-
-### images_graphs
-This contains various graphs and visualizations I experimented with during analysis.
-
-### presentation
-This contains my slideshow I (Derek) presented at the end of my internship.
