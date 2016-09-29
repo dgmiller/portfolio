@@ -5,8 +5,6 @@ I turn business problems into math problems and solve them with code.
 
 ## Introduction
 
-I solve problems. I am very cool.
-
 This repository contains some of my work in Applied and Computational Mathematics, summer internships, and side projects.
 
 Some examples:
@@ -29,8 +27,8 @@ from matplotlib import pyplot as plt
 
 ## Recommender System
 
-One way to recommend products to customers is to look at what other similar customers bought. In this case, we define similarity to be the cosine similarity of two feature vectors. Using `data/example.csv`, we can generate recommendations for customers based on their previous purchases.
-
+One way to recommend products to customers is to look at what other similar customers bought.
+In this case, we define similarity to be the cosine similarity of two feature vectors.
 
 ```python
 # dictionary converts customer id to customer name
@@ -38,17 +36,6 @@ to_name = t.make_to_name()
 
 R = t.recommender('../data/PTTPARTS.csv')
 R.similarity_matrix(transpose=True)
-```
-
-    start time
-    Wed Aug 17 10:27:47 2016
-    computing...
-    0.0
-    finished in 0 seconds
-
-
-
-```python
 print(to_name['1057']+' is similar to...\n')
 for i in R.similar_to(1057)[:15]:
     name = to_name[R.from_index[i[0]]]
@@ -83,28 +70,11 @@ print R.recommend(1057)[:,0]
 
 ## Marketing Strategy
 
-Trying to sell a new product to old customers can be thought of as a Multi-Armed Bandit problem. We can solve our dilemma using Thompson Sampling. Each curve below represents what we think the payout probability of a bandit is. The height represents how strong we believe that this is the actual average of the bandit payout. The graphs are printed starting at iteration 0 and every 20 iterations after that.
-
+Trying to sell a new product to old customers can be thought of as a Multi-Armed Bandit problem. We can solve our dilemma using Thompson Sampling.
 
 ```python
 t.testMAB(3,[.3,.5,.7],[.3,.5,.7],niters=80)
 ```
-
-
-![png](images/output_8_0.png)
-
-
-
-![png](images/output_8_1.png)
-
-
-
-![png](images/output_8_2.png)
-
-
-
-![png](images/output_8_3.png)
-
 
 
 ![png](images/output_8_4.png)
@@ -112,34 +82,16 @@ t.testMAB(3,[.3,.5,.7],[.3,.5,.7],niters=80)
 
 ## Market Segmentation
 
-One method of customer segmentation relies on feature vectors and graph theory models. We can construct a representation of a graph by using the similarity matrix already computed in the recommender object. Then we can use Markov Clustering to find the groups that are most connected.
-
-Suppose that someone opens up a bar in town called the Biz-R Bar and it has 16 regular customers. The drinks offered at the Biz-R Bar are (in alphabetical order) beer, energy drinks, juice, lemonade, milk, soda, water, and wine. For each visit, the bartender collected data on which drinks each customer ordered and put them in the file `data/example.csv`. The bartender would like to know if there are certain types of people who order certain things, or if it's all just random.
-
+One method of customer segmentation relies on feature vectors and graph theory models. 
+We can construct a representation of a graph by using the similarity matrix already computed in the recommender object.
+Then we can use Markov Clustering to find the groups that are most connected.
 
 ```python
 R = t.recommender('../data/example.csv')
 R.similarity_matrix()
-```
-
-    start time
-    Wed Aug 17 10:27:50 2016
-    computing...
-    0.0
-    finished in 0 seconds
-
-
-
-```python
-plt.spy(R.D)
-plt.show()
 G2 = t.nx.Graph(R.D)
 t.nx.draw_networkx(G2)
 ```
-
-
-![png](images/output_11_0.png)
-
 
 
 ![png](images/output_11_1.png)
@@ -148,31 +100,7 @@ t.nx.draw_networkx(G2)
 
 ```python
 cust_clusters = t.markov_cluster_algorithm(R.D,2,2)
-```
-
-    0
-    25
-    50
-    75
-
-
-
-```python
-plt.spy(cust_clusters)
-plt.show()
-```
-
-
-![png](images/output_13_0.png)
-
-
-
-```python
 G = t.nx.Graph(cust_clusters)
-```
-
-
-```python
 t.nx.draw_networkx(G)
 ```
 
@@ -182,7 +110,9 @@ t.nx.draw_networkx(G)
 
 ## Customer Lifetime Value
 
-Marketing to the right customers means we should try to figure out who our most valuable customers are so that we can focus our limited resources on the customers who are most worth the investment. The clv object pulls data from the sales database and predicts average purchase behavior of each customer over a specified time period using a statistical model detailed in *"Counting Your Customers" the Easy Way: An Alternative to the Pareto/NBD Model* by Fader, et al. This is implemented via the lifetimes module at github.com/CamDavidsonPilon/lifetimes.
+Marketing to the right customers means we should try to figure out who our most valuable customers are.
+The clv object implements a statistical model detailed in *"Counting Your Customers" the Easy Way: An Alternative to the Pareto/NBD Model* by Fader, et al
+using the lifetimes module at github.com/CamDavidsonPilon/lifetimes.
 
 
 ```python
@@ -215,40 +145,28 @@ print(C.results[:5])
 
 ## Visualizing Customer Locations
 
-Using the `Geocode` object in `tools.py`, we can convert customer addresses into GPS coordinates. Once we have the coordinates, we can visualize customers by their CLV and geographic location. The brightness or intensity of color on the a dark background represents high CLV and less brightness indicates low clv. A good example of a map is found in `images_graphs/darkmap_clv.png`.
-
-Suppose we wanted to expand Decagon by relocating sales representatives to 10 key cities around the United States. We need to place them in such a way as to minimize the distance to nearby customers. This can be found out using k-means clustering on the gps coordinates, as shown below. The large grey dots represent general areas that we should consider placing our sales reps.
-
-
-```python
-N = t.Nightmap()
-```
-
-    clv for area:
-    436226858.761
-
-
-
-```python
-N.nightplot()
-```
-
-
-![png](images/output_21_0.png)
-
-
-
-```python
-N.worldplot(kmeans=12)
-```
-
-
-![png](images/output_22_0.png)
-
-
-We can also map zip codes to area hubs as in the image below. The area hubs in this image were calculated with Mean Shift clustering. Compare to the k means clustering above.
+Using the `Geocode` object in `tools.py`, we can convert customer addresses into GPS coordinates.
+We can segment our customers by area and find area hubs. The area hubs in this image were calculated with Mean Shift clustering.
+Then we can further segment customers by CLV, market, or other features.
 
 ![png](images/customers_by_area.png)
+
+## School Projects
+
+*Sobel Filter*
+
+
+![png](images/cameraman2.png)
+
+
+*Eigenfaces*
+
+
+![png](images/meanface.png)
+
+
+![png](images/minusmean.png)
+
 
 
 Also check out a collaborative data visualization of Classic Literature at https://www.behance.net/thesarahkay where I helped with data cleaning.
