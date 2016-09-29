@@ -3,10 +3,9 @@
 
 I turn business problems into math problems and solve them with code.
 
-![png](images/customers_by_area.png)
-
-
 ## Introduction
+
+I solve problems. I am very cool.
 
 This repository contains some of my work in Applied and Computational Mathematics, summer internships, and side projects.
 
@@ -18,6 +17,7 @@ Some examples:
 
 Libraries used: numpy, scipy, pandas, sklearn, networkx, pyodbc, matplotlib, matplotlib's Basemap, geopy, lifetimes, ...
 
+# Examples
 
 ```python
 # import statements
@@ -245,6 +245,10 @@ N.worldplot(kmeans=12)
 
 ![png](images/output_22_0.png)
 
+
+We can also map zip codes to area hubs as in the image below. The area hubs in this image were calculated with Mean Shift clustering. Compare to the k means clustering above.
+
+![png](images/customers_by_area.png)
 
 
 Also check out a collaborative data visualization of Classic Literature at https://www.behance.net/thesarahkay where I helped with data cleaning.
