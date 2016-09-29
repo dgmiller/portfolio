@@ -3,28 +3,20 @@
 
 I turn business problems into math problems and solve them with code.
 
+![png](images/customers_by_area.png)
+
+
 ## Introduction
 
-This repository contains some of my most recent work in Applied and Computational Mathematics, summer internships, and side projects:
+This repository contains some of my work in Applied and Computational Mathematics, summer internships, and side projects.
 
+Some examples:
 * image recognition via eigenfaces
 * calculating customer lifetime value
-* data-driven market segmentation
-* product recommendations
-* customer location visualization
+* maximizing profit and minimizing cost for customer visits
+* finding your seat on an airplane
 
-Libraries used:
-
-* numpy
-* scipy
-* pandas
-* sklearn
-* networkx
-* pyodbc
-* matplotlib
-* matplotlib's Basemap
-* geopy
-* lifetimes
+Libraries used: numpy, scipy, pandas, sklearn, networkx, pyodbc, matplotlib, matplotlib's Basemap, geopy, lifetimes, ...
 
 
 ```python
@@ -255,3 +247,4 @@ N.worldplot(kmeans=12)
 
 
 
+Also check out a collaborative data visualization of Classic Literature at https://www.behance.net/thesarahkay where I helped with data cleaning.
