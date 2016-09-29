@@ -99,23 +99,23 @@ t.testMAB(3,[.3,.5,.7],[.3,.5,.7],niters=80)
 ```
 
 
-![png](output_8_0.png)
+![png](images/output_8_0.png)
 
 
 
-![png](output_8_1.png)
+![png](images/output_8_1.png)
 
 
 
-![png](output_8_2.png)
+![png](images/output_8_2.png)
 
 
 
-![png](output_8_3.png)
+![png](images/output_8_3.png)
 
 
 
-![png](output_8_4.png)
+![png](images/output_8_4.png)
 
 
 ## Market Segmentation
@@ -146,11 +146,11 @@ t.nx.draw_networkx(G2)
 ```
 
 
-![png](output_11_0.png)
+![png](images/output_11_0.png)
 
 
 
-![png](output_11_1.png)
+![png](images/output_11_1.png)
 
 
 
@@ -171,7 +171,7 @@ plt.show()
 ```
 
 
-![png](output_13_0.png)
+![png](images/output_13_0.png)
 
 
 
@@ -185,7 +185,7 @@ t.nx.draw_networkx(G)
 ```
 
 
-![png](output_15_0.png)
+![png](images/output_15_0.png)
 
 
 ## Customer Lifetime Value
@@ -242,7 +242,7 @@ N.nightplot()
 ```
 
 
-![png](output_21_0.png)
+![png](images/output_21_0.png)
 
 
 
@@ -251,7 +251,7 @@ N.worldplot(kmeans=12)
 ```
 
 
-![png](output_22_0.png)
+![png](images/output_22_0.png)
 
 
 

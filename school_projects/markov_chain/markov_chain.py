@@ -138,8 +138,8 @@ def adj_matrix(filepath, uwords):
     """
     # the file in a list of sentences (strings)
     indices = open(filepath,'r').readlines()
-    t_matrix = np.zeros((uwords,uwords))
     uwords += 2
+    t_matrix = np.zeros((uwords,uwords))
     for a in xrange(len(indices)):
         indices[a] = indices[a].split() # list of 'numbers' (strings)
     for sentence in indices: # list of numbers in each line
@@ -170,7 +170,7 @@ def sentences(infile, outfile, num_sentences=1):
     """
     opus = open(outfile,'w')
     uniwords = numberize(infile)
-    M = adj_matrix(len(uniwords))
+    M = adj_matrix('num_text.txt',len(uniwords))
     for x in xrange(num_sentences):
         word = 0
         while word != len(M)-1:
@@ -180,3 +180,5 @@ def sentences(infile, outfile, num_sentences=1):
                 opus.write(uniwords[word] + " ")
         opus.write("\n")
     opus.close()
+
+sentences('train_drSwift.txt','out_drSwift.txt',num_sentences=25)
