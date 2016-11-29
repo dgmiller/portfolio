@@ -1,11 +1,11 @@
 
 # Derek Miller: Portfolio
 
-I turn business problems into math problems and solve them with code.
+I turn business problems into math problems and solve them with code. My background is in math, computer science, statistics, and economics. I am particularly interested in the intersection of machine learning, data visualization, and user experience design.
 
 ## Introduction
 
-This repository contains some of my work in Applied and Computational Mathematics, summer internships, and side projects.
+This repository contains a small sample of projects I have worked on for companies, as a student in Applied and Computational Mathematics, and for fun. In certain cases, the code in each folder has been modified to protect company information.
 
 Some examples:
 * image recognition via eigenfaces
@@ -28,7 +28,10 @@ from matplotlib import pyplot as plt
 ## Recommender System
 
 One way to recommend products to customers is to look at what other similar customers bought.
-In this case, we define similarity to be the cosine similarity of two feature vectors.
+
+A simple way quantify similarity is to create a vector of features. This can be represented as a list of zeros and ones. Given a list of products, the corresponding number in the list will be either a one if the customer bought that product or a zero otherwise. The normalized dot product of two vectors produces a number between 0 and 1 called the cosine similarity. This estimates the similarity between two customers with 0 being no similarity and 1 being identical.
+
+Using this similarity, a product can be scored based on how many similar customers bought that product compared to a different customer. Recommend the products that the customer hasn't bought that have the highest scores.
 
 ```python
 # dictionary converts customer id to customer name
@@ -70,7 +73,9 @@ print R.recommend(1057)[:,0]
 
 ## Marketing Strategy
 
-Trying to sell a new product to old customers can be thought of as a Multi-Armed Bandit problem. We can solve our dilemma using Thompson Sampling.
+Trying to sell a new product to old customers can be thought of as a Multi-Armed Bandit problem. For example, suppose a company has three types customers. The company has invested a lot of money in developing a new product and only wants to market the product to the type of customer that has the highest probability of buying it. 
+
+Initially, the company does not know which type of customer is the most likely to buy, so it has to balance two different objectives. The first objective is to market to each of the different types of customers to find out who is most likely to buy; this is called exploration. The second objective is to market to the type of customer most likely to buy; this is called exploitation. The company wants to optimize the exploration-exploitation dilemma. A technique known as Thompson Sampling uses the statistical beta distribution and Bayes theorem to solve this problem.
 
 ```python
 t.testMAB(3,[.3,.5,.7],[.3,.5,.7],niters=80)
@@ -83,8 +88,10 @@ t.testMAB(3,[.3,.5,.7],[.3,.5,.7],niters=80)
 ## Market Segmentation
 
 One method of customer segmentation relies on feature vectors and graph theory models. 
-We can construct a representation of a graph by using the similarity matrix already computed in the recommender object.
-Then we can use Markov Clustering to find the groups that are most connected.
+
+Using the same features described above in the product recommendation section, the network of customers can be represented as a matrix where the similarity between customers forms a weak or strong connection, depending on the cosine similarity.
+
+The Markov Clustering Algorithm breaks down weak connections between companies and identifies clusters of similar customers. This effectively segments the market as demonstrated below.
 
 ```python
 R = t.recommender('../data/example.csv')
@@ -110,9 +117,9 @@ t.nx.draw_networkx(G)
 
 ## Customer Lifetime Value
 
-Marketing to the right customers means we should try to figure out who our most valuable customers are.
-The clv object implements a statistical model detailed in *"Counting Your Customers" the Easy Way: An Alternative to the Pareto/NBD Model* by Fader, et al
-using the lifetimes module at github.com/CamDavidsonPilon/lifetimes.
+Marketing to the right customers depends on the ability to find out who our most valuable customers are.
+
+Customer Lifetime Value (CLV) is the total amount of expected, time-discounted revenue of a customer until they are no longer a customer. There are several ways of estimating this amount. One method relies on modeling customer behavior in aggregate using statistical distributions. The implementation below uses a variant of the Pareto-NBD model from *"Counting Your Customers" the Easy Way: An Alternative to the Pareto/NBD Model* by Fader, et al using the lifetimes module at github.com/CamDavidsonPilon/lifetimes.
 
 
 ```python
@@ -155,12 +162,17 @@ Then we can further segment customers by CLV, market, or other features.
 
 *Sobel Filter*
 
+As a student, I learned edge detection using the Sobel Operator. This method uses an approximation of the derivative at each location to detect large changes in a grayscale version of a picture. This works well on images that already have high contrast. The resulting image below comes from a picture taken of a cameraman.
+
 
 ![png](images/cameraman2.png)
 
 
 *Eigenfaces*
 
+These pictures come from a data set of pictures of faces. Facial features can be represented as eigenvectors of a matrix representation of the pictures. Using the Singular Value Decomposition of the mean adjusted collection of faces, unique facial features can be detected. Each face is a unique combination of these facial features. Given a new image of a face, the algorithm finds the closest matching image with the right combination of facial features. This algorithm performs relatively well despite its simplicity.
+
+The images below are representations of the average face of the data set and a mean-adjusted face of an individual person.
 
 ![png](images/meanface.png)
 
