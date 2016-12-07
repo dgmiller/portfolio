@@ -57,7 +57,7 @@ var simulation = d3.forceSimulation()
     .force("center", d3.forceCenter(width / 2, height / 2));
 
 // load in the json graph data from the data file
-d3.json("twitter.json", function(error, graph) {
+d3.json("twitter2.json", function(error, graph) {
   if (error) throw error;
   var link = svg.append("g")
       .attr("class", "links")

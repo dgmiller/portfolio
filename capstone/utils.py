@@ -129,6 +129,17 @@ class TwitterCorpus(object):
         df['RT'] = self.retweets
         return df
     
+    def make_df_with_time_index(self):
+        df = pd.DataFrame(index=self.time)
+        df['usr_fol'] = self.user_stats[:,0]
+        df['usr_n_stat'] = self.user_stats[:,1]
+        df['usr_fri'] = self.user_stats[:,2]
+        df['n_weblinks'] = self.n_weblinks
+        df['n_mentions'] = self.n_mentions
+        df['n_hashtags'] = self.n_hashtags
+        df['RT'] = self.retweets
+        return df
+    
     def tokenize_hashtags(self):
         start = time.time()
         self.V = Vec(max_features=100,
