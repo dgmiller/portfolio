@@ -36,6 +36,18 @@ def get_file():
 class TwitterCorpus(object):
     
     def __init__(self,filename,n=None,m=None):
+        """
+        ATTRIBUTES:
+            data (string) the tweet data from a txt file
+            tweets (list) of user tweet content
+            user_stats (list) of number of followers, friends, and user tweets to date
+            timestamps (list) of floats indicating UTC timestamp
+            time (list) of timestamps converted to datetime objects
+            n_mentions (list) of the number of mentions in a tweet
+            n_hashtags (list) of the number of hashtags in a tweet
+            n_weblinks (list) of the number of external links in a tweet
+            retweets (list) of booleans indicating whether the tweet was a retweet
+        """
         print("Loading file...\n")
         start = time.time()
         self.data = open(filename,'r').readlines()[n:m]
@@ -69,6 +81,9 @@ class TwitterCorpus(object):
         print("Time: %s" % (end-start))
         
     def clean_text(self,remove_vars_from_tweet=True):
+        """
+        Cleans the text and extracts information from the tweet
+        """
         print("Cleaning text...")
         start = time.time()
         tweetwords = []
@@ -113,6 +128,9 @@ class TwitterCorpus(object):
         print("Time: %s" % (end-start))
     
     def convert_time(self):
+        """
+        converts timestamp to datetime object, stored as self.time
+        """
         print("Converting time to datetime object...")
         start = time.time()
         for t in self.timestamps:
@@ -122,20 +140,19 @@ class TwitterCorpus(object):
         end = time.time()
         print("Time: %s" % (end-start))
 
-    def make_df(self):
-        df = pd.DataFrame()
-        df['time'] = self.time
-        df['usr_fol'] = self.user_stats[:,0]
-        df['usr_n_stat'] = self.user_stats[:,1]
-        df['usr_fri'] = self.user_stats[:,2]
-        df['n_weblinks'] = self.n_weblinks
-        df['n_mentions'] = self.n_mentions
-        df['n_hashtags'] = self.n_hashtags
-        df['RT'] = self.retweets
-        return df
-    
-    def make_df_with_time_index(self):
-        df = pd.DataFrame(index=self.time)
+    def make_df(self,time_index=False):
+        """
+        Creates a dataframe of the twitter data
+        INPUT
+            time_index (bool) whether to set the dataframe index as the time variable, default=False
+        RETURNS
+            df (pandas DataFrame) of twitter data
+        """
+        if time_index:
+            df = pd.DataFrame(index=self.time)
+        else:
+            df = pd.DataFrame()
+            df['time'] = self.time
         df['usr_fol'] = self.user_stats[:,0]
         df['usr_n_stat'] = self.user_stats[:,1]
         df['usr_fri'] = self.user_stats[:,2]
@@ -146,6 +163,9 @@ class TwitterCorpus(object):
         return df
     
     def tokenize_hashtags(self):
+        """
+        Tokenize the hashtags using TfidfVectorizer
+        """
         start = time.time()
         self.V = Vec(max_features=100,
                      min_df=100,
@@ -158,6 +178,11 @@ class TwitterCorpus(object):
         return H
     
     def tokenize_mentions(self):
+        """
+        Tokenize mentions using TfidfVectorizer
+        RETURNS
+            M (TfidfVectorizer) fitted to mentions data, parameters sublinear_tf=True and use_idf=True
+        """
         start = time.time()
         self.V = Vec(sublinear_tf=True,
                      use_idf=True)
