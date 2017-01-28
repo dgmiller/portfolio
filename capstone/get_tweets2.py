@@ -7,13 +7,15 @@ import json
 import os
 import time
 
+ckey = 'IWSJe1TLJBvSOQyahRUrL6t13'
+csecret = 'bnw4Trgd7y2zEGZ3kN8jbkaDQuArDfbIExEXPOoOeAm1BdG0rV'
+atoken = '2331310884-rSIiYPVgCZROan1aBNmYWAyJYtggEDJy2NLzKJL'
+asecret = 'PQl6pl6YLpBva22cpJVYwmk28m6NGOJgPleggzmWnYrad'
+
+
 track_kw = raw_input("Track Keyword: ")
 filename = raw_input("filename: ")
 # Authentication tokens and keys
-ckey = "3dKkKQNv4IhDRYTAq6yGuMb8t"
-csecret = "jnKsBAXm0dFlKDRasTmu2Y34eBT3EUSdj6YkFRaj4b290vPPJh"
-atoken = "2533036867-6NWiHaQRBAWrcjy59g2PM4hX0tuUs1Hw3TTILpk"
-asecret = "NgOmykbCoVEWVv6uRFeYlOTmFweH5h2fJOhZi6KGah8pN"
 
 start = time.time()
 # The listener receives the data
