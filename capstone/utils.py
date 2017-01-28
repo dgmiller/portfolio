@@ -1,7 +1,8 @@
 import re
 from scipy.sparse import csr_matrix
 from sklearn.preprocessing import normalize
-from sklearn.feature_extraction.text import TfidfVectorizer as Vec
+from sklearn.feature_extraction.text import CountVectorizer,TfidfVectorizer as Vec
+from sklearn.decomposition import LatentDirichletAllocation as LDA
 import numpy as np
 import pandas as pd
 import string
@@ -93,6 +94,7 @@ class TwitterCorpus(object):
             m_str = ""
             h_str = ""
             s = s.replace('"""','')
+            s = s.replace("'","")
             s = s.lower()
             mentions = re.findall(r'@\w*',s)
             hashtags = re.findall(r'#\w*',s)
@@ -126,6 +128,19 @@ class TwitterCorpus(object):
         self.tweets = tweetwords
         end = time.time()
         print("Time: %s" % (end-start))
+        
+    def remove_keywords(self, keywords):
+        """
+        Remove the specified keywords from the list. Updates self.tweets
+        INPUT
+            keywords (list) of keywords to remove from tweets
+        """
+        new_tweets = []
+        for t in self.tweets:
+            for k in keywords:
+                t = t.lower().replace(k.lower(),"")
+            new_tweets.append(t)
+        self.tweets = new_tweets
     
     def convert_time(self):
         """
@@ -190,6 +205,26 @@ class TwitterCorpus(object):
         end = time.time()
         print("Time: %s" % (end-start))
         return M
+        
+    def get_topics(self,n_topics=3,n_features=1000,ngram=(4,6),n_top_words=1):
+        """
+        Use LDA for topic extraction
+        """
+        def print_top_words(model, feature_names, n_top_words=1):
+            for topic_idx, topic in enumerate(model.components_):
+                print("Topic #%d:" % topic_idx)
+                print(" ".join([feature_names[i] for i in topic.argsort()[:-n_top_words - 1:-1]]))
+            print()
+        start = time.time()
+        TFvec = CountVectorizer(max_df=0.95, min_df=2, ngram_range=ngram, max_features=n_features, stop_words='english')
+        tf = TFvec.fit_transform(self.tweets)
+        lda = LDA(n_topics=n_topics, learning_offset=50., random_state=0)
+        lda.fit(tf)
+        tf_feature_names = TFvec.get_feature_names()
+        print("Time: %s" % (time.time() - start))
+        print_top_words(lda, tf_feature_names)
+        #print "\n\n\n",TFvec.get_feature_names()
+
 
 def load_candidate(n=0,m=-1000):
     """
