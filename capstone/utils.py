@@ -15,13 +15,17 @@ trumplab = '/run/media/derekgm@byu.local/FAMHIST/Data/final_project/trump.txt'
 clintonlab = '/run/media/derekgm@byu.local/FAMHIST/Data/final_project/clinton.txt'
 trumpmint = '/media/derek/FAMHIST/Data/final_project/trump.txt'
 clintonmint = '/media/derek/FAMHIST/Data/final_project/clinton.txt'
+tmacbook = '/Volumes/FAMHIST/Data/final_project/trump.txt'
+cmacbook = '/Volumes/FAMHIST/Data/final_project/clinton.txt'
 
 def get_file():
     print("""\n\tOptions\n
             1: trump from lab computer\n
             2: trump from linux mint\n
             3: clinton from lab computer\n
-            4: clinton from linux mint\n\n""")
+            4: clinton from linux mint\n
+            5: trump from macbook air\n
+            6: clinton from macbook air\n\n""")
     name = raw_input("Enter number >> ")
     if name == "1":
         return trumplab
@@ -31,6 +35,10 @@ def get_file():
         return clintonlab
     elif name == "4":
         return clintonmint
+    elif name == "5":
+        return tmacbook
+    elif name == "6":
+        return cmacbook
     else:
         print "invalid input"
 
@@ -135,12 +143,15 @@ class TwitterCorpus(object):
         INPUT
             keywords (list) of keywords to remove from tweets
         """
+        print("Removing keywords...")
+        start = time.time()
         new_tweets = []
         for t in self.tweets:
             for k in keywords:
                 t = t.lower().replace(k.lower(),"")
             new_tweets.append(t)
         self.tweets = new_tweets
+        print("Time: %s" % (time.time()-start))
     
     def convert_time(self):
         """
@@ -210,6 +221,7 @@ class TwitterCorpus(object):
         """
         Use LDA for topic extraction
         """
+        print("Topic Extraction...")
         def print_top_words(model, feature_names, n_top_words=1):
             for topic_idx, topic in enumerate(model.components_):
                 print("Topic #%d:" % topic_idx)
@@ -218,7 +230,7 @@ class TwitterCorpus(object):
         start = time.time()
         TFvec = CountVectorizer(max_df=0.95, min_df=2, ngram_range=ngram, max_features=n_features, stop_words='english')
         tf = TFvec.fit_transform(self.tweets)
-        lda = LDA(n_topics=n_topics, learning_offset=50., random_state=0)
+        lda = LDA(n_topics=n_topics, learning_method='online', learning_offset=50., random_state=0)
         lda.fit(tf)
         tf_feature_names = TFvec.get_feature_names()
         print("Time: %s" % (time.time() - start))
