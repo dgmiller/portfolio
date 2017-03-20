@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<head>
+<style>
+</style>
+</head>
+<body>
+</body>
+<script src="https://d3js.org/d3.v4.min.js"></script>
+<script>
+
+var D = ["One","Two","Three"];
+
+d3.select("body").style("background-color","grey");
+
+d3.select("body")
+  .selectAll("p")
+  .enter().append("p")
+    .text("Bigly");
+
+</script>

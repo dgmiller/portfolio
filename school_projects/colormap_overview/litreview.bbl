@@ -1,0 +1,67 @@
+\begin{thebibliography}{10}
+
+\bibitem{visvars}
+Łukasz Halik, ``The analysis of visual variables for use in the cartographic
+  design of point symbols for mobile augmented reality applications.''
+
+\bibitem{colorchoice}
+C.~G. Healey, ``Choosing effective colours for data visualization,''
+  pp.~263--270, 1996.
+
+\bibitem{colorguidelines}
+C.~A. Brewer, ``Guidelines for use of the perceptual dimensions of color for
+  mapping and visualization,'' vol.~2171, May 9, 1994.
+
+\bibitem{viridis}
+S.~van~der Walt and N.~Smith, ``mpl colormaps,'' 2015.
+
+\bibitem{colormapping}
+A.~L. Griffin, {\em Color, Mapping}, pp.~195--201.
+\newblock International Encyclopedia of Human Geography, Oxford: Elsevier,
+  2009.
+
+\bibitem{rainbowstill}
+D.~Borland and R.~M.~T. II, ``Rainbow color map (still) considered harmful,''
+  {\em IEEE Computer Graphics and Applications}, vol.~27, no.~2, pp.~14--17,
+  2007.
+
+\bibitem{matlab}
+S.~Eddins, ``Rainbow color map critiques: An overview and annotated
+  bibliography.''
+
+\bibitem{ciecam02}
+M.~R. Luo and C.~Li, ``Ciecam02 and its recent developments.''
+
+\bibitem{colorvblackwhite}
+H.~Levkowitz, ``Color vs. black-and-white in visualization.''
+
+\bibitem{chasingrainbows}
+R.~SisnerosB, M.~Raji, M.~W.~V. Moer, and D.~Bock, ``Chasing rainbows: A
+  color-theoretic framework for improving and preserving bad colormaps.''
+
+\bibitem{checkviz}
+S.~Lespinats and M.~Aupetit, ``Checkviz: Sanity check and topological clues for
+  linear and non‐linear mappings,'' {\em Computer Graphics Forum}, vol.~30,
+  pp.~113--125, Mar 2011.
+
+\bibitem{spectralschemes}
+C.~A. Brewer, ``Spectral schemes: Controversial color use on maps,'' {\em
+  Cartography and Geographic Information Science}, vol.~24, pp.~203--220, Oct
+  1997.
+
+\bibitem{choropleth}
+C.~A. Brewer, A.~M. MacEachren, L.~W. Pickle, and D.~Herrmann, ``Mapping
+  mortality: Evaluating color schemes for choropleth maps,'' {\em Annals of the
+  Association of American Geographers}, vol.~87, pp.~411--438, Sep 1, 1997.
+
+\bibitem{endofrainbow}
+B.~E. Rogowitz and L.~A. Treinish, ``Data visualization: the end of the
+  rainbow,'' {\em IEEE Spectrum}, vol.~35, no.~12, pp.~52--59, 1998.
+
+\bibitem{arteryvis}
+M.~Borkin, K.~Gajos, A.~Peters, D.~Mitsouras, S.~Melchionna, F.~Rybicki,
+  C.~Feldman, and H.~Pfister, ``Evaluation of artery visualizations for heart
+  disease diagnosis,'' {\em IEEE Transactions on Visualization and Computer
+  Graphics}, vol.~17, no.~12, pp.~2479--2488, 2011.
+
+\end{thebibliography}
