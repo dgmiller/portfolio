@@ -275,13 +275,74 @@ rainbow-colored data visualizations.
 \par
 \section{color perception and color vision impairment}
 
-[mapcvi]
-[mapchoropleth]
-[simultaneouscontrast]
-[ciecam02]
-[mapguidelines]
-[colorvblackwhite]
-[colormapping]
+One of the advantages of using perceptually uniform colormaps is
+that they show the data accurately even if the colors do not appear
+the same. Color perception can change for a number of reasons. When 
+colors are placed near each other, it changes the way our eyes see that color.
+The brain adjusts the amount of light that enters the eyes based
+on external conditions. For example, colors appear more bright under diffused
+light. Competing bright colors also diminishes the overall perception
+of their brightness.
+
+Mark Rothko and Josef Albers are notable artists who explored the human relationship
+with color perception. Some colors blend together while others almost appear to be in
+conflict with each other, causing a perceived vibration in the colors.
+
+Another example of color perception under different conditions is the 
+color-of-the-dress meme that became popular in 2015. The picture was
+sent on social media sites asking whether the dress was black and blue
+or white and gold. This effect happens because our eyes perform a kind 
+of normalization under different light conditions. This adjustment alters
+the perception of what the colors look like. Other examples from psychology 
+place the same color in two images with different colors surrounding the
+color being studied. Even though the colors are the same, they appear to be 
+different because of the context that they are in. This means that sometimes
+we see color differences even when there are none.
+
+Other times, color differences can't be detected easily or at all. This is 
+especially common among people who have some form of color vision impairment,
+as in colorblindness. The estimated colorblind population is somewhere around 5-8\%
+and affects mostly males of European descent.
+
+Colorblindness results in colors falling on confusion lines---lines in which it
+is difficult or impossible to distinguish between two colors. People with full
+color vision also have confusion lines and so in some sense are colorblind because 
+we can't see the entire spectrum of light as colors. However, color deficient viewers
+are special in that they do not see the normal range of colors as their peers.
+There are multiple kinds of colorblindness.
+Full color deficiency results in black and white vision and is very rare.
+The most common form of color deficiency results in confusing shades of red and green.
+An example of a map colored with bright orange and green and what a deutoronome
+would see is given in Figure 3.
+
+For these genetic color deficiencies, it seems reasonable to design data
+visualizations with colorblindness in mind. Unfortunately for the rainbow colormap,
+the colors that a colorblind user sees are not the same as those seen by a person
+with full color vision. Especially for high values, which are displayed in reds,
+the variation in green is not easy to interpret for colorblind viewers. In fact,
+though they are aesthetically pleasing, people are slower at interpreting data with
+large variations in color and make more errors. Yet, colorblind people still seem
+to get by fine.
+
+Color deficient viewers use clues to distinguish between colors that easily confuse them.
+Brewer has conducted extensive research into how color deficient
+viewers interpret color-encoded information. She has suggested several ways in which 
+maps and information visualizations can be designed to help color deficient viewers.
+A common theme in her research, as well as others, is that colormaps are greatly
+improved when the dark-to-light variation is controlled and used to show progression.
+This is the idea behind perceptually uniform colormaps. Even when converted to black
+and white, the visuals still preserve the nature of the data and are easy to interpret.
+
+
+
+%
+%[mapcvi]
+%[mapchoropleth]
+%[simultaneouscontrast]
+%[ciecam02]
+%[mapguidelines]
+%[colorvblackwhite]
+%[colormapping]
 
 \section{Applications}
 Use of color in data visualization extends to multiple
