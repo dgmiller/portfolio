@@ -15,25 +15,50 @@
 % correct bad hyphenation here
 \hyphenation{op-tical net-works semi-conduc-tor}
 
+%\renewenvironment{titlepage}
+%{}
 
+\title{Do No Harm: \\ Are Rainbow Colormaps Dangerous?}
+\author{Derek~Miller}% <-this % stops a space
+\date{24 March 2017}
 
 
 \begin{document}
-\title{Rainbows and Uniform Spaces}
-\author{Derek~Miller}% <-this % stops a space
+
 % make the title area
+\begin{titlepage}
 \maketitle
+\end{titlepage}
 
-
+\tableofcontents
 \begin{abstract}
-\blindtext[1]
+This document addresses the controversies and contradictions
+surrounding colormaps using a rainbow color scheme in data visualization.
+Colormaps are used frequently in science and its applications
+to display complex data sets by
+representing data points as colors on a spectrum. The scientific
+community is divided on whether the default 'jet' or rainbow colormap
+is best for data visualization. Some point to evidence in medical imaging
+that suggests the rainbow colormap distorts data, resulting in slower and 
+less accurate data interpretation. Others have shown that the
+scientific community is used to reading graphics with rainbow
+color schemes and are no less accurate than others who use
+a different color scheme. This document finds that rainbow colormaps
+are generally inferior to perceptually uniform colormaps. However, it
+seems that rainbow colormaps are not the main cause of diagnostic error,
+though there is sufficient evidence showing that diagnostic errors do occur.
+To avoid errors in data interpretation, some scientific software programs
+have changed their default colormap away from the rainbow scheme.
+Nevertheless, many find the rainbow colormap to be aesthetically pleasing
+and continues to be used in a wide variety of applications including medical imaging,
+cartography, and business analytics.
 \end{abstract}
 
 \IEEEpeerreviewmaketitle
 
 
 
-\section{introduction}
+\section{Introduction}
 Scientific progress depends on the proper evaluation
 of evidence from data. The evaluation process usually
 starts by visualizing data produced from an experiment
@@ -71,12 +96,12 @@ in applied data analysis. First, this review gives a basic summary
 of the color theoretic properties of rainbow colormaps. Then, it will address color perception issues of spectral color schemes, including color vision impairment. Finally, rainbow colormap applications are discussed in medical imaging, cartography, and business analytics.
 
 
-\section{color theory and colormaps}
+\section{Color Theory and Colormaps}
 
 Colormaps have a variety of properties that make them unique and potentially useful. However, there is controversy among scientists and visualization experts over certain properties of the rainbow colormap. First, the rainbow gradient is not a perceptually consistent ordering of colors. Similarly, it is not perceptually uniform as the variation in lightness is inconsistent. Finally, the rainbow colormap traverses through many highly saturated colors in color space.
 \par
 
-\subsection{A Brief History of Color Theory Development}
+\subsection{A Brief History of Color Theory}
 
 The first issue with color is that there is no natural ordering of the colors
 from least to greatest. Some might argue that there is a natural
@@ -272,8 +297,8 @@ map patterns, but this did not occur,” Brewer writes.
  While the rainbow colormap did not outperform other colormaps, it
 appears to do no harm. Users can accurately interpret
 rainbow-colored data visualizations.
-\par
-\section{color perception and color vision impairment}
+
+\section{Color Perception and Color Vision Impairment}
 
 One of the advantages of using perceptually uniform colormaps is
 that they show the data accurately even if the colors do not appear
@@ -355,7 +380,7 @@ psychology \cite{colorguidelines}.
 [mapchoropleth]
 
 \section{Conclusion}
-\blindtext[1]
+%\blindtext[1]
 
 \ifCLASSOPTIONcaptionsoff
   \newpage
