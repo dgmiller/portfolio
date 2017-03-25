@@ -18,7 +18,7 @@
 %\renewenvironment{titlepage}
 %{}
 
-\title{Do No Harm: \\ Are Rainbow Colormaps Dangerous?}
+\title{Do No Harm: Are Rainbow Colormaps Dangerous? \\}
 \author{Derek~Miller \\ Brigham Young University}% <-this % stops a space
 
 
@@ -26,12 +26,10 @@
 
 % make the title area
 \begin{titlepage}
-%\maketitle
+\maketitle
+\thispagestyle{empty}
 %\vspace*{\fill}
 
-{\centering\LARGE{Do No Harm: Are Rainbow Colormaps Dangerous?} \\
-\break
-\small{Derek Miller---Brigham Young University} \\}
 \begin{abstract}
 This document addresses the controversies and contradictions
 surrounding colormaps using a rainbow color scheme in data visualization.
@@ -102,7 +100,7 @@ address color perception issues of spectral color schemes, including
 color vision impairment. Finally, rainbow colormap applications are discussed
 in medical imaging and cartography.
 
-\section{Color Theory and Colormaps}
+\section{Colormap Fundamentals}
 
 Colormaps have a variety of properties that make them unique and potentially
 useful. However, there is controversy among scientists and visualization
@@ -112,7 +110,7 @@ is not perceptually uniform as the variation in lightness is inconsistent.
 Finally, the rainbow colormap traverses through many
 highly saturated colors in color space.
 
-\subsection{A Brief History of Color Theory}
+\subsection{Color Models and Spaces}
 
 The first issue with color is that there is no natural ordering of the colors
 from least to greatest. Some might argue that there is a natural
@@ -236,7 +234,7 @@ of our eyes \cite{!SOURCE}. The cones capture red, green,
 or blue light depending on the characteristics of each
 cone. Rods do not interpret color \cite{colormapping}.
 
-%\subsection{Choosing Colormaps}
+\subsection{Color Schemes}
 
 \par
 What are the criteria for evaluating a colormap? Several authors have created
@@ -267,7 +265,7 @@ Sometimes, when color encodings are converted to
 grayscale, it can alter the perception of the data. There
 are many algorithms to cast a color encoding to grayscale.
 
-\subsection{Rainbow Colormaps}
+\subsection{Colormaps}
 
 There are multiple advantages to using rainbow colormaps. For one,
 it is clear that users tend to prefer it
@@ -319,7 +317,7 @@ and performed well with it \cite{spectralschemes}.”
 appears to do no harm. Users can accurately interpret
 rainbow-colored data visualizations.
 
-\section{Color Perception and Color Vision Impairment}
+\section{Color Perception}
 
 One of the advantages of using perceptually uniform colormaps is
 that they show the data accurately even if the colors do not appear
@@ -329,6 +327,8 @@ The brain adjusts the amount of light that enters the eyes based
 on external conditions. For example, colors appear more bright under diffused
 light. Competing bright colors also diminishes the overall perception
 of their brightness.
+
+\subsection{Choosing Colors}
 
 Mark Rothko and Josef Albers are notable artists who explored the human relationship
 with color perception. Some colors blend together while others almost appear to be in
@@ -345,6 +345,8 @@ color being studied. Even though the colors are the same, they appear to be
 different because of the context that they are in. This means that sometimes
 we see color differences even when there are none.
 
+\subsection{Perceptual Uniformity}
+
 Other times, color differences can't be detected easily or at all. This is 
 especially common among people who have some form of color vision impairment,
 as in colorblindness. The estimated colorblind population is somewhere around 5-8\%
@@ -360,6 +362,8 @@ Full color deficiency results in black and white vision and is very rare.
 The most common form of color deficiency results in confusing shades of red and green.
 An example of a map colored with bright orange and green and what a deutoronome
 would see is given in Figure 3.
+
+\subsection{Colorblindness}
 
 For these genetic color deficiencies, it seems reasonable to design data
 visualizations with colorblindness in mind. Unfortunately for the rainbow colormap,
@@ -396,10 +400,15 @@ industries and disciplines. Foremost among these are medical imaging
 and cartography. including engineering, med-
 icine, statistics, computer science, graphic design, and
 psychology \cite{colorguidelines}.
+
+\subsection{Cartography}
+
 [arteryvis]
 [standardizemedimg]
 [visvars]
 [mapchoropleth]
+
+\subsection{Medical Imaging}
 
 \section{Conclusion}
 \blindtext[1]
