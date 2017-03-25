@@ -3,10 +3,30 @@
 
 <head>
 <script src="https://d3js.org/d3.v4.min.js"></script>
+<link href="https://fonts.googleapis.com/css?family=Space+Mono" rel="stylesheet">
 <style>
 
-body, html {width: 100%; height: 100%; margin: 0; background-color: black;}
 
+body, html {width: 100%; height: 100%; margin: 0; background-color: black; line-height: 1.4;}
+
+h1 {
+    color: white;
+    font-weight: bold;
+    font-size: 52px;
+    font-family: 'Space Mono', monospace;
+    text-align: center;
+    margin: 0 0 0 0;
+}
+    
+p {
+    color: white;
+    font-family: 'Space Mono', monospace;
+    font-style: normal;
+    font-size: 14px;
+    text-align: center;
+    margin: 0 0 0 0;
+}
+    
 .links line {
     stroke: #999;
     stroke-opacity: .6;
@@ -17,118 +37,133 @@ body, html {width: 100%; height: 100%; margin: 0; background-color: black;}
     stroke-width: 1.5px;
     fill: #fff;
 }
-
+div {
+    width: 450px;
+    margin: 0 auto;
+}
+    
 </style>
 </head>
-<svg width="960" height="600"></svg>
+<body>
+    <div>
+        <br>
+        <h1>Title Words</h1>
+        <p>By Derek Miller || @dgmllr
+           <br><br><br>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer non accumsan eros. Phasellus finibus ullamcorper dignissim. Donec mattis ipsum non convallis tincidunt. Sed molestie vestibulum orci sit amet luctus. Vivamus sem odio, pretium at enim at, ullamcorper vulputate tortor. Nam eget fermentum dui. Nunc at luctus est, in porttitor.</p>  
+       <br>
+    </div>
 <script>
-// possible zoom variable?
-//var zoom = d3.zoom()
-//    .scaleExtent([1,10])
-//    .on("zoom",zoomed);
+        // possible zoom variable?
+        //var zoom = d3.zoom()
+        //    .scaleExtent([1,10])
+        //    .on("zoom",zoomed);
 
-// creates the svg object
-// currently, we don't need any other information other than width and height
-var svg = d3.select("body")
-    .append("svg")
-    .attr("width","100%")
-    .attr("height","100%")
-    .call(d3.zoom().on("zoom",function(){
-        //svg.attr("transform","translate(" + d3.event.translate + ")scale(" + d3.event.scale + ")")
-        svg.attr("transform", d3.event.transform)
-    }))
-    .append("g")
+            // creates the svg object
+            // currently, we don't need any other information other than width and height
+            
+            var svg = d3.select("body")
+                .append("svg")
+                .attr("width", "100%")
+                .attr("height","83%")
+                .call(d3.zoom().on("zoom",function(){
+                    //svg.attr("transform","translate(" + d3.event.translate + ")scale(" + d3.event.scale + ")")
+                    svg.attr("transform", d3.event.transform)
+                }))
+                .append("g")
 
-var width = +svg.attr("width"),
-    height = +svg.attr("height");
+            var width = +svg.attr("width"),
+                height = +svg.attr("height");
 
-//var color = d3.scaleOrdinal(d3.schemeRdYlBu); // also try d3.scheme.RdGy or d3.schemeRdYlBu
+            //var color = d3.scaleOrdinal(d3.schemeRdYlBu); // also try d3.scheme.RdGy or d3.schemeRdYlBu
 
 
 
-// create a simulation of a force layout
-var simulation = d3.forceSimulation()
-    // the force attribute gets the id of the node
-    .force("link", d3.forceLink().id(function(d) { return d.id; }))
-    // then it determines the 'charge' or gravitational pull based on neighbor nodes connected to it
-    // this is basically a distance function
-    .force("charge", d3.forceManyBody())
-    // then it determines where the center of mass is in its gravitational group
-    .force("center", d3.forceCenter(width / 2, height / 2));
+            // create a simulation of a force layout
+            var simulation = d3.forceSimulation()
+                // the force attribute gets the id of the node
+                .force("link", d3.forceLink().id(function(d) { return d.id; }))
+                // then it determines the 'charge' or gravitational pull based on neighbor nodes connected to it
+                // this is basically a distance function
+                .force("charge", d3.forceManyBody())
+                // then it determines where the center of mass is in its gravitational group
+                .force("center", d3.forceCenter(width / 2, height / 2));
 
-// load in the json graph data from the data file
-d3.json("twitter.json", function(error, graph) {
-  if (error) throw error;
-  var link = svg.append("g")
-      .attr("class", "links")
-    .selectAll("line")
-    // gets the link data from the json data file
-    .data(graph.links)
-    .enter().append("line")
-      // this determines the line width between nodes based on how many references two nodes share
-      .attr("stroke-width", function(d) { return Math.sqrt(d.value); });
-  
-  var node = svg.append("g")
-      .attr("class", "nodes")
-    // the nodes are defined to be circles
-    .selectAll("circle")
-    // get the node data from the corresponding input file
-    .data(graph.nodes)
-    .enter().append("circle")
-      .attr("r", 5)
-      //.attr("fill", function(d) { return color(d.group); })
-      // this makes the nodes dragable on mouse action with functions defined below
-      .call(d3.drag()
-          .on("start", dragstarted)
-          .on("drag", dragged)
-          .on("end", dragended));
-  // this allows us to hover over a node and see its name
-  node.append("title")
-      .text(function(d) { return d.id; });
-  
-  // builds the simulation. This is a call to the function defined above
-  // this builds the nodes and updates their position as they move
-  simulation
-      .nodes(graph.nodes)
-      .on("tick", ticked);
-      
-  // this creates the links between the nodes according to the defined distance function
-  simulation.force("link")
-      .links(graph.links);
-      
-  // updates the positions of the links and nodes
-  function ticked() {
-    link
-        .attr("x1", function(d) {return d.source.x; })
-        .attr("y1", function(d) {return d.source.y; })
-        .attr("x2", function(d) {return d.target.x; })
-        .attr("y2", function(d) {return d.target.y; });
-    
-    node
-        .attr("cx", function(d) { return d.x; })
-        .attr("cy", function(d) {return d.y; });
-  }
-});
+            // load in the json graph data from the data file
+            d3.json("twitter.json", function(error, graph) {
+              if (error) throw error;
+              var link = svg.append("g")
+                  .attr("class", "links")
+                .selectAll("line")
+                // gets the link data from the json data file
+                .data(graph.links)
+                .enter().append("line")
+                  // this determines the line width between nodes based on how many references two nodes share
+                  .attr("stroke-width", function(d) { return Math.sqrt(d.value); });
 
-//function zoomed() {
-    
+              var node = svg.append("g")
+                  .attr("class", "nodes")
+                // the nodes are defined to be circles
+                .selectAll("circle")
+                // get the node data from the corresponding input file
+                .data(graph.nodes)
+                .enter().append("circle")
+                  .attr("r", 5)
+                  //.attr("fill", function(d) { return color(d.group); })
+                  // this makes the nodes dragable on mouse action with functions defined below
+                  .call(d3.drag()
+                      .on("start", dragstarted)
+                      .on("drag", dragged)
+                      .on("end", dragended));
+              // this allows us to hover over a node and see its name
+              node.append("title")
+                  .text(function(d) { return d.id; });
 
-// add drag functionality to the nodes with these functions
-function dragstarted(d) {
-    if (!d3.event.active) simulation.alphaTarget(0.3).restart();
-    d.fx = d.x;
-    d.fy = d.y;
-}
+              // builds the simulation. This is a call to the function defined above
+              // this builds the nodes and updates their position as they move
+              simulation
+                  .nodes(graph.nodes)
+                  .on("tick", ticked);
 
-function dragged(d) {
-    d.fx = d3.event.x;
-    d.fy = d3.event.y;
-}
+              // this creates the links between the nodes according to the defined distance function
+              simulation.force("link")
+                  .links(graph.links);
 
-function dragended(d) {
-    if (!d3.event.active) simulation.alphaTarget(0);
-    d.fx = null;
-    d.fy = null;
-}
+              // updates the positions of the links and nodes
+              function ticked() {
+                link
+                    .attr("x1", function(d) {return d.source.x; })
+                    .attr("y1", function(d) {return d.source.y; })
+                    .attr("x2", function(d) {return d.target.x; })
+                    .attr("y2", function(d) {return d.target.y; });
 
-</script>
+                node
+                    .attr("cx", function(d) { return d.x; })
+                    .attr("cy", function(d) {return d.y; });
+              }
+            });
+
+            //function zoomed() {
+
+
+            // add drag functionality to the nodes with these functions
+            function dragstarted(d) {
+                if (!d3.event.active) simulation.alphaTarget(0.3).restart();
+                d.fx = d.x;
+                d.fy = d.y;
+            }
+
+            function dragged(d) {
+                d.fx = d3.event.x;
+                d.fy = d3.event.y;
+            }
+
+            function dragended(d) {
+                if (!d3.event.active) simulation.alphaTarget(0);
+                d.fx = null;
+                d.fy = null;
+            }
+
+            </script>
+            
+    </div>
+</body>

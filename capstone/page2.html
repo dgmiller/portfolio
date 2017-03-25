@@ -2,11 +2,30 @@
 <meta charset="utf-8">
 
 <head>
-<script src="https://d3js.org/d3.v4.min.js"></script>
+    <script src="https://d3js.org/d3.v4.min.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Space+Mono" rel="stylesheet">
 <style>
 
 body, html {width: 100%; height: 100%; margin: 0; background-color: black;}
 
+h1 {
+    color: white;
+    font-weight: bold;
+    font-size: 52px;
+    font-family: 'Space Mono', monospace;
+    text-align: center;
+    margin: 0 0 0 0;
+}
+    
+p {
+    color: white;
+    font-family: 'Space Mono', monospace;
+    font-style: normal;
+    font-size: 14px;
+    text-align: center;
+    margin: 0 0 0 0;
+}
+    
 .links line {
     stroke: #999;
     stroke-opacity: .6;
@@ -17,10 +36,21 @@ body, html {width: 100%; height: 100%; margin: 0; background-color: black;}
     stroke-width: 1.5px;
     fill: #fff;
 }
-
+div {
+    width: 450px;
+    margin: 0 auto;
+}
+    
 </style>
 </head>
-<svg width="960" height="600"></svg>
+<body>
+        <div>
+        <br>
+        <h1>Retweet Nation</h1>
+        <p>By Derek Miller || @dgmllr
+           <br><br><br>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer non accumsan eros. Phasellus finibus ullamcorper dignissim. Donec mattis ipsum non convallis tincidunt. Sed molestie vestibulum orci sit amet luctus. Vivamus sem odio, pretium at enim at, ullamcorper vulputate tortor. Nam eget fermentum dui. Nunc at luctus est, in porttitor.</p>  
+       <br>
+    </div>
 <script>
 // possible zoom variable?
 //var zoom = d3.zoom()
@@ -32,7 +62,7 @@ body, html {width: 100%; height: 100%; margin: 0; background-color: black;}
 var svg = d3.select("body")
     .append("svg")
     .attr("width","100%")
-    .attr("height","100%")
+    .attr("height","83%")
     .call(d3.zoom().on("zoom",function(){
         //svg.attr("transform","translate(" + d3.event.translate + ")scale(" + d3.event.scale + ")")
         svg.attr("transform", d3.event.transform)
@@ -132,3 +162,4 @@ function dragended(d) {
 }
 
 </script>
+</body>
