@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2015.7.30)  25 MAR 2017 15:51
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2015.7.30)  25 MAR 2017 15:56
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -390,7 +390,7 @@ Here is how much of TeX's memory you used:
 e/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/share/texlive/texmf-dist/fo
 nts/type1/urw/times/utmr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/t
 imes/utmri8a.pfb>
-Output written on litreview.pdf (5 pages, 1337405 bytes).
+Output written on litreview.pdf (5 pages, 1337262 bytes).
 PDF statistics:
  42 PDF objects out of 1000 (max. 8388607)
  23 compressed objects within 1 object stream
