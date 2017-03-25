@@ -27,7 +27,7 @@
 % make the title area
 \begin{titlepage}
 %\maketitle
-\vspace*{\fill}
+%\vspace*{\fill}
 
 {\centering\LARGE{Do No Harm: Are Rainbow Colormaps Dangerous?} \\
 \break
@@ -51,8 +51,7 @@ though there is sufficient evidence showing that diagnostic errors do occur.
 To avoid errors in data interpretation, some scientific software programs
 have changed their default colormap away from the rainbow scheme.
 Nevertheless, many find the rainbow colormap to be aesthetically pleasing
-and continues to be used in a wide variety of applications including medical imaging,
-cartography, and business analytics.
+and continues to be used extensively in medical imaging.
 \end{abstract}
 \tableofcontents
 \vspace*{\fill}
@@ -78,28 +77,40 @@ an ordering of colors known as a color scheme. Some
 call colormaps “an interface between the data and your
 brain \cite{viridis}.” A scientist interested in visualizing a
 data set must choose a colormap that reflects the nature of the data. 
-At their best, colormaps reveal hidden structure that would go unnoticed otherwise. At their worst, they distort the perception of the data and
+At their best, colormaps reveal hidden structure that would go unnoticed
+otherwise. At their worst, they distort the perception of the data and
 cause viewers to misinterpret the data. This can have
 serious consequences. Doctors must interpret medical
 data correctly to give a proper diagnosis and treatment.
 Politicians use data to design public policies. Business
-executives make decisions with financial consequences using data, often presented through a visualization.
-Plenty of research on colormaps and
-their applications, there are serious debates in the data
+executives make decisions with financial consequences
+using data, often presented through a visualization.
+Plenty of research exists on colormaps and
+their applications. However, there are serious debates in the data
 visualization community about the use of spectral, or
 rainbow color schemes.
 \par
 Despite visually distorting the data, many scientists
 prefer a rainbow color scheme for its aesthetic appeal
-and historical use in scientific publications. This literature review explores the advantages and disadvantages
+and historical use in scientific publications. This literature
+review explores the advantages and disadvantages
 of rainbow colormaps, why they are preferred by some
 scientists and discouraged by others, and how spectral color schemes are used
 in applied data analysis. First, this review gives a basic summary 
-of the color theoretic properties of rainbow colormaps. Then, it will address color perception issues of spectral color schemes, including color vision impairment. Finally, rainbow colormap applications are discussed in medical imaging, cartography, and business analytics.
+of the color theoretic properties of rainbow colormaps. Then, it will
+address color perception issues of spectral color schemes, including
+color vision impairment. Finally, rainbow colormap applications are discussed
+in medical imaging and cartography.
 
 \section{Color Theory and Colormaps}
 
-Colormaps have a variety of properties that make them unique and potentially useful. However, there is controversy among scientists and visualization experts over certain properties of the rainbow colormap. First, the rainbow gradient is not a perceptually consistent ordering of colors. Similarly, it is not perceptually uniform as the variation in lightness is inconsistent. Finally, the rainbow colormap traverses through many highly saturated colors in color space.
+Colormaps have a variety of properties that make them unique and potentially
+useful. However, there is controversy among scientists and visualization
+experts over certain properties of the rainbow colormap. First, the rainbow
+gradient is not a perceptually consistent ordering of colors. Similarly, it
+is not perceptually uniform as the variation in lightness is inconsistent.
+Finally, the rainbow colormap traverses through many
+highly saturated colors in color space.
 
 \subsection{A Brief History of Color Theory}
 
@@ -228,13 +239,15 @@ cone. Rods do not interpret color \cite{colormapping}.
 %\subsection{Choosing Colormaps}
 
 \par
-What are the criteria for evaluating a colormap? Several authors have created methods to evaluate color
+What are the criteria for evaluating a colormap? Several authors have created
+methods to evaluate color
 choice. In one paper, color schemes are evaluated by
 three variables of the CIELUV color model. The first
 is color distance. The CIELUV model is designed to
 measure distance between colors. If the distances are
 equally spaced, that’s a good thing. Linear separation
-is the second variable. It refers to “the ability to separate targets from non-targets in the colour model being
+is the second variable. It refers to “the ability to separate targets
+from non-targets in the colour model being
 used.” For example, suppose a doctor wants to identify
 a tumor and uses a colormap to display the data. If the
 colors are not linearly sepparable in the color model, it
@@ -246,7 +259,8 @@ there are both target and non-target elements \cite{colorchoice}.
 space. CheckViz attempts to account for this problem
 by using a perceptually uniform color coding so that
 distortions such as those described above are accounted for when 
-scientists want to visualize multidimensional data \cite{checkviz}. The specific criteria of the color
+scientists want to visualize multidimensional data \cite{checkviz}.
+The specific criteria of the color
 model and color space must reflect the attributes of the colormap.
 \par
 Sometimes, when color encodings are converted to
@@ -255,9 +269,11 @@ are many algorithms to cast a color encoding to grayscale.
 
 \subsection{Rainbow Colormaps}
 
-There are multiple advantages to using rainbow colormaps. For one, it is clear that users tend to prefer it
-over other colormaps for its aesthetic appeal \cite{spectralschemes, choropleth, endofrainbow}. 
-The varietyin hue also can accentuate relationships in the data than
+There are multiple advantages to using rainbow colormaps. For one,
+it is clear that users tend to prefer it
+over other colormaps for its aesthetic appeal
+\cite{spectralschemes, choropleth, endofrainbow}. 
+The variety in hue also can accentuate relationships in the data than
 a sequential, single-hue colormap. History is an advantage.
 \par
 However, the advantages can also be disadvantages.
@@ -268,13 +284,16 @@ between blue green and yellow) \cite{colorchoice}.
 \par
 Readers of scientific literature will recognize the rainbow colormap. 
 It appears often in scientific publications and has 
-broad appeal in the scientific community \cite{endofrainbow, rainbowstill, spectralschemes,mapchoropleth}.
+broad appeal in the scientific community
+\cite{endofrainbow, rainbowstill, spectralschemes,mapchoropleth}.
  Historically, rainbow colormaps like
 MATLAB’s ‘jet’ have been the default colormaps used
 in data-handling software \cite{matlab}. Despite its prevalence, 
-many scientists oppose rainbow-gradient representations of data \cite{rainbowstill, endofrainbow, viridis,arteryvis}.
+many scientists oppose rainbow-gradient representations of data
+\cite{rainbowstill, endofrainbow, viridis,arteryvis}.
  In one study, medical students were
-asked to identify risk factors for heart disease in visualizations of artery data. On average, the participants
+asked to identify risk factors for heart disease in visualizations
+of artery data. On average, the participants
 using rainbow-colored visualizations took more time
 and made more errors than participants using divergence-colored visualizations. 
 Furthermore, the participants “thought they did well using the rainbow color
@@ -285,7 +304,8 @@ that the rainbow colormap is clearly inferior to other
 colormaps.
 \par
 Others disagree. They claim that users have learned to
-read data with the rainbow colormap and prefer its aesthetic appeal \cite{spectralschemes, choropleth}. One
+read data with the rainbow colormap and prefer its
+aesthetic appeal \cite{spectralschemes, choropleth}. One
 experiment tested data interpretation accuracy under
 diverging, sequential, and spectral (rainbow) color
 schemes. “Of 63 subjects who evaluated spectral and
@@ -293,7 +313,8 @@ sequential schemes, 56 percent selected spectral as the
 best...We had expected the spectral scheme to interfere
 with map-reading accuracy and with understanding
 map patterns, but this did not occur,” Brewer writes.
-“Our subjects preferred the spectral scheme and performed well with it \cite{spectralschemes}.”
+“Our subjects preferred the spectral scheme
+and performed well with it \cite{spectralschemes}.”
  While the rainbow colormap did not outperform other colormaps, it
 appears to do no harm. Users can accurately interpret
 rainbow-colored data visualizations.
@@ -371,7 +392,8 @@ and white, the visuals still preserve the nature of the data and are easy to int
 
 \section{Applications}
 Use of color in data visualization extends to multiple
-industries and disciplines including engineering, med-
+industries and disciplines. Foremost among these are medical imaging
+and cartography. including engineering, med-
 icine, statistics, computer science, graphic design, and
 psychology \cite{colorguidelines}.
 [arteryvis]
