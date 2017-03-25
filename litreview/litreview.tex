@@ -19,18 +19,19 @@
 %{}
 
 \title{Do No Harm: \\ Are Rainbow Colormaps Dangerous?}
-\author{Derek~Miller}% <-this % stops a space
-\date{24 March 2017}
+\author{Derek~Miller \\ Brigham Young University}% <-this % stops a space
 
 
 \begin{document}
 
 % make the title area
 \begin{titlepage}
-\maketitle
-\end{titlepage}
+%\maketitle
+\vspace*{\fill}
 
-\tableofcontents
+{\centering\LARGE{Do No Harm: Are Rainbow Colormaps Dangerous?} \\
+\break
+\small{Derek Miller---Brigham Young University} \\}
 \begin{abstract}
 This document addresses the controversies and contradictions
 surrounding colormaps using a rainbow color scheme in data visualization.
@@ -53,10 +54,11 @@ Nevertheless, many find the rainbow colormap to be aesthetically pleasing
 and continues to be used in a wide variety of applications including medical imaging,
 cartography, and business analytics.
 \end{abstract}
+\tableofcontents
+\vspace*{\fill}
+\end{titlepage}
 
 \IEEEpeerreviewmaketitle
-
-
 
 \section{Introduction}
 Scientific progress depends on the proper evaluation
@@ -95,11 +97,9 @@ scientists and discouraged by others, and how spectral color schemes are used
 in applied data analysis. First, this review gives a basic summary 
 of the color theoretic properties of rainbow colormaps. Then, it will address color perception issues of spectral color schemes, including color vision impairment. Finally, rainbow colormap applications are discussed in medical imaging, cartography, and business analytics.
 
-
 \section{Color Theory and Colormaps}
 
 Colormaps have a variety of properties that make them unique and potentially useful. However, there is controversy among scientists and visualization experts over certain properties of the rainbow colormap. First, the rainbow gradient is not a perceptually consistent ordering of colors. Similarly, it is not perceptually uniform as the variation in lightness is inconsistent. Finally, the rainbow colormap traverses through many highly saturated colors in color space.
-\par
 
 \subsection{A Brief History of Color Theory}
 
