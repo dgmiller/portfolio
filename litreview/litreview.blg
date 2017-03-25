@@ -1,0 +1,53 @@
+This is BibTeX, Version 0.99d (TeX Live 2013/Debian)
+Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
+The top-level auxiliary file: litreview.aux
+The style file: ieeetr.bst
+Database file #1: litreview.bib
+Warning--I didn't find a database entry for "colorimetry"
+Warning--I didn't find a database entry for "!SOURCE"
+Warning--I didn't find a database entry for "mapchoropleth"
+Warning--empty booktitle in colorchoice
+Warning--empty booktitle in colorguidelines
+Warning--can't use both author and editor fields in colormapping
+You've used 15 entries,
+            1876 wiz_defined-function locations,
+            564 strings with 5511 characters,
+and the built_in function-call counts, 3539 in all, are:
+= -- 332
+> -- 122
+< -- 0
++ -- 48
+- -- 33
+* -- 222
+:= -- 483
+add.period$ -- 11
+call.type$ -- 15
+change.case$ -- 14
+chr.to.int$ -- 0
+cite$ -- 18
+duplicate$ -- 170
+empty$ -- 373
+format.name$ -- 33
+if$ -- 889
+int.to.chr$ -- 0
+int.to.str$ -- 15
+missing$ -- 10
+newline$ -- 49
+num.names$ -- 15
+pop$ -- 57
+preamble$ -- 1
+purify$ -- 0
+quote$ -- 0
+skip$ -- 163
+stack$ -- 0
+substring$ -- 216
+swap$ -- 70
+text.length$ -- 0
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 0
+warning$ -- 3
+while$ -- 31
+width$ -- 17
+write$ -- 129
+(There were 6 warnings)

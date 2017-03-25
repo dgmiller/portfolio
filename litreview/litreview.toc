@@ -1,0 +1,8 @@
+\contentsline {section}{\numberline {I}Introduction}{2}
+\contentsline {section}{\numberline {II}Color Theory and Colormaps}{2}
+\contentsline {subsection}{\numberline {\unhbox \voidb@x \hbox {II-A}}A Brief History of Color Theory}{2}
+\contentsline {subsection}{\numberline {\unhbox \voidb@x \hbox {II-B}}Rainbow Colormaps}{3}
+\contentsline {section}{\numberline {III}Color Perception and Color Vision Impairment}{4}
+\contentsline {section}{\numberline {IV}Applications}{4}
+\contentsline {section}{\numberline {V}Conclusion}{4}
+\contentsline {section}{References}{4}
