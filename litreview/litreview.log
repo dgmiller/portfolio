@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013) (format=pdflatex 2015.12.14)  27 MAR 2017 10:47
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013) (format=pdflatex 2015.12.14)  27 MAR 2017 12:53
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -26,18 +26,13 @@ File: ot1ptm.fd 2001/06/04 font definitions for OT1/ptm.
 -- Using 8.5in x 11in (letter) paper.
 -- Using PDF output.
 \@IEEEnormalsizeunitybaselineskip=\dimen105
--- This is a 10 point document.
+-- This is a 12 point document.
 \CLASSINFOnormalsizebaselineskip=\dimen106
 \CLASSINFOnormalsizeunitybaselineskip=\dimen107
 \IEEEnormaljot=\dimen108
-LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <5> not available
+LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <6> not available
 (Font)              Font shape `OT1/ptm/b/n' tried instead on input line 1090.
-LaTeX Font Info:    Font shape `OT1/ptm/bx/it' in size <5> not available
-(Font)              Font shape `OT1/ptm/b/it' tried instead on input line 1090.
-
-LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <7> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 1090.
-LaTeX Font Info:    Font shape `OT1/ptm/bx/it' in size <7> not available
+LaTeX Font Info:    Font shape `OT1/ptm/bx/it' in size <6> not available
 (Font)              Font shape `OT1/ptm/b/it' tried instead on input line 1090.
 
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <8> not available
@@ -55,24 +50,24 @@ LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <10> not available
 LaTeX Font Info:    Font shape `OT1/ptm/bx/it' in size <10> not available
 (Font)              Font shape `OT1/ptm/b/it' tried instead on input line 1090.
 
-LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <11> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 1090.
-LaTeX Font Info:    Font shape `OT1/ptm/bx/it' in size <11> not available
-(Font)              Font shape `OT1/ptm/b/it' tried instead on input line 1090.
-
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <12> not available
 (Font)              Font shape `OT1/ptm/b/n' tried instead on input line 1090.
 LaTeX Font Info:    Font shape `OT1/ptm/bx/it' in size <12> not available
 (Font)              Font shape `OT1/ptm/b/it' tried instead on input line 1090.
 
-LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <17> not available
+LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <14> not available
 (Font)              Font shape `OT1/ptm/b/n' tried instead on input line 1090.
-LaTeX Font Info:    Font shape `OT1/ptm/bx/it' in size <17> not available
+LaTeX Font Info:    Font shape `OT1/ptm/bx/it' in size <14> not available
 (Font)              Font shape `OT1/ptm/b/it' tried instead on input line 1090.
 
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <20> not available
 (Font)              Font shape `OT1/ptm/b/n' tried instead on input line 1090.
 LaTeX Font Info:    Font shape `OT1/ptm/bx/it' in size <20> not available
+(Font)              Font shape `OT1/ptm/b/it' tried instead on input line 1090.
+
+LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <22> not available
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 1090.
+LaTeX Font Info:    Font shape `OT1/ptm/bx/it' in size <22> not available
 (Font)              Font shape `OT1/ptm/b/it' tried instead on input line 1090.
 
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <24> not available
@@ -174,7 +169,7 @@ LaTeX Font Info:    ... okay on input line 25.
 LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 25.
 LaTeX Font Info:    ... okay on input line 25.
 
--- Lines per column: 58 (exact).
+-- Lines per column: 50 (exact).
 (/usr/share/texlive/texmf-dist/tex/context/base/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
 \scratchcounter=\count96
@@ -238,9 +233,11 @@ e
 ))
 (./litreview.toc
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <7> on input line 3.
+(Font)              <12> on input line 3.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <5> on input line 3.
+(Font)              <8> on input line 3.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <6> on input line 3.
 )
 \tf@toc=\write3
 \openout3 = `litreview.toc'.
@@ -248,35 +245,32 @@ LaTeX Font Info:    External font `cmex10' loaded for size
  [0
 
 
-{/usr/share/texlive/texmf/fonts/map/pdftex/updmap/pdftex.map}] <calf_original.p
-ng, id=8, 578.16pt x 433.62pt>
+{/usr/share/texlive/texmf/fonts/map/pdftex/updmap/pdftex.map}] [1
+
+] <calf_original.png, id=12, 578.16pt x 433.62pt>
 File: calf_original.png Graphic file (type png)
- <use calf_original.png>
+
+<use calf_original.png>
 Package pdftex.def Info: calf_original.png used on input line 171.
-(pdftex.def)             Requested size: 79.49744pt x 59.62128pt.
-
-Underfull \vbox (badness 1226) has occurred while \output is active []
-
- [1
-
-]
-<calf_sequential.png, id=14, 578.16pt x 433.62pt>
+(pdftex.def)             Requested size: 144.54pt x 108.40472pt.
+ <calf_sequential.png, id=14, 578.16pt x 433.62pt>
 File: calf_sequential.png Graphic file (type png)
- <use calf_sequential.png>
-Package pdftex.def Info: calf_sequential.png used on input line 176.
-(pdftex.def)             Requested size: 79.49744pt x 59.62128pt.
 
-<calf_diverging.png, id=15, 578.16pt x 433.62pt>
+<use calf_sequential.png>
+Package pdftex.def Info: calf_sequential.png used on input line 172.
+(pdftex.def)             Requested size: 144.54pt x 108.40472pt.
+ <calf_diverging.png, id=15, 578.16pt x 433.62pt>
 File: calf_diverging.png Graphic file (type png)
- <use calf_diverging.png>
-Package pdftex.def Info: calf_diverging.png used on input line 178.
-(pdftex.def)             Requested size: 79.49744pt x 59.62128pt.
 
-<calf_rainbow.png, id=16, 578.16pt x 433.62pt>
+<use calf_diverging.png>
+Package pdftex.def Info: calf_diverging.png used on input line 173.
+(pdftex.def)             Requested size: 144.54pt x 108.40472pt.
+ <calf_rainbow.png, id=16, 578.16pt x 433.62pt>
 File: calf_rainbow.png Graphic file (type png)
- <use calf_rainbow.png>
-Package pdftex.def Info: calf_rainbow.png used on input line 180.
-(pdftex.def)             Requested size: 79.49744pt x 59.62128pt.
+
+<use calf_rainbow.png>
+Package pdftex.def Info: calf_rainbow.png used on input line 174.
+(pdftex.def)             Requested size: 144.54pt x 108.40472pt.
 Missing character: There is no ‚ in font ptmr7t!
 Missing character: There is no Ä in font ptmr7t!
 Missing character: There is no ô in font ptmr7t!
@@ -286,11 +280,8 @@ Missing character: There is no ú in font ptmr7t!
 Missing character: There is no ‚ in font ptmr7t!
 Missing character: There is no Ä in font ptmr7t!
 Missing character: There is no ù in font ptmr7t!
-
-Underfull \hbox (badness 4660) in paragraph at lines 222--225
-[]\OT1/ptm/m/n/10 Sometimes, when color en-cod-ings are con-verted to
- []
-
+ [2 <./calf_original.png> <./calf_sequential.png> <./calf_diverging.png> <./cal
+f_rainbow.png>]
 Missing character: There is no ‚ in font ptmr7t!
 Missing character: There is no Ä in font ptmr7t!
 Missing character: There is no ô in font ptmr7t!
@@ -318,54 +309,65 @@ Missing character: There is no ú in font ptmr7t!
 Missing character: There is no ‚ in font ptmr7t!
 Missing character: There is no Ä in font ptmr7t!
 Missing character: There is no ù in font ptmr7t!
-[2 <./calf_original.png> <./calf_sequential.png> <./calf_diverging.png> <./calf
-_rainbow.png>]
-
-LaTeX Warning: Citation `cvimap' on page 3 undefined on input line 338.
-
-
-LaTeX Warning: Citation `cvimap' on page 3 undefined on input line 348.
-
-
-LaTeX Warning: Citation `blackvwhite' on page 3 undefined on input line 368.
+ [3]
+<calf_grey.png, id=27, 578.16pt x 433.62pt>
+File: calf_grey.png Graphic file (type png)
+ <use calf_grey.png>
+Package pdftex.def Info: calf_grey.png used on input line 327.
+(pdftex.def)             Requested size: 144.54pt x 108.40472pt.
 
 
-LaTeX Warning: Citation `oceanography' on page 3 undefined on input line 394.
+LaTeX Warning: Citation `cvimap' on page 4 undefined on input line 337.
 
 
-Underfull \hbox (badness 1609) in paragraph at lines 414--424
-[]\OT1/ptm/m/n/10 Bioinformatics and ge-net-ics are two fields re-lated to
+LaTeX Warning: Citation `cvimap' on page 4 undefined on input line 347.
+
+
+LaTeX Warning: Citation `blackvwhite' on page 4 undefined on input line 357.
+
+[4 <./calf_grey.png>] [5]
+
+LaTeX Warning: Citation `colorimetry' on page 6 undefined on input line 472.
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 476--476
+ \OT1/ptm/m/it/12 B. Mun-sell Color Spec-i-fi-ca-tion Sys-tem and
  []
 
-[3]
 
-LaTeX Warning: Citation `colorimetry' on page 4 undefined on input line 481.
-
-
-LaTeX Warning: Citation `colorimetry' on page 4 undefined on input line 491.
+LaTeX Warning: Citation `colorimetry' on page 6 undefined on input line 484.
 
 
-LaTeX Warning: Citation `colorimetry' on page 4 undefined on input line 500.
+LaTeX Warning: Citation `colorimetry' on page 6 undefined on input line 493.
 
 
-LaTeX Warning: Citation `colorimetry' on page 4 undefined on input line 508.
+LaTeX Warning: Citation `colorimetry' on page 6 undefined on input line 500.
 
 
-LaTeX Warning: Citation `colorimetry' on page 4 undefined on input line 518.
+LaTeX Warning: Citation `colorimetry' on page 6 undefined on input line 509.
 
-[4] (./litreview.bbl
+
+Underfull \hbox (badness 2126) in paragraph at lines 516--528
+[]\OT1/ptm/m/n/12 In 2002, CIE re-leased new de-velp-ments in
+ []
+
+
+Underfull \hbox (badness 7326) in paragraph at lines 516--528
+\OT1/ptm/m/n/12 per-cep-tu-ally uni-form color mod-els with the
+ []
+
+
+Underfull \hbox (badness 2065) in paragraph at lines 516--528
+\OT1/ptm/m/n/12 the pri-mary dif-fer-ences be-tween CIELAB and
+ []
+
+[6] (./litreview.bbl
 Missing character: There is no ‚ in font ptmr7t!
 Missing character: There is no Ä in font ptmr7t!
 Missing character: There is no ê in font ptmr7t!
 Missing character: There is no √ in font ptmr7t!
 Missing character: There is no ∂ in font ptmr7t!
-
-Underfull \hbox (badness 1721) in paragraph at lines 72--75
-[]\OT1/ptm/m/n/8 A. Kaever, T. Lingner, K. Feuss-ner, C. Gbel, I. Feuss-ner, an
-d
- []
-
-) [5
+) [7
 
 ] (./litreview.aux)
 
@@ -373,21 +375,21 @@ LaTeX Warning: There were undefined references.
 
  ) 
 Here is how much of TeX's memory you used:
- 2498 strings out of 495063
- 40416 string characters out of 3182200
- 103542 words of memory out of 3000000
- 5667 multiletter control sequences out of 15000+200000
- 36310 words of font info for 65 fonts, out of 3000000 for 9000
+ 2515 strings out of 495063
+ 40593 string characters out of 3182200
+ 102561 words of memory out of 3000000
+ 5674 multiletter control sequences out of 15000+200000
+ 38017 words of font info for 71 fonts, out of 3000000 for 9000
  17 hyphenation exceptions out of 8191
- 38i,5n,23p,238b,209s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 38i,6n,23p,249b,217s stack positions out of 5000i,500n,10000p,200000b,50000s
 {/usr/share/texlive/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/share/texliv
 e/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/share/texlive/texmf-dist/fo
 nts/type1/urw/times/utmr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/t
 imes/utmri8a.pfb>
-Output written on litreview.pdf (6 pages, 1348197 bytes).
+Output written on litreview.pdf (8 pages, 1547965 bytes).
 PDF statistics:
- 45 PDF objects out of 1000 (max. 8388607)
- 25 compressed objects within 1 object stream
+ 55 PDF objects out of 1000 (max. 8388607)
+ 31 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
- 21 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 26 words of extra memory for PDF output out of 10000 (max. 10000000)
 

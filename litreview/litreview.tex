@@ -6,7 +6,7 @@
 % The testflow support page is at:
 % http://www.michaelshell.org/tex/testflow/
 
-\documentclass[journal]{IEEEtran}
+\documentclass[journal,12pt]{IEEEtran}
 
 %\usepackage{blindtext}
 \usepackage{graphicx}
@@ -162,24 +162,18 @@ vary in hue. If two sequential color schemes have different hues and are
 connected at their lightest ends, it is called a diverging color scheme. Qualitative color
 schemes vary in hues with little variation in lightness
 and saturation \cite{colormapping}. The rainbow colormap uses a continuous,
-qualitative color scheme. The images in Fig. 2
+qualitative color scheme. The images in Fig. 1
 are examples of image data plotted with 
 sequential, diverging, and rainbow colormaps.
 
-\begin{figure}[H]
+\begin{figure}
 \centering
-\includegraphics[width=1.1in]{calf_original}%
-\caption{An image of a calf. This and corresponding images were created by the author.}
-\end{figure}
-
-\begin{figure}[H]
-\includegraphics[width=1.1in]{calf_sequential}%
-\hfil
-\includegraphics[width=1.1in]{calf_diverging}%
-\hfil
-\includegraphics[width=1.1in]{calf_rainbow}%
-\caption{The calf image plotted with a
-sequential, diverging, and rainbow colormap.}
+\includegraphics[width=2in]{calf_original} \\
+\includegraphics[width=2in]{calf_sequential} \\
+\includegraphics[width=2in]{calf_diverging} \\
+\includegraphics[width=2in]{calf_rainbow} \\
+\caption{An image of a calf. The calf image plotted with a
+sequential, diverging, and rainbow colormap. These images were created by the author.}
 \end{figure}
 
 \subsection{Colormaps}
@@ -328,6 +322,11 @@ Full color deficiency results in black and white vision and is very rare.
 The most common form of color deficiency results in confusing shades of red and green \cite{colorchoice}.
 %An example of a map colored with bright orange and green and what a deutoronome
 %would see is given in Figure 3.
+\begin{figure}
+\centering
+\includegraphics[width=2in]{calf_grey}%
+\caption{An Example of colorblind deficiency}
+\end{figure}
 
 \subsection{Colorblindness}
 
@@ -349,16 +348,6 @@ improved when the dark-to-light variation is controlled and used to show progres
 This is the idea behind perceptually uniform colormaps. Even when converted to black
 and white, the visuals still preserve the nature of the data and are easy to interpret.
 
-
-
-%
-%[mapcvi]
-%[simultaneouscontrast]
-%[ciecam02]
-%[mapguidelines]
-%[colorvblackwhite]
-%[colormapping]
-
 \section{Applications}
 
 The controversy surrounding the rainbow colormap does not appear to be random.
@@ -375,7 +364,7 @@ their respective fields \cite{colorguidelines, standardmedimg}. Even within
  these applications, the recommended use of the rainbow colormap differs
  depending on the context.
  
-\subsubsection{Cartography}
+\subsection{Cartography}
 
 Maps are used to show public health information, the spread of disease, weather
 forecasts, and other demographic data. This information is important to
@@ -395,7 +384,7 @@ outperform most other colormaps \cite{oceanography}. In contexts where the data 
 that the scientist knows, it is best to create a customized colormap that gives 
 more accurate results.
 
-\subsubsection{Medical Imaging}
+\subsection{Medical Imaging}
 
 The consequences for color misuse in medical imaging are more severe. Research
 already shows that the potential for diagnostic errors increases when 
@@ -463,6 +452,8 @@ are encouraged to use perceptually uniform colormaps to phase out the rainbow co
 as a default and replace it with a colormap that more accurately represents a larger
 variety of data.
 
+We need more research in how to create custom colormaps. No good tools exists except for the things the viridis guys use, and that's only for perceptually uniform colormaps.
+
 
 \ifCLASSOPTIONcaptionsoff
   \newpage
@@ -471,7 +462,7 @@ variety of data.
 \section{Appendix}
 
 The following is useful for understanding the development of 
-colormaps and how the rainbow colormap came to be outdated.
+colormaps and how the rainbow colormap came to be outdated. It also provides some context for colormaps that have been designed using perceptually uniform color models and what advantages they might have over a rainbow colormap.
 
 \subsection{Trichromatic Theory}
 
@@ -479,6 +470,8 @@ This theory was developed by Thomas Young in 1802 and extended quantitatively by
 Hermann von Helmholtz in 1894. This was the first time that the photoreceptors
 in the retina of the eye responded to three different wavelengths of light---long,
 medium, and short \cite{colorimetry}. They were thought to respond to red, green, and blue light.
+
+One reason why the rainbow colormap may be aesthetically pleasing is that it triggers responses in all the photoreceptors in the eye. The rainbow contains many different wavelengths.
 
 \subsection{Munsell Color Specification System and HSV/HSL}
 
@@ -499,7 +492,6 @@ there was no rigorous way to define a consistent way to create color. The Commis
 Internationale de l'Eclairage (CIE) developed the RBG color specification system
 and continued to develop reliable color models \cite{colorimetry}.
 
-\subsubsection{CIEXYZ}
 
 After the RGB color specification system, CIE developed the CIEXYZ model in 1931
 which became widely accepted. It is still used today \cite{viridis}. It's development was 
@@ -511,7 +503,6 @@ as color, the model collapsed a large variety of light waves into a smaller
 spectrum that humans could see as color. This is the model typically used in 
 generating a rainbow colormap.
 
-\subsubsection{CIELUV and CIELAB}
 
 The CIEXYZ color model is not a model of color distance. Thus, CIE set out to
 define color distance and create a uniform color model based on that notion.
@@ -521,7 +512,6 @@ uniform in the CIELAB color space \cite{viridis}. While not
 completely uniform, they provided the best notion of perceptual uniformity until
 the CIECAM-02 models were developed in 2002.
 
-\subsubsection{CIECAM02}
 
 In 2002, CIE released new develpments in perceptually uniform color models with
 the CIECAM02 model family. CIE now recommends using the CIECAM02-UCS model 
@@ -536,17 +526,8 @@ consistent with small differences in data values \cite{viridis}. There has been
 little to no research on the effects of using this most recent model on colormap
 development.
 
+\newpage
 
-% trigger a \newpage just before the given reference
-% number - used to balance the columns on the last page
-% adjust value as needed - may need to be readjusted if
-% the document is modified later
-%\IEEEtriggeratref{8}
-% The "triggered" command can be changed if desired:
-%\IEEEtriggercmd{\enlargethispage{-5in}}
-
-% references section
-%\bibliography{IEEEabrv,../bib/paper}
 \bibliographystyle{ieeetr}
 \bibliography{litreview}
 

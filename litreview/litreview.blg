@@ -5,41 +5,40 @@ The style file: ieeetr.bst
 Database file #1: litreview.bib
 Warning--I didn't find a database entry for "cvimap"
 Warning--I didn't find a database entry for "blackvwhite"
-Warning--I didn't find a database entry for "oceanography"
 Warning--I didn't find a database entry for "colorimetry"
 Warning--can't use both author and editor fields in colormapping
 Warning--empty booktitle in colorguidelines
 Warning--empty booktitle in colorchoice
-You've used 16 entries,
+You've used 17 entries,
             1876 wiz_defined-function locations,
-            573 strings with 6043 characters,
-and the built_in function-call counts, 4260 in all, are:
-= -- 375
-> -- 212
+            576 strings with 6073 characters,
+and the built_in function-call counts, 4383 in all, are:
+= -- 385
+> -- 216
 < -- 0
-+ -- 78
-- -- 62
-* -- 308
-:= -- 617
-add.period$ -- 13
-call.type$ -- 16
-change.case$ -- 15
++ -- 80
+- -- 63
+* -- 314
+:= -- 634
+add.period$ -- 14
+call.type$ -- 17
+change.case$ -- 16
 chr.to.int$ -- 0
-cite$ -- 19
-duplicate$ -- 194
-empty$ -- 402
-format.name$ -- 62
-if$ -- 1039
+cite$ -- 20
+duplicate$ -- 198
+empty$ -- 420
+format.name$ -- 63
+if$ -- 1070
 int.to.chr$ -- 0
-int.to.str$ -- 16
+int.to.str$ -- 17
 missing$ -- 12
-newline$ -- 52
-num.names$ -- 16
-pop$ -- 55
+newline$ -- 55
+num.names$ -- 17
+pop$ -- 62
 preamble$ -- 1
 purify$ -- 0
 quote$ -- 0
-skip$ -- 173
+skip$ -- 177
 stack$ -- 0
 substring$ -- 240
 swap$ -- 82
@@ -48,7 +47,7 @@ text.prefix$ -- 0
 top$ -- 0
 type$ -- 0
 warning$ -- 3
-while$ -- 35
-width$ -- 18
-write$ -- 145
-(There were 7 warnings)
+while$ -- 36
+width$ -- 19
+write$ -- 152
+(There were 6 warnings)
