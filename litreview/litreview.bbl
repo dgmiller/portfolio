@@ -1,17 +1,5 @@
 \begin{thebibliography}{10}
 
-\bibitem{visvars}
-Łukasz Halik, ``The analysis of visual variables for use in the cartographic
-  design of point symbols for mobile augmented reality applications.''
-
-\bibitem{colorchoice}
-C.~G. Healey, ``Choosing effective colours for data visualization,''
-  pp.~263--270, 1996.
-
-\bibitem{colorguidelines}
-C.~A. Brewer, ``Guidelines for use of the perceptual dimensions of color for
-  mapping and visualization,'' vol.~2171, May 9, 1994.
-
 \bibitem{viridis}
 S.~van~der Walt and N.~Smith, ``mpl colormaps,'' 2015.
 
@@ -19,6 +7,20 @@ S.~van~der Walt and N.~Smith, ``mpl colormaps,'' 2015.
 A.~L. Griffin, {\em Color, Mapping}, pp.~195--201.
 \newblock International Encyclopedia of Human Geography, Oxford: Elsevier,
   2009.
+
+\bibitem{colorvblackwhite}
+H.~Levkowitz, ``Color vs. black-and-white in visualization.''
+
+\bibitem{ciecam02}
+M.~R. Luo and C.~Li, ``Ciecam02 and its recent developments.''
+
+\bibitem{colorguidelines}
+C.~A. Brewer, ``Guidelines for use of the perceptual dimensions of color for
+  mapping and visualization,'' vol.~2171, May 9, 1994.
+
+\bibitem{chasingrainbows}
+R.~SisnerosB, M.~Raji, M.~W.~V. Moer, and D.~Bock, ``Chasing rainbows: A
+  color-theoretic framework for improving and preserving bad colormaps.''
 
 \bibitem{rainbowstill}
 D.~Borland and R.~M.~T. II, ``Rainbow color map (still) considered harmful,''
@@ -29,15 +31,9 @@ D.~Borland and R.~M.~T. II, ``Rainbow color map (still) considered harmful,''
 S.~Eddins, ``Rainbow color map critiques: An overview and annotated
   bibliography.''
 
-\bibitem{ciecam02}
-M.~R. Luo and C.~Li, ``Ciecam02 and its recent developments.''
-
-\bibitem{colorvblackwhite}
-H.~Levkowitz, ``Color vs. black-and-white in visualization.''
-
-\bibitem{chasingrainbows}
-R.~SisnerosB, M.~Raji, M.~W.~V. Moer, and D.~Bock, ``Chasing rainbows: A
-  color-theoretic framework for improving and preserving bad colormaps.''
+\bibitem{colorchoice}
+C.~G. Healey, ``Choosing effective colours for data visualization,''
+  pp.~263--270, 1996.
 
 \bibitem{checkviz}
 S.~Lespinats and M.~Aupetit, ``Checkviz: Sanity check and topological clues for
@@ -63,5 +59,18 @@ M.~Borkin, K.~Gajos, A.~Peters, D.~Mitsouras, S.~Melchionna, F.~Rybicki,
   C.~Feldman, and H.~Pfister, ``Evaluation of artery visualizations for heart
   disease diagnosis,'' {\em IEEE Transactions on Visualization and Computer
   Graphics}, vol.~17, no.~12, pp.~2479--2488, 2011.
+
+\bibitem{standardmedimg}
+A.~Badano, C.~Revie, A.~Casertano, W.~C. Cheng, P.~Green, T.~Kimpe,
+  E.~Krupinski, C.~Sisson, S.~Skrvseth, D.~Treanor, P.~Boynton, D.~Clunie,
+  M.~J. Flynn, T.~Heki, S.~Hewitt, H.~Homma, A.~Masia, T.~Matsui, B.~Nagy,
+  M.~Nishibori, J.~Penczek, T.~Schopf, Y.~Yagi, and H.~Yokoi, ``Consistency and
+  standardization of color in medical imaging: a consensus report,'' {\em
+  Journal of Digital Imaging}, vol.~28, no.~1, pp.~41--52, 2014.
+
+\bibitem{marvis}
+A.~Kaever, T.~Lingner, K.~Feussner, C.~Göbel, I.~Feussner, and P.~Meinicke,
+  ``Marvis: a tool for clustering and visualization of metabolic biomarkers,''
+  {\em BMC bioinformatics}, vol.~10, no.~1, p.~92, 2009.
 
 \end{thebibliography}

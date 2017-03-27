@@ -1,53 +1,54 @@
-This is BibTeX, Version 0.99d (TeX Live 2013/Debian)
+This is BibTeX, Version 0.99d (TeX Live 2013)
 Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
 The top-level auxiliary file: litreview.aux
 The style file: ieeetr.bst
 Database file #1: litreview.bib
+Warning--I didn't find a database entry for "cvimap"
+Warning--I didn't find a database entry for "blackvwhite"
+Warning--I didn't find a database entry for "oceanography"
 Warning--I didn't find a database entry for "colorimetry"
-Warning--I didn't find a database entry for "!SOURCE"
-Warning--I didn't find a database entry for "mapchoropleth"
-Warning--empty booktitle in colorchoice
-Warning--empty booktitle in colorguidelines
 Warning--can't use both author and editor fields in colormapping
-You've used 15 entries,
+Warning--empty booktitle in colorguidelines
+Warning--empty booktitle in colorchoice
+You've used 16 entries,
             1876 wiz_defined-function locations,
-            564 strings with 5511 characters,
-and the built_in function-call counts, 3539 in all, are:
-= -- 332
-> -- 122
+            573 strings with 6043 characters,
+and the built_in function-call counts, 4260 in all, are:
+= -- 375
+> -- 212
 < -- 0
-+ -- 48
-- -- 33
-* -- 222
-:= -- 483
-add.period$ -- 11
-call.type$ -- 15
-change.case$ -- 14
++ -- 78
+- -- 62
+* -- 308
+:= -- 617
+add.period$ -- 13
+call.type$ -- 16
+change.case$ -- 15
 chr.to.int$ -- 0
-cite$ -- 18
-duplicate$ -- 170
-empty$ -- 373
-format.name$ -- 33
-if$ -- 889
+cite$ -- 19
+duplicate$ -- 194
+empty$ -- 402
+format.name$ -- 62
+if$ -- 1039
 int.to.chr$ -- 0
-int.to.str$ -- 15
-missing$ -- 10
-newline$ -- 49
-num.names$ -- 15
-pop$ -- 57
+int.to.str$ -- 16
+missing$ -- 12
+newline$ -- 52
+num.names$ -- 16
+pop$ -- 55
 preamble$ -- 1
 purify$ -- 0
 quote$ -- 0
-skip$ -- 163
+skip$ -- 173
 stack$ -- 0
-substring$ -- 216
-swap$ -- 70
+substring$ -- 240
+swap$ -- 82
 text.length$ -- 0
 text.prefix$ -- 0
 top$ -- 0
 type$ -- 0
 warning$ -- 3
-while$ -- 31
-width$ -- 17
-write$ -- 129
-(There were 6 warnings)
+while$ -- 35
+width$ -- 18
+write$ -- 145
+(There were 7 warnings)
