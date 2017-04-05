@@ -3,21 +3,66 @@ To: Kimberly May
 From: Derek Miller
 Subject: Literature Review Critique
 
-As requested, this is my critique of Josh Coleman's literature review entitled "Smoking's Effect on Osteoarthritis: A Benefit or Detriment?". The table below represents my evaluation of the literature review according to the grading rubric given on LearningSuite. The rest of this document will address each item mentioned in the table.
+As requested, this is my critique of Josh Coleman's literature review entitled "Smoking's Effect on Osteoarthritis: A Benefit or Detriment?". Since the aim of this critique is to provide helpful feedback to the author, the rest of this memo will be addressed to Josh Coleman. The table below represents my evaluation of the literature review according to the grading rubric given on LearningSuite. I will address each item separately.
 
-Format and Appearance: 45/55
+Format and Appearance: 50/55
 Subject Matter: 100/115
-Style and Mechanics: 40/80
+Style and Mechanics: 50/80
+TOTAL: 200/250
 
 FORMAT AND APPEARANCE
 
-The first thing I noticed was the font choice. Josh chose to use Calibri, the default font on the current version of Microsoft Word. Calibri is a humanist sans-serif typeface. The subtle variation in letter thickness gives the font a human touch and makes it feel warm and friendly. However, humanist sans-serif fonts are dated and not well liked among professional graphic designers. Calibri is less readable than other serif fonts. Times New Roman was mentioned as a requirement after the literature review was printed so I did not penalize the review based on that requirement. To the design community and others, a default font on a program as widely used as Microsoft Word is perceived to be a sign of laziness and apathy. 
+The general format and appearance conforms to the minimum standards for IEEE article style. However, there are a few things that could be changed to improve the document.
+
+Font choice: -2 points
+
+The first thing I noticed was the font choice. Calibri is the default font on the current version of Microsoft Word. Calibri is a humanist sans-serif typeface. This means that there is subtle variation in letter thickness, similar to the stroke thickness when writing with a fountain pen. This gives the font a human touch and is supposed to make the font feel feel warm and friendly. However, Calibri is less readable than serif fonts like Times New Roman. Most graphic designers consider humanist sans-serif typefaces to be casual and unprofessional. A literature review would be dressed up better by using different fonts. I recommend using Arial Narrow for titles and subtitles and Times New Roman for body text. Otherwise, stick to Times New Roman.
+
+Page 1 title: -3 points
+
+The title on page 1 uses two different sizes of font. The progressively smaller fonts leads the eye in an awkward direction toward the "Overall Effect" section. Also, there are white space pockets above the title and between the "Introduction" section and the "Overall Effect" section. See image for details. Since you already have a title page, I recommend removing the title from page 1 and extending the columns to fill the page. This should solve the white space problem.
+
+Figures: -2 points
+
+Figures A, B, and C are great because they create visual interest on the page and break the monotony of the text. However, Figure D is too big to be set in text. Since it contains lots of information, it deserves its own page. Unfortunately, Figures A, B, and C don't contain as much helpful information. Referring to them in the text may distract the reader instead of help them understand.
+
+Headings: -6 points
+
+Visually, the subheadings are ok. Consider changing them from underlined to italics for better contrast with the main headings. But the headings are not very descriptive. The subheading called "CRP" is especially confusing because the acronym is only referrenced once by its full name, C-reactive protein, in the first sentence of the "CRP" section. The other headings are similarly vague. The section "Overall Effect" might be better as "Smoking's Effect on Osteoarthritis". This makes it clear what the subheadings ("Detrimental Effects", "Neutral Effects", "Beneficial Effects", etc) are referring to. The section "Potential Factors" might be better as something like "Possible Explanations" because the section is attempting to describe why these effects are observed.
 
 SUBJECT MATTER
 
+The relationship between smoking and osteoarthritis is a great topic and seems filled with contradictions. There is plenty of source material and the sources appear to be credible.
 
+Use of Sources: -5 points
+
+The review has a significant amount of "significant" results. By significant amount, I mean that the word "significant" (or some variation of it) occurs 8 times in the first 4 pages of the literature review. That's 2 uses per page. For example, on page 2, "Comparatively, non-smokers saw a significantly greater reduction of their bone marrow lesions [9]. This relationship is significant when it is considered that bone marrow lesions have been associated with cartilage loss [11]." This leaves me asking by how much? and compared to what? The evidence in the sources hides behind vague words like "significant" and "overwhelmingly". Instead, find facts or statistics inside the sources and share those with the reader. Put figures into context by comparing them to other relevant figures. Non-smokers have 23% fewer bone marrow lesions than do their smoking counterparts. This sounds better than having significantly fewer lesions.
+
+Depth: -10 points
+
+The paper lacks detail and depth. I consistently want more information. Figures A, B, and C are abstract and don't tell me anything that couldn't be said in a sentence. Figure A: Smoking may cause a persistence of bone marrow lesions which are linked to decreased cartilage volume---one of the effects of osteoarthritis. Using specific numbers, percentages, or other relevant data would improve the effectiveness of the Figures.
+
+Synthesis of Evidence: -5 points
+
+The paper does a good job of bringing evidence together. However, the lack of detail from the sources makes these comparisons less powerful. Without specific information, the synthesis of sources sounds more like back-to-back summaries. On page 4, "Increased collagen levels, in moderation, can protect cartilage from further stress and damage. Nicotine has been associated with increased collagen synthesis [22]. Nicotine has even been shown to have a dose-dependent effect on collagen production in human chondrocytes [23]." How is nicotine associated with increased collagen synthesis? How much might it increase collagen? From your research, could nicotine produce collagen levels that are above a safe threshold? How much is a moderate increase in collagen? What happens if the increase is not moderate? Even if some of the answers are unclear, they provide the reader with valuable information that creates a stronger connection between sources [22] and [23].
 
 STYLE AND MECHANICS
+
+There were only a few grammatical errors and the document is coherent. The main difficulty for style and mechanics is the lack of variation in citations and the abundance of unnecessary words and phrases.
+
+Variation of Citations: - 15 points
+
+While there is a limited number of quotes, almost every other citation is a summary. Unfortunately, this creates the lack of depth mentioned previously. Paraphrasing is a great way to include a lot of detail without quoting the paper. Of course, the difference between a quote, paraphrase, and summary can be subtle but the key to a good paraphrase is looking for details in a source that you can explain in your own words.
+
+In the Nicotine section on page 3, the second paragraph gives a good example of a paraphrase. Unfortunately, the rest of the paragraph feels more like a report than synthesized evidence. Consider getting more details by paraphrasing parts of your sources instead of summarizing. After you have the paraphrases, use the details to synthesize the information by asking good questions and writing down an informed answer.
+
+Unnecessary Words and Phrases: -15 points
+
+There are lots of unnecessary words in the literature review. Many of these words are adverbs and adjectives that take away from the power of the sentences. Passive voice makes this problem worse. For example, on the bottom of page 2, "However, research on this subject has proven to be much more complex and contradictory." Make this statement more powerful by changing "has proven" to "proves" and removing "much more". However, research on this subject proves to be complex and contradictory. The sentence now does more with less.
+
+Sometimes, the subject and the verb are separated by a clause. Again on page 2, "Smoking, with its vastly negative impact on bone, causes a decrease in a person's bone mineral density [10]." Removing the clause brings out the active voice. Smoking causes a decrease in bone mineral density or Smoking decreases bone mineral density. That's a stronger statement.
+
+CONCLUSION
 
 
 

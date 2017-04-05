@@ -128,7 +128,7 @@ that do not translate well between color spaces. For example, consider the image
 shown in Figure 1 and Figure 2. When this document is viewed digitally, the colors will look
 different than the colors on a printed copy. This represents
 a transformation from an RGB color space to a CMYK color space \cite{colorvblackwhite}.
-Color changes when transformed. This is the motivation for developing perceptually
+Color may not appear the same when transformed from one color space to another. This is the motivation for developing perceptually
 uniform color models, as in the CIECAM02-UCS color model. Good models of color
 distance may not preserve absolute color, but perceived color difference tends
 to remain the same across all media \cite{ciecam02}. Perceptually uniform colormaps
@@ -178,7 +178,7 @@ sequential, diverging, and rainbow colormap. These images were created by the au
 
 \subsection{Colormaps}
 
-The main problem when designing a colormap is that there is no natural ordering of the colors
+Is red greater than or less than blue? This illustrates the main problem when designing a colormap: there is no natural ordering of the colors
 from least to greatest. Some might argue that there is a natural
 ordering---the brain's interpretation of the electromagnetic spectrum.
 Based on light wave frequency, this color ordering is rainbow-like with respect
