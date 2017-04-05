@@ -12,6 +12,12 @@
 \usepackage{graphicx}
 \usepackage{cite}
 \usepackage{float}
+\usepackage[usenames,dvipsnames]{color}
+
+\definecolor{blue}{cmyk}{1.0,0.1,0.0,0.0}
+\definecolor{orange}{cmyk}{0.0,0.45,1.0,0.0}
+\definecolor{red}{cmyk}{0.0,1.0,0.5,0.0}
+\definecolor{green}{cmyk}{0.7,0.0,1.0,0.0}
 % correct bad hyphenation here
 \hyphenation{op-tical net-works semi-conduc-tor}
 
@@ -32,10 +38,9 @@
 
 \begin{abstract}
 This document addresses the controversies and contradictions
-surrounding colormaps using a rainbow color scheme in data visualization.
-Colormaps are used frequently in science and its applications
-to display complex data sets by
-representing data points as colors on a spectrum. The scientific
+surrounding colormaps in data visualization.
+Colormaps are used to display complex data sets by
+representing data points as colors on a continuous color scale. The scientific
 community is divided on whether the default 'jet' or rainbow colormap
 is best for data visualization. Some point to evidence in medical imaging
 that suggests the rainbow colormap distorts data, resulting in slower and 
@@ -58,77 +63,154 @@ and continues to be used extensively in medical imaging.
 \IEEEpeerreviewmaketitle
 
 \section{Introduction}
-Scientific progress depends on the proper evaluation
-of evidence from data. The evaluation process usually
-starts by visualizing data produced from an experiment
-or procedure. For example, a radiologist determines the
+Scientific progress depends on the ability to interpret data correctly. Data visualization is a process of
+constructing visual representations of data that allow the data to be interpreted quickly so that decisions
+can be made.
+For example, a radiologist determines the
 type and severity of a bone fracture by looking at an
-image representation of X-ray data.
-Data sets with one or two variables are generally easy to visualize. 
-When a data set has three or more variables, it is much harder to show all the variables
-on one visualization. Color is commonly used to show three or more variables in one visualization.
+image representation of X-ray data. This allows her to make decisions on what treatments will be most effective
+for the fracture. While most bone fractures are easy to see using X-ray technology, some data insights are
+harder to find. For complex data sets, color can be used to highlight important features
+of the data by turning data points into colors. While the benefits of using color are clear,
+scientists disagree over how colors should be used when representing data, especially regarding the choice
+of colormaps.
 
-A common way to represent data with color is by using a
-colormap---a function that assigns data points to
+A colormap is a function that assigns data points to
 an ordering of colors. Nathaniel Smith
 calls colormaps ``an interface between the data and your
-brain \cite{viridis}.'' A scientist interested in visualizing a
-data set must choose a colormap that reflects the nature of the data. 
+brain \cite{viridis}.''
 When judiciously chosen, colormaps reveal hidden structure that would go unnoticed
 otherwise. A careless colormap selection, on the other hand, may distort the data and
 lead viewers to misinterpret the data. This can have
-serious consequences, especially in medicine and public health.
+serious consequences, especially in medicine and public health \cite{arteryvis,choropleth}.
 Doctors rely on visualization software to interpret medical
 data correctly and properly diagnose and treat disease.
-Public health policy is also decided based on data often presented 
-in visual form. While scientists agree that data analysis
-should be rigorous, consistent, and reproducible, many disagree over the proper
-use of color in data visualization---especially rainbow colormaps.
+Citizens and politicians vote on public health policy based on data presented 
+in visual form. Each scientific discipline has developed standards that determine
+how to perform rigorous, consistent, and reproducible data analysis. However,
+there is debate among scientists about colormap standards in data visualization---or
+whether there should be colormap standards at all.
 
-Despite visually distorting the data, many scientists
+Of all the colormaps available, none draws more criticism and debate than colormaps that use a rainbow
+color scheme. The canonical example of a rainbow colormap is MATLAB's `jet' colormap. This and other rainbow
+colormaps are commonly the default colormap in scientific computing software \cite{viridis,matlab}.
+Despite research showing that rainbow colormaps visually distort data, many scientists
 prefer a rainbow color scheme for its aesthetic appeal
-and historical use in scientific publications. This literature
+and history of use in scientific publications. This literature
 review explores the advantages and disadvantages
 of rainbow colormaps, why they are preferred by some
 scientists and discouraged by others, and how spectral color schemes are used
-in applied data analysis. First, this review gives a basic summary 
-of the color theoretic properties of rainbow colormaps. Then, it will
+in applied data analysis. First, I will give a basic summary 
+of the color theoretic properties of rainbow colormaps. Then, I will
 address color perception issues of spectral color schemes, including
-color vision impairment. Finally, rainbow colormap applications are discussed
+color vision impairment. Finally, I discuss rainbow colormap applications
 in medical imaging and cartography.
 
 \section{Colormap Fundamentals}
 
-To represent data as color, the data must first be converted into RGB values by way of 
-a colormap. The computer then turns the RGB values into light, projected from a screen.
-When the light reaches our eyes, photorecpetors called cones detect certain wavelengths
-of light and send that information to the brain. The brain then interprets the information
-and generates the perception we call color \cite{viridis}.
-To avoid ambiguity when talking about color, scientists use
-color models---abstract mathematical representations that
-describe a color as a collection of numbers.
-
+Colormaps assign data points to colors. While seemingly straightforward, this precise assignment
+depends heavily on sophisticated mathematics and research in human perception. 
+Color is both a physical phenomenon and a perceptual illusion.
+When light reaches our eyes, photorecpetors called cones detect wavelengths
+of light. The cones send signals to the brain, which interprets the information,
+and generates the perception we call color \cite{viridis}. Not all humans perceive the same
+colors equally however. In fact, the question of whether two colors are equal has motivated
+research in color theory for decades and continues to play a central role in colormap 
+evaluation---especially rainbow colormaps.
 
 \subsection{Color Models and Spaces}
 
+To avoid ambiguity when talking about color, scientists use
+color models---abstract mathematical representations that
+describe a color as a collection of numbers.
 When a color model is used to produce color on a specific medium, the resulting set
-of colors is called a color space. For example, the RGB model
+of colors is called a color space \cite{colorimetry}. For example, the RGB model
 describes color as the combination of red, green, and
 blue light. A computer screen renders color using the
-RGB model, thus the color produced by digital screens
-with the RGB model is a color space. Another example is the
+RGB model. The color produced by digital screens
+with the RGB model is a color space. Another important example is the
 CMYK model, which describes color as combinations of
 cyan, magenta, yellow, and black. Printers produce colors using this model.
-\cite{colormapping}. The combination of cyan, magenta, yellow, and black
-ink on a specific printer constitutes a color space. The selection and modification of color
-models and spaces happens before colormaps or data visualizations can be created. 
+\cite{colormapping}. The different combinations of cyan, magenta, yellow, and black
+ink used by a printer constitutes a color space.
 
-Most color spaces produce a similar set of colors. However, there are some colors
-that do not translate well between color spaces. For example, consider the image
-shown in Figure 1 and Figure 2. When this document is viewed digitally, the colors will look
+Most color spaces produce a similar set of colors. However, some colors
+do not translate well between color spaces. Consider the following list:
+\begin{itemize}
+\item \textcolor{blue}{\textbf{Blue}}
+\item \textcolor{red}{\textbf{Red}}
+\item \textcolor{green}{\textbf{Green}}
+\item \textcolor{orange}{\textbf{Orange}}
+\end{itemize}
+When this document is viewed digitally, the colors will look somewhat
 different than the colors on a printed copy. This represents
 a transformation from an RGB color space to a CMYK color space \cite{colorvblackwhite}.
-Color may not appear the same when transformed from one color space to another. This is the motivation for developing perceptually
+Color may not appear the same when transformed from one color space to another.
+This is problematic if color needs to be consistent across
+different media when presenting data visualizations. Issues such as these led
+to the development of sophisticated color models. To understand why there is so much debate
+over colormaps today, it is helpful to understand a brief history of color model development.
+
+\subsubsection{A Brief History of Color}
+
+Much of the early work in color theory was focused on describing light as a physical phenomenon.
+The first of these was the trichromatic theory of color. 
+Developed by Thomas Young in 1802 and extended quantitatively by 
+Hermann von Helmholtz in 1894, the theory revealed that photoreceptors
+in the retina of the eye responded to long, medium, and short wavelengths of light, 
+roughly corresponding to red, green, and blue color \cite{colorimetry}.
+
+Shortly after, the first breakthrough in color perception came when
+Albert Munsell developed the Munsell Color Specification System
+by performing experiments using colored paint chips.
+This system describes color as made up of three independent variables---hue, chroma, and value or lightness.
+Later developments added to this model and made the perception of color 
+more concrete \cite{colormapping}. The model relies on cylindrical coordinates
+of colors arranged by these variables. This development led to the more
+widely known HSL/HSV model which describe the perceptual attributes of color as combinations of hue,
+saturation, and value or lightness \cite{colorimetry}.
+
+While the Munsell color system was a good way to describe the appearance of color,
+there was no rigorous way to create color. The Commision
+Internationale de l'Eclairage (CIE) developed the RBG color specification system
+and continued to develop reliable color models \cite{colorimetry}.
+
+Later, CIE developed the CIEXYZ model in 1931
+which became widely accepted. It is still used today \cite{viridis}. It's development was 
+focused on converting measurable, physical properties of light into a model
+that represented human color perception by way of color matching experiments 
+\cite{colorimetry}.
+Since humans do not see all light 
+as color, the model collapsed a large variety of light waves into a smaller 
+spectrum that humans could see as color. This is the model typically used in 
+generating a rainbow colormap.
+
+
+The CIEXYZ color model is not a model of color distance. Thus, CIE set out to
+define color distance and create a uniform color model based on that notion.
+In 1976, CIE produced two uniform color models, CIELUV and CIELAB \cite{colorimetry}. Some colormaps,
+like Matlab's \textit{perula} colormap, are designed to be perceptually
+uniform in the CIELAB color space \cite{viridis}. While not 
+completely uniform, they provided the best notion of perceptual uniformity until
+the CIECAM-02 models were developed in 2002.
+
+
+In 2002, CIE released new develpments in perceptually uniform color models with
+the CIECAM02 model family. CIE now recommends using the CIECAM02-UCS model 
+\cite{ciecam02}.
+One of the primary differences between CIELAB and CIECAM02-UCS is that the latter
+is more perceptually uniform between similar colors than distant colors. CIELAB
+is a good model of perceptual color distance for very different colors, but 
+is not as good a model of the distance between similar colors.
+CIECAM02-UCS The open source colormap \textit{viridis} created by Smith and van der Walt, uses
+the CIECAM02-UCS color space to provide a perceptually uniform color space more
+consistent with small differences in data values \cite{viridis}. There has been
+little to no research on the effects of using this most recent model on colormap
+development.
+
+
+
+This is the motivation for developing perceptually
 uniform color models, as in the CIECAM02-UCS color model. Good models of color
 distance may not preserve absolute color, but perceived color difference tends
 to remain the same across all media \cite{ciecam02}. Perceptually uniform colormaps
@@ -324,8 +406,8 @@ The most common form of color deficiency results in confusing shades of red and 
 %would see is given in Figure 3.
 \begin{figure}
 \centering
-\includegraphics[width=2in]{calf_grey}%
-\caption{An Example of colorblind deficiency}
+\includegraphics[width=2in]{colorblind_rainbow1.png}%
+\caption{The rainbow colormaped image (left) and a colorblind approximation of the same image (right).}
 \end{figure}
 
 \subsection{Colorblindness}
