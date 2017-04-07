@@ -57,8 +57,9 @@ def simultaneouscontrast():
     for i in range(0,5):
         gry = i*.2 + .1
         plt.axvspan(i,i+1,facecolor=str(gry),alpha=.5)
-    plt.scatter(np.arange(.5,5),2.5*np.ones(5),s=300,c='grey')
-    plt.show()
+        #plt.axhspan(i,i+1,facecolor=str(gry),alpha=.5)
+        plt.show()
+    plt.scatter(i+.5,2.5,s=300,c='grey')
 
 if __name__ == "__main__":
     #colormaps()

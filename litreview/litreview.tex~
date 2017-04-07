@@ -63,10 +63,10 @@ and continues to be used extensively in medical imaging.
 \IEEEpeerreviewmaketitle
 
 \section{Introduction}
-Scientific progress depends on the ability to interpret data correctly. Data visualization is a process of
-constructing visual representations of data that allow the data to be interpreted quickly so that decisions
-can be made.
-For example, a radiologist determines the
+
+Scientific progress depends on the ability to interpret data correctly. Visual representations of data
+allow scientists to interpret data quickly.
+For example, a radiologist can determine the
 type and severity of a bone fracture by looking at an
 image representation of X-ray data. This allows her to make decisions on what treatments will be most effective
 for the fracture. While most bone fractures are easy to see using X-ray technology, some data insights are
@@ -92,8 +92,9 @@ there is debate among scientists about colormap standards in data visualization-
 whether there should be colormap standards at all.
 
 Of all the colormaps available, none draws more criticism and debate than colormaps that use a rainbow
-color scheme. The canonical example of a rainbow colormap is MATLAB's `jet' colormap. This and other rainbow
-colormaps are commonly the default colormap in scientific computing software \cite{viridis,matlab}.
+color scheme. MATLAB's `jet' colormap is one of the most widely used rainbow colormaps in 
+scientific publications. This and other rainbow
+colormaps are often the default option in scientific computing software \cite{viridis,matlab}.
 Despite research showing that rainbow colormaps visually distort data, many scientists
 prefer a rainbow color scheme for its aesthetic appeal
 and history of use in scientific publications. This literature
@@ -108,13 +109,13 @@ in medical imaging and cartography.
 
 \section{Colormap Fundamentals}
 
-Colormaps assign data points to colors. While seemingly straightforward, this precise assignment
+Colormaps assign data points to colors. While seemingly straightforward, color assignment
 depends heavily on sophisticated mathematics and research in human perception. 
 Color is both a physical phenomenon and a perceptual illusion.
-When light reaches our eyes, photorecpetors called cones detect wavelengths
-of light. The cones send signals to the brain, which interprets the information,
-and generates the perception we call color \cite{viridis}. Not all humans perceive the same
-colors equally however. In fact, the question of whether two colors are equal has motivated
+When light reaches our eyes, photorecpetors called cones detect light at certain wavelengths.
+The cones send signals to the brain, which interprets the information,
+and generates the perception we call color \cite{viridis}. Humans sometimes perceive the same
+colors differently. In fact, the question of whether two colors are equal has motivated
 research in color theory for decades and continues to play a central role in colormap 
 evaluation---especially rainbow colormaps.
 
