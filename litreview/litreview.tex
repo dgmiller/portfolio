@@ -164,61 +164,10 @@ Shortly after, the first breakthrough in color perception came when
 Albert Munsell developed the Munsell Color Specification System
 by performing experiments using colored paint chips.
 This system describes color as made up of three independent variables---hue, chroma, and value or lightness.
-Later developments added to this model and made the perception of color 
-more concrete \cite{colormapping}. The model relies on cylindrical coordinates
-of colors arranged by these variables. This development led to the more
+This development led to the more
 widely known HSL/HSV model which describe the perceptual attributes of color as combinations of hue,
-saturation, and value or lightness \cite{colorimetry}.
-
-While the Munsell color system was a good way to describe the appearance of color,
-there was no rigorous way to create color. The Commision
-Internationale de l'Eclairage (CIE) developed the RBG color specification system
-and continued to develop reliable color models \cite{colorimetry}.
-
-Later, CIE developed the CIEXYZ model in 1931
-which became widely accepted. It is still used today \cite{viridis}. It's development was 
-focused on converting measurable, physical properties of light into a model
-that represented human color perception by way of color matching experiments 
-\cite{colorimetry}.
-Since humans do not see all light 
-as color, the model collapsed a large variety of light waves into a smaller 
-spectrum that humans could see as color. This is the model typically used in 
-generating a rainbow colormap.
-
-The CIEXYZ color model is not a model of color distance. Thus, CIE set out to
-define color distance and create a uniform color model based on that notion.
-In 1976, CIE produced two uniform color models, CIELUV and CIELAB \cite{colorimetry}. Some colormaps,
-like Matlab's \textit{perula} colormap, are designed to be perceptually
-uniform in the CIELAB color space \cite{viridis}. While not 
-completely uniform, they provided the best notion of perceptual uniformity until
-the CIECAM-02 models were developed in 2002.
-
-
-In 2002, CIE released new develpments in perceptually uniform color models with
-the CIECAM02 model family. CIE now recommends using the CIECAM02-UCS model 
-\cite{ciecam02}.
-One of the primary differences between CIELAB and CIECAM02-UCS is that the latter
-is more perceptually uniform between similar colors than distant colors. CIELAB
-is a good model of perceptual color distance for very different colors, but 
-is not as good a model of the distance between similar colors.
-CIECAM02-UCS The open source colormap \textit{viridis} created by Smith and van der Walt, uses
-the CIECAM02-UCS color space to provide a perceptually uniform color space more
-consistent with small differences in data values \cite{viridis}. There has been
-little to no research on the effects of using this most recent model on colormap
-development.
-
-
-
-This is the motivation for developing perceptually
-uniform color models, as in the CIECAM02-UCS color model. Good models of color
-distance may not preserve absolute color, but perceived color difference tends
-to remain the same across all media \cite{ciecam02}. Perceptually uniform colormaps
-can be produced using these models \cite{viridis}. In general, rainbow colormaps
-are not perceptually uniform because the lightness is not consistent.
-
-This has not stopped some from attempting to modify---and therefore preserve---the
-rainbow colormap. The adjustments refer to the Munsell color specification system,
-which describes color with hue, saturation, and lightness. ``This system
+saturation, and value or lightness \cite{colormapping,colorimetry}.
+``This system
 divides up the colors humans are capable of perceiving
 into equal perceptual divisions of color lightness and
 color saturation for each color hue. \cite{colormapping}''
@@ -228,12 +177,66 @@ on the color wheel. Saturation is the intensity of the hue. In
 physical terms, it is the purity of the light wave frequency. Lightness is the
 amount of light emitted by a color. Low lightness results in a darker color;
 high lightness results in a lighter color. \cite{colorguidelines}.
-Sisneros et al created a colormap modification framework that smooths the variation
-in luminance (or lightness) and chromaticity, which is a combination of saturation
-and hue. Their method can be applied to any perceptually non-uniform colormap.
-However, they focused their efforts on improving the rainbow colormap, since it is still widely
-used in science. Their improved rainbow colormap contains subdued colors that better
-represent image data \cite{chasingrainbows}. 
+
+
+While the Munsell color system was a good way to describe the appearance of color, it did
+not prescribe a way to create the same colors consistently.
+This required rigorous and more precise color models. In the early twentieth century,
+The Commision Internationale de l'Eclairage (CIE) began developing robust color models
+that allowed for color consistency. It was CIE who first developed the first reliable
+RBG color model and they continue to develop color models \cite{colorimetry}.
+
+After the RGB model, CIE developed the CIEXYZ model in 1931
+which became widely accepted. It is still used today \cite{viridis}. It's development was 
+focused on converting measurable, physical properties of light into a model
+that represented human color perception by way of color matching experiments 
+\cite{colorimetry}. The model compared various colors with different light wavelengths
+and tested them to see if humans could distinguish between colors with these different
+wavelengths. This model allowed us to determine precisely which wavelengths humans 
+are capable of seeing, thereby leading to a rigorous definition of the rainbow color
+spectrum.
+
+This was a large advance in color theory. However, the CIEXYZ color model
+is not a model of color distance. Thus, CIE set out to
+create a model of color distance.
+In 1976, CIE produced two uniform color models, CIELUV and CIELAB \cite{colorimetry}.
+%Some colormaps,
+%like Matlab's \textit{perula} colormap, are designed to be perceptually
+%uniform in the CIELAB color space \cite{viridis}. While not 
+%completely uniform, they provided the best notion of perceptual uniformity until
+%the CIECAM-02 models were developed in 2002.
+In 2002, CIE released new develpments in perceptually uniform color models with
+the CIECAM02 model family.
+One of the primary differences between CIELAB and CIECAM02-UCS is that the latter
+is more perceptually uniform between similar colors than distant colors. CIELAB
+is a good model of perceptual color distance for very different colors, but 
+it is not as good a model of the distance between similar colors.
+%CIECAM02-UCS The open source colormap \textit{viridis} created by Smith and van der Walt, uses
+%the CIECAM02-UCS color space to provide a perceptually uniform color space more
+%consistent with small differences in data values \cite{viridis}. There has been
+%little to no research on the effects of using this most recent model on colormap
+%development.
+CIE now recommends using the CIECAM02-UCS model as it 
+is the best perceptual model of color distance to date \cite{ciecam02}.
+
+The motivation for developing perceptually
+uniform color models is to produce consistent colors across different media.
+Good models of color
+distance may not preserve absolute color, but perceived color difference tends
+to remain the same across all media \cite{ciecam02}.
+%Perceptually uniform colormaps
+%can be produced using these models \cite{viridis}. In general, rainbow colormaps
+%are not perceptually uniform because the lightness is not consistent.
+
+%This has not stopped some from attempting to modify---and therefore preserve---the
+%rainbow colormap. The adjustments refer to the Munsell color specification system,
+%which describes color with hue, saturation, and lightness.
+%Sisneros et al created a colormap modification framework that smooths the variation
+%in luminance (or lightness) and chromaticity, which is a combination of saturation
+%and hue. Their method can be applied to any perceptually non-uniform colormap.
+%However, they focused their efforts on improving the rainbow colormap, since it is still widely
+%used in science. Their improved rainbow colormap contains subdued colors that better
+%represent image data \cite{chasingrainbows}. 
 
 \subsection{Color Schemes}
 
@@ -243,7 +246,8 @@ vary in hue. If two sequential color schemes have different hues and are
 connected at their lightest ends, it is called a diverging color scheme. Qualitative color
 schemes vary in hues with little variation in lightness
 and saturation \cite{colormapping}. The rainbow colormap uses a continuous,
-qualitative color scheme. The images in Fig. 1
+qualitative color scheme. It is also known as a spectral scheme \cite{spectralschemes}
+The images in Fig. 1
 are examples of image data plotted with 
 sequential, diverging, and rainbow colormaps.
 
