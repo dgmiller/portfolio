@@ -1,11 +1,11 @@
-This is BibTeX, Version 0.99d (TeX Live 2013)
+This is BibTeX, Version 0.99d (TeX Live 2013/Debian)
 Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
 The top-level auxiliary file: litreview.aux
 The style file: ieeetr.bst
 Database file #1: litreview.bib
+Warning--I didn't find a database entry for "colorimetry"
 Warning--I didn't find a database entry for "cvimap"
 Warning--I didn't find a database entry for "blackvwhite"
-Warning--I didn't find a database entry for "colorimetry"
 Warning--can't use both author and editor fields in colormapping
 Warning--empty booktitle in colorguidelines
 Warning--empty booktitle in colorchoice

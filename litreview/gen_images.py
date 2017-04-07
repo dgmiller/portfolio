@@ -50,10 +50,22 @@ def colorblind_calf(cvd_type):
     plt.imshow(np.column_stack((data,np.clip(colorblind_data,0,1))))
     plt.show()
 
-#colormaps()
-colorblind_calf(cvd1)
-colorblind_calf(cvd2)
-colorblind_calf(cvd3)
-colorblind_rainbow(cvd1)
-colorblind_rainbow(cvd2)
-colorblind_rainbow(cvd3)
+def simultaneouscontrast():
+    plt.figure()
+    plt.xlim(0,5)
+    plt.ylim(0,5)
+    for i in range(0,5):
+        gry = i*.2 + .1
+        plt.axvspan(i,i+1,facecolor=str(gry),alpha=.5)
+    plt.scatter(np.arange(.5,5),2.5*np.ones(5),s=300,c='grey')
+    plt.show()
+
+if __name__ == "__main__":
+    #colormaps()
+    #colorblind_calf(cvd1)
+    #colorblind_calf(cvd2)
+    #colorblind_calf(cvd3)
+    #colorblind_rainbow(cvd1)
+    #colorblind_rainbow(cvd2)
+    #colorblind_rainbow(cvd3)
+    simultaneouscontrast()

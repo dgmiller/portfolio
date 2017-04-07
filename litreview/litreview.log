@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2015.7.30)  5 APR 2017 16:50
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2015.7.30)  7 APR 2017 10:49
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -271,58 +271,46 @@ LaTeX Warning: Citation `colorimetry' on page 1 undefined on input line 127.
 LaTeX Warning: Citation `colorimetry' on page 2 undefined on input line 161.
 
 
-LaTeX Warning: Citation `colorimetry' on page 2 undefined on input line 171.
+LaTeX Warning: Citation `colorimetry' on page 2 undefined on input line 169.
 
 
-LaTeX Warning: Citation `colorimetry' on page 2 undefined on input line 176.
+LaTeX Warning: Citation `colorimetry' on page 2 undefined on input line 186.
 
 
-LaTeX Warning: Citation `colorimetry' on page 2 undefined on input line 182.
+LaTeX Warning: Citation `colorimetry' on page 2 undefined on input line 192.
 
 
-LaTeX Warning: Citation `colorimetry' on page 2 undefined on input line 190.
-
-
-Underfull \hbox (badness 2126) in paragraph at lines 197--209
-[]\OT1/ptm/m/n/12 In 2002, CIE re-leased new de-velp-ments in
+Underfull \hbox (badness 3199) in paragraph at lines 188--197
+[]\OT1/ptm/m/n/12 After the RGB model, CIE de-vel-oped the
  []
 
 
-Underfull \hbox (badness 7326) in paragraph at lines 197--209
-\OT1/ptm/m/n/12 per-cep-tu-ally uni-form color mod-els with the
- []
+LaTeX Warning: Citation `colorimetry' on page 2 undefined on input line 201.
 
-
-Underfull \hbox (badness 2065) in paragraph at lines 197--209
-\OT1/ptm/m/n/12 the pri-mary dif-fer-ences be-tween CIELAB and
- []
-
-[2] <calf_original.png, id=16, 578.16pt x 433.62pt>
+<calf_original.png, id=13, 578.16pt x 433.62pt>
 File: calf_original.png Graphic file (type png)
  <use calf_original.png>
-Package pdftex.def Info: calf_original.png used on input line 252.
+Package pdftex.def Info: calf_original.png used on input line 223.
 (pdftex.def)             Requested size: 144.54pt x 108.40472pt.
 
-<calf_sequential.png, id=18, 578.16pt x 433.62pt>
+<calf_sequential.png, id=15, 578.16pt x 433.62pt>
 File: calf_sequential.png Graphic file (type png)
  <use calf_sequential.png>
-Package pdftex.def Info: calf_sequential.png used on input line 253.
+Package pdftex.def Info: calf_sequential.png used on input line 224.
 (pdftex.def)             Requested size: 144.54pt x 108.40472pt.
 
-<calf_diverging.png, id=19, 578.16pt x 433.62pt>
+<calf_diverging.png, id=16, 578.16pt x 433.62pt>
 File: calf_diverging.png Graphic file (type png)
  <use calf_diverging.png>
-Package pdftex.def Info: calf_diverging.png used on input line 254.
+Package pdftex.def Info: calf_diverging.png used on input line 225.
 (pdftex.def)             Requested size: 144.54pt x 108.40472pt.
 
-<calf_rainbow.png, id=20, 578.16pt x 433.62pt>
+<calf_rainbow.png, id=17, 578.16pt x 433.62pt>
 File: calf_rainbow.png Graphic file (type png)
  <use calf_rainbow.png>
-Package pdftex.def Info: calf_rainbow.png used on input line 255.
+Package pdftex.def Info: calf_rainbow.png used on input line 226.
 (pdftex.def)             Requested size: 144.54pt x 108.40472pt.
-Missing character: There is no ‚ in font ptmr7t!
-Missing character: There is no Ä in font ptmr7t!
-Missing character: There is no ô in font ptmr7t!
+ [2]
 Missing character: There is no ‚ in font ptmr7t!
 Missing character: There is no Ä in font ptmr7t!
 Missing character: There is no ú in font ptmr7t!
@@ -330,10 +318,26 @@ Missing character: There is no ‚ in font ptmr7t!
 Missing character: There is no Ä in font ptmr7t!
 Missing character: There is no ù in font ptmr7t!
 
-Underfull \vbox (badness 10000) has occurred while \output is active []
+[3 <./calf_original.png> <./calf_sequential.png> <./calf_diverging.png> <./calf
+_rainbow.png>] <tempcontrast.png, id=28, 462.528pt x 346.896pt>
+File: tempcontrast.png Graphic file (type png)
 
- [3 <./calf_original.png> <./calf_sequential.png> <./calf_diverging.png> <./cal
-f_rainbow.png>]
+<use tempcontrast.png>
+Package pdftex.def Info: tempcontrast.png used on input line 327.
+(pdftex.def)             Requested size: 144.54pt x 108.40472pt.
+ <colorblind_rainbow1.png, id=29, 462.528pt x 346.896pt>
+File: colorblind_rainbow1.png Graphic file (type png)
+
+<use colorblind_rainbow1.png>
+Package pdftex.def Info: colorblind_rainbow1.png used on input line 362.
+(pdftex.def)             Requested size: 144.54pt x 108.40472pt.
+ [4 <./tempcontrast.png> <./colorblind_rainbow1.png>]
+
+LaTeX Warning: Citation `mapcvi' on page 5 undefined on input line 386.
+
+
+LaTeX Warning: Citation `mapcvi' on page 5 undefined on input line 396.
+
 Missing character: There is no ‚ in font ptmr7t!
 Missing character: There is no Ä in font ptmr7t!
 Missing character: There is no ô in font ptmr7t!
@@ -349,6 +353,11 @@ Missing character: There is no ú in font ptmr7t!
 Missing character: There is no ‚ in font ptmr7t!
 Missing character: There is no Ä in font ptmr7t!
 Missing character: There is no ù in font ptmr7t!
+
+Underfull \hbox (badness 1609) in paragraph at lines 402--422
+\OT1/ptm/m/n/12 us-ing rainbow-colored vi-su-al-iza-tions took more
+ []
+
 Missing character: There is no ‚ in font ptmr7t!
 Missing character: There is no Ä in font ptmr7t!
 Missing character: There is no ú in font ptmr7t!
@@ -361,88 +370,34 @@ Missing character: There is no ú in font ptmr7t!
 Missing character: There is no ‚ in font ptmr7t!
 Missing character: There is no Ä in font ptmr7t!
 Missing character: There is no ù in font ptmr7t!
- [4] <colorblind_rainbow1.png, id=31, 462.528pt x 346.896pt>
-File: colorblind_rainbow1.png Graphic file (type png)
-
-<use colorblind_rainbow1.png>
-Package pdftex.def Info: colorblind_rainbow1.png used on input line 408.
-(pdftex.def)             Requested size: 144.54pt x 108.40472pt.
-
-
-LaTeX Warning: Citation `cvimap' on page 5 undefined on input line 418.
-
-
-LaTeX Warning: Citation `cvimap' on page 5 undefined on input line 428.
-
-
-LaTeX Warning: Citation `blackvwhite' on page 5 undefined on input line 438.
-
-[5 <./colorblind_rainbow1.png>] [6]
-
-LaTeX Warning: Citation `colorimetry' on page 7 undefined on input line 553.
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 557--557
- \OT1/ptm/m/it/12 B. Mun-sell Color Spec-i-fi-ca-tion Sys-tem and
- []
-
-
-LaTeX Warning: Citation `colorimetry' on page 7 undefined on input line 565.
-
-
-LaTeX Warning: Citation `colorimetry' on page 7 undefined on input line 574.
-
-
-LaTeX Warning: Citation `colorimetry' on page 7 undefined on input line 581.
-
-
-LaTeX Warning: Citation `colorimetry' on page 7 undefined on input line 590.
-
-
-Underfull \hbox (badness 2126) in paragraph at lines 597--609
-[]\OT1/ptm/m/n/12 In 2002, CIE re-leased new de-velp-ments in
- []
-
-
-Underfull \hbox (badness 7326) in paragraph at lines 597--609
-\OT1/ptm/m/n/12 per-cep-tu-ally uni-form color mod-els with the
- []
-
-
-Underfull \hbox (badness 2065) in paragraph at lines 597--609
-\OT1/ptm/m/n/12 the pri-mary dif-fer-ences be-tween CIELAB and
- []
-
-[7] (./litreview.bbl
+[5] [6] (./litreview.bbl
 Missing character: There is no ‚ in font ptmr7t!
 Missing character: There is no Ä in font ptmr7t!
 Missing character: There is no ê in font ptmr7t!
 Missing character: There is no √ in font ptmr7t!
 Missing character: There is no ∂ in font ptmr7t!
-) [8
-
-] (./litreview.aux)
+) [7] (./litreview.aux)
 
 LaTeX Warning: There were undefined references.
 
  ) 
 Here is how much of TeX's memory you used:
- 2768 strings out of 493304
- 44734 string characters out of 6139871
+ 2772 strings out of 493304
+ 44820 string characters out of 6139871
  112134 words of memory out of 5000000
- 6195 multiletter control sequences out of 15000+600000
+ 6198 multiletter control sequences out of 15000+600000
  38017 words of font info for 71 fonts, out of 8000000 for 9000
  960 hyphenation exceptions out of 8191
- 38i,7n,23p,249b,222s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 38i,6n,23p,249b,223s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/share/texlive/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/share/texliv
 e/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/share/texlive/texmf
 -dist/fonts/type1/urw/times/utmb8a.pfb></usr/share/texlive/texmf-dist/fonts/typ
 e1/urw/times/utmr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/ut
 mri8a.pfb>
-Output written on litreview.pdf (9 pages, 1558545 bytes).
+Output written on litreview.pdf (8 pages, 1561417 bytes).
 PDF statistics:
- 62 PDF objects out of 1000 (max. 8388607)
- 36 compressed objects within 1 object stream
+ 61 PDF objects out of 1000 (max. 8388607)
+ 34 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
- 26 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 31 words of extra memory for PDF output out of 10000 (max. 10000000)
 
