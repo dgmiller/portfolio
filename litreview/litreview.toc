@@ -1,13 +1,16 @@
+\select@language {english}
 \contentsline {section}{\numberline {I}Introduction}{1}
 \contentsline {section}{\numberline {II}Colormap Fundamentals}{1}
-\contentsline {subsection}{\numberline {\unhbox \voidb@x \hbox {II-A}}Color Models and Spaces}{1}
-\contentsline {subsection}{\numberline {\unhbox \voidb@x \hbox {II-B}}Color Model Development}{2}
-\contentsline {subsection}{\numberline {\unhbox \voidb@x \hbox {II-C}}Color Schemes and Colormaps}{2}
-\contentsline {section}{\numberline {III}Color Perception}{4}
-\contentsline {subsection}{\numberline {\unhbox \voidb@x \hbox {III-A}}Colorblindness}{4}
-\contentsline {section}{\numberline {IV}Applications and Alternatives}{5}
+\contentsline {subsection}{\numberline {\unhbox \voidb@x \hbox {II-A}}Color Models and Spaces}{2}
+\contentsline {subsection}{\numberline {\unhbox \voidb@x \hbox {II-B}}Early Color Models}{2}
+\contentsline {subsection}{\numberline {\unhbox \voidb@x \hbox {II-C}}Perceptually Uniform Models}{3}
+\contentsline {section}{\numberline {III}Color Perception}{3}
+\contentsline {subsection}{\numberline {\unhbox \voidb@x \hbox {III-A}}Color Schemes}{3}
+\contentsline {subsection}{\numberline {\unhbox \voidb@x \hbox {III-B}}Simultaneous Contrast}{4}
+\contentsline {subsection}{\numberline {\unhbox \voidb@x \hbox {III-C}}Color Deficiency}{4}
+\contentsline {section}{\numberline {IV}Case Studies and Discussion}{5}
 \contentsline {subsection}{\numberline {\unhbox \voidb@x \hbox {IV-A}}Cartography}{5}
-\contentsline {subsection}{\numberline {\unhbox \voidb@x \hbox {IV-B}}Medical Imaging}{6}
-\contentsline {subsection}{\numberline {\unhbox \voidb@x \hbox {IV-C}}Alternative Colormaps}{6}
-\contentsline {section}{\numberline {V}Conclusion}{6}
-\contentsline {section}{References}{7}
+\contentsline {subsection}{\numberline {\unhbox \voidb@x \hbox {IV-B}}Medical Imaging}{5}
+\contentsline {subsection}{\numberline {\unhbox \voidb@x \hbox {IV-C}}Evaluating Rainbow Colormaps}{6}
+\contentsline {section}{\numberline {V}Conclusion}{7}
+\contentsline {section}{References}{8}
