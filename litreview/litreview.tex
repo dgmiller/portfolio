@@ -293,26 +293,22 @@ scientists want multidimensional visualizations \cite{checkviz}.
 However, the most practical way to evaluate a colormap is to consider whether the color
 model, color space, and color scheme reflect the nature of the data being visualized.
 
-The rainbow gradient is not a perceptually consistent ordering of colors. Similarly, it
-is not perceptually uniform as the variation in lightness is inconsistent.
-Finally, the rainbow colormap traverses through many
-highly saturated colors in color space.
-
-There are multiple advantages to using rainbow colormaps. For one,
-it is clear that users tend to prefer it
-over other colormaps for its aesthetic appeal
+Rainbow colormaps use a qualitative, spectral color scheme and appears to be defined
+in terms of the CIEXYZ color model. It is not perceptually uniform because
+the variation in lightness is inconsistent.
+The advantage of using rainbow colormaps is that
+users tend to prefer it
+over other colormaps
 \cite{spectralschemes, choropleth, endofrainbow}. 
-The variety in hue also can show relationships in the data better than
+Depending on the data being visualized, the variety in hue can show relationships better than
 a sequential, single-hue colormap. The rainbow colormap also has a long
 history of use in scientific publications and many are already used
 to reading data from this colormap.
-
 However, the advantages can also be disadvantages.
-A human interpreter
-might see signal where there is none. These false signals
-are known as artifacts and they seem to occur more often
-when the data lie in certain regions (as in
-between blue, green, and yellow) \cite{colorchoice}.
+A human interpreter might see artifacts in the data---areas where it looks like
+something is there but doesn't actually exist. These false positives
+to occur more often when the data lie in certain regions (as in
+between blue, green, and yellow) \cite{colorchoice, endofrainbow,oceanography}.
 
 \section{Color Perception}
 
