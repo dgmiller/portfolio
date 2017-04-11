@@ -5,37 +5,37 @@
 
 import numpy as np
 import matplotlib.pyplot as plt
-import colorspacious as cspace
-from skimage.color import rgba2rgb
-
-# In[2]:
-
+#import colorspacious as cspace
+#from skimage.color import rgba2rgb
+#
+## In[2]:
+#
 data = plt.imread('calf.png')
 rainbow = plt.imread('calf_rainbow_img.png')
-rainbow = rgba2rgb(rainbow)
-cvd1 = {"name": "sRGB1+CVD", "cvd_type": "deuteranomaly", "severity": 100}
-cvd2 = {"name": "sRGB1+CVD", "cvd_type": "protanomaly", "severity": 100}
-cvd3 = {"name": "sRGB1+CVD", "cvd_type": "tritanomaly", "severity": 100}
+#rainbow = rgba2rgb(rainbow)
+#cvd1 = {"name": "sRGB1+CVD", "cvd_type": "deuteranomaly", "severity": 100}
+#cvd2 = {"name": "sRGB1+CVD", "cvd_type": "protanomaly", "severity": 100}
+#cvd3 = {"name": "sRGB1+CVD", "cvd_type": "tritanomaly", "severity": 100}
 
 def colormaps():
     plt.imshow(data)
     plt.show()
     
-    plt.imshow(data[:,:,0],cmap='jet')
+    plt.imshow(data[:,:,0],cmap='hsv')
     plt.colorbar()
     plt.show()
     
-    plt.imshow(data[:,:,0],cmap='viridis')
+    plt.imshow(data[:,:,0],cmap='nipy_spectral')
     plt.colorbar()
     plt.show()
     
     # use to show differences
-    plt.imshow(data[:,:,0],cmap='RdBu')
+    plt.imshow(data[:,:,0],cmap='rainbow')
     plt.colorbar()
     plt.show()
     
     # a very good sequential plot
-    plt.imshow(data[:,:,0],cmap='afmhot')
+    plt.imshow(data[:,:,0],cmap='brg')
     plt.colorbar()
     plt.show()
 
@@ -61,7 +61,17 @@ def simultaneouscontrast():
         plt.show()
     plt.scatter(i+.5,2.5,s=300,c='grey')
 
-if __name__ == "__main__":
+def handout():
+    x = np.linspace(0,4,1000)
+    y = np.linspace(0,4,1000)
+    X,Y = np.meshgrid(x,y)
+    Z = X**2 + Y**2 + np.random.randn(1000,1000)
+    plt.pcolormesh(X,Y,Z)
+    plt.show()
+    plt.pcolormesh(X,Y,Z,cmap='viridis')
+    plt.show()
+
+#if __name__ == "__main__":
     #colormaps()
     #colorblind_calf(cvd1)
     #colorblind_calf(cvd2)
@@ -69,4 +79,4 @@ if __name__ == "__main__":
     #colorblind_rainbow(cvd1)
     #colorblind_rainbow(cvd2)
     #colorblind_rainbow(cvd3)
-    simultaneouscontrast()
+    #simultaneouscontrast()
