@@ -21,21 +21,21 @@ def colormaps():
     plt.imshow(data)
     plt.show()
     
-    plt.imshow(data[:,:,0],cmap='hsv')
+    plt.imshow(data[:,:,0],cmap='summer')
     plt.colorbar()
     plt.show()
     
-    plt.imshow(data[:,:,0],cmap='nipy_spectral')
+    plt.imshow(data[:,:,0],cmap='winter')
     plt.colorbar()
     plt.show()
     
     # use to show differences
-    plt.imshow(data[:,:,0],cmap='rainbow')
+    plt.imshow(data[:,:,0],cmap='autumn')
     plt.colorbar()
     plt.show()
     
     # a very good sequential plot
-    plt.imshow(data[:,:,0],cmap='brg')
+    plt.imshow(data[:,:,0],cmap='gist_stern')
     plt.colorbar()
     plt.show()
 
