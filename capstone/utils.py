@@ -9,19 +9,20 @@ import string
 import nltk
 import datetime
 import time
+import json
 from matplotlib import pyplot as plt
 
-trumplab = '/run/media/derekgm@byu.local/FAMHIST/Data/final_project/trump.txt'
-clintonlab = '/run/media/derekgm@byu.local/FAMHIST/Data/final_project/clinton.txt'
-trumpmint = '/media/derek/FAMHIST/Data/final_project/trump.txt'
-clintonmint = '/media/derek/FAMHIST/Data/final_project/clinton.txt'
+trumplab = '/run/media/derekgm@byu.local/FAMHIST/Data/final_project/trump2.txt'
+clintonlab = '/run/media/derekgm@byu.local/FAMHIST/Data/final_project/maga.txt'
+trumpmint = '/media/derek/FAMHIST/Data/final_project/trump2.txt'
+clintonmint = '/media/derek/FAMHIST/Data/final_project/maga.txt'
 
 def get_file():
     print("""\n\tOptions\n
-            1: trump from lab computer\n
-            2: trump from linux mint\n
-            3: clinton from lab computer\n
-            4: clinton from linux mint\n\n""")
+            1: trump2 from lab computer\n
+            2: trump2 from linux mint\n
+            3: maga from lab computer\n
+            4: maga from linux mint\n\n""")
     name = raw_input("Enter number >> ")
     if name == "1":
         return trumplab
@@ -52,23 +53,27 @@ class TwitterCorpus(object):
         print("Loading file...\n")
         start = time.time()
         self.data = open(filename,'r').readlines()[n:m]
+        self.json_data = []
         self.tweets = []
         self.user_stats = []
         self.timestamps = []
         self.time = []
         err = 0
         for i,line in enumerate(self.data):
-            line = line.split('\t')
+            line = json.loads(line)
+            self.json_data.append(line)
+            if i == 0:
+                print line.keys()
             # get everything except for the tweet
             try:
                 # number of followers, statuses, and friends
-                self.user_stats.append([float(j) for j in line[1:-1]])
+                self.user_stats.append([line['user']['screen_name'],line['user']['description']])
                 # time that the tweet was sent
-                self.timestamps.append(float(line[0][:10]))
+                self.timestamps.append(int(line['timestamp_ms']))
                 # content of the tweet
-                self.tweets.append(line[-1])
+                self.tweets.append(line['text'])
             except:
-                print i,line
+                #print i
                 err += 1
         print "Errors: " + str(err)
         # convert to numpy array
@@ -148,10 +153,7 @@ class TwitterCorpus(object):
         """
         print("Converting time to datetime object...")
         start = time.time()
-        for t in self.timestamps:
-            d = datetime.datetime.fromtimestamp(t)
-            self.time.append(d)
-        self.time = np.array(self.time)
+        self.time = pd.to_datetime(self.timestamps,unit='ms') - pd.DateOffset(hours=7)
         end = time.time()
         print("Time: %s" % (end-start))
 
@@ -168,9 +170,8 @@ class TwitterCorpus(object):
         else:
             df = pd.DataFrame()
             df['time'] = self.time
-        df['usr_fol'] = self.user_stats[:,0]
-        df['usr_n_stat'] = self.user_stats[:,1]
-        df['usr_fri'] = self.user_stats[:,2]
+        df['screen_name'] = self.user_stats[:,0]
+        df['description'] = self.user_stats[:,1]
         df['n_weblinks'] = self.n_weblinks
         df['n_mentions'] = self.n_mentions
         df['n_hashtags'] = self.n_hashtags
@@ -213,7 +214,7 @@ class TwitterCorpus(object):
         def print_top_words(model, feature_names, n_top_words=1):
             for topic_idx, topic in enumerate(model.components_):
                 print("Topic #%d:" % topic_idx)
-                print(" ".join([feature_names[i] for i in topic.argsort()[:-n_top_words - 1:-1]]))
+                print "\t"," ".join([feature_names[i] for i in topic.argsort()[:-n_top_words - 1:-1]])
             print()
         start = time.time()
         TFvec = CountVectorizer(max_df=0.95, min_df=2, ngram_range=ngram, max_features=n_features, stop_words='english')
@@ -226,7 +227,7 @@ class TwitterCorpus(object):
         #print "\n\n\n",TFvec.get_feature_names()
 
 
-def load_candidate(n=0,m=-1000):
+def load_candidate(n=None,m=None):
     """
     Trump: (1284126,)
     Clinton: (,)

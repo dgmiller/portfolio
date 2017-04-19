@@ -9,17 +9,18 @@ import string
 import nltk
 import datetime
 import time
+import json
 from matplotlib import pyplot as plt
 
 trumplab = '/run/media/derekgm@byu.local/FAMHIST/Data/final_project/trump2.txt'
-clintonlab = '/run/media/derekgm@byu.local/FAMHIST/Data/final_project/maga.txt'
-trumpmint = '/media/derek/FAMHIST/Data/final_project/trump2.txt'
-clintonmint = '/media/derek/FAMHIST/Data/final_project/maga.txt'
+maga = '/run/media/derekgm@byu.local/FAMHIST/Data/final_project/trump2.txt'
+trumpmint = '/media/derek/FAMHIST/Data/final_project/maga.txt'
+magamint = '/media/derek/FAMHIST/Data/final_project/maga.txt'
 
 def get_file():
     print("""\n\tOptions\n
-            1: trump2 from lab computer\n
-            2: trump2 from linux mint\n
+            1: trump from lab computer\n
+            2: trump from linux mint\n
             3: maga from lab computer\n
             4: maga from linux mint\n\n""")
     name = raw_input("Enter number >> ")
@@ -28,9 +29,9 @@ def get_file():
     elif name == "2":
         return trumpmint
     elif name == "3":
-        return clintonlab
+        return magalab
     elif name == "4":
-        return clintonmint
+        return magamint
     else:
         print "invalid input"
 
@@ -58,15 +59,15 @@ class TwitterCorpus(object):
         self.time = []
         err = 0
         for i,line in enumerate(self.data):
-            #line = line.split('\t')
+            line = line.split('\t')
             # get everything except for the tweet
             try:
                 # number of followers, statuses, and friends
-                self.user_stats.append([line['user']['screen_name'],line['user']['description']])
+                self.user_stats.append([float(j) for j in line[1:-1]])
                 # time that the tweet was sent
-                self.timestamps.append(int(line['timestamp_ms']))
+                self.timestamps.append(float(line[0][:10]))
                 # content of the tweet
-                self.tweets.append(line['text'])
+                self.tweets.append(line[-1])
             except:
                 print i,line
                 err += 1
@@ -168,8 +169,9 @@ class TwitterCorpus(object):
         else:
             df = pd.DataFrame()
             df['time'] = self.time
-        df['screen_name'] = self.user_stats[:,0]
-        df['description'] = self.user_stats[:,1]
+        df['usr_fol'] = self.user_stats[:,0]
+        df['usr_n_stat'] = self.user_stats[:,1]
+        df['usr_fri'] = self.user_stats[:,2]
         df['n_weblinks'] = self.n_weblinks
         df['n_mentions'] = self.n_mentions
         df['n_hashtags'] = self.n_hashtags
@@ -225,7 +227,7 @@ class TwitterCorpus(object):
         #print "\n\n\n",TFvec.get_feature_names()
 
 
-def load_candidate(n=None,m=None):
+def load_candidate(n=0,m=-1000):
     """
     Trump: (1284126,)
     Clinton: (,)
