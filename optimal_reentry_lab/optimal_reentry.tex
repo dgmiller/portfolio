@@ -1,0 +1,137 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amsfonts,amssymb,amsthm,amsmath}
+\usepackage{gensymb}
+\usepackage[light]{roboto}
+\usepackage{titling}
+\usepackage{titlesec}
+\renewcommand{\maketitlehooka}{\normalfont\sffamily}
+\titleformat{\section}
+  {\normalfont\sffamily\large}
+  {\thesection}{1em}{}
+\titleformat{\subsection}
+  {\normalfont\sffamily\sc}
+  {\thesection}{1em}{}
+
+\DeclareMathOperator\erf{erf}
+\title{Optimal Reentry}
+\author{Heather Banack, David Reber, Derek Miller}
+
+\begin{document}
+
+\maketitle
+
+\section*{Objective}The goal of this lab is to simulate the reentry of a spacecraft using optimal control theory.
+
+\section*{Introduction}
+
+The reentry of a spacecraft into Earth's atmosphere can be simulated by a boundary value problem with optimal control. For a successful reentry, the spacecraft must be slowed down, thereby reducing its kinetic energy. A spacecraft could use fuel to slow itself down, but this is too expensive to be practical. Alternatively, the spacecraft can be designed to absorb and dissipate heat into the atmosphere. The amount of heat created is determined by the flight path of the spacecraft and its angle of entry. The problem is to find the optimal path for reentry into the atmosphere that minimizes the total amount of heat experienced by the craft.
+
+\section*{Setting up the BVP}
+
+Setting up the boundary value problem is complicated and requires lots of notation. Consult the following glossary for information about the variables being represented.
+\subsection*{Constants}
+\begin{itemize}
+    \item $R = 209\times 10^5$: radius of the Earth in feet
+    \item $\rho_0 = 2.704\times 10^{-3}$
+    \item $g = 3.2172\times 10^{-4}$
+    \item $\beta = 4.26$
+    \item $\frac{S}{2m} = 26600$: spacecraft's frontal area over its twice its mass
+\end{itemize}
+\subsection*{Helper Functions}
+\begin{itemize}
+    \item $\rho = \rho_0 e^{-\beta R \xi}$: atmospheric density
+    \item $C_D(u) = 1.174 - .9\cos(u)$: aerodynamical drag coefficient
+    \item $C_L(u) = .6\sin(u)$: aerodynamical lift coefficient
+\end{itemize}
+\subsection*{BVP Equations}
+\begin{itemize}
+    \item $u$: control parameter
+    \item $v$: the spacecraft velocity
+    \item $\gamma$: the spacecraft flight-path angle
+    \item $\xi = \frac{h}{R}$: the normalized altitude of the spacecraft
+    \item $h$: altitude above the Earth's surface
+\end{itemize}
+
+The functional describing the total amount of heat is
+\[
+J[u] = \int_0^T 10v^3 \sqrt{\rho}\,dt
+.\]
+The boundary value problem for the spacecraft is described by the following equations:
+\begin{align*}
+    \dot{v} &= -\frac{S \rho v^2}{2m}C_D(u) - \frac{g \sin{\gamma}}{(1 + \xi)^2} \\
+    \dot{\gamma} &= \frac{S \rho v}{2m}C_L(u) + \frac{v\cos{\gamma}}{R(1 + \xi)} - \frac{g\cos{\gamma}}{v(1+\xi)^2} \\
+    \dot{\xi} &= \frac{v\sin{\gamma}}{R}
+\end{align*}
+The endpoint conditions are
+\begin{align*}
+    v(0) &= .36 \\
+    \gamma{(0)} &= -8.1\degree \frac{\pi}{180\degree} \\
+    \xi(0) &= \frac{4}{R} \\
+    v(T) &= .27 \\
+    \gamma(T) &= 0 \\
+    \xi(T) &= \frac{2.5}{R}.
+\end{align*}
+Using Pontraygin's Minimum Principle (instead of the maximum) this produces the Hamiltonian
+\begin{align*}
+    H = 10v^3 \sqrt{\rho} + p_1\dot{v} + p_2\dot{\gamma} + p_3\dot{\xi}
+\end{align*}
+where the costate equations $p_1, p_2, p_3$ satisfy
+\begin{align*}
+    \dot{p_1} &= -\frac{\partial H}{\partial v} \\
+    \dot{p_2} &= -\frac{\partial H}{\partial \gamma} \\
+    \dot{p_3} &= -\frac{\partial H}{\partial \xi}
+\end{align*}
+The resulting optimal control is
+\[
+u = \arctan(\frac{2p_2}{3vp_1}).
+\]
+
+\subsection*{Problem 1}
+Complete the right hand side of the BVP given in this lab by adding the equations for $\dot{p_2}$ and $\dot{p_3}$.
+
+\subsection*{Problem 2}
+Choose initial guesses for $v$, $\gamma$, $\xi$ and use scikits bvp\_solver to get a solution to the BVP.
+
+\section*{Choosing Initial Values}
+It should be clear from Problem 2 that this system is very sensitive to the initial guesses for $v$, $\gamma$, $\xi$, and the costate functions. This is due to moving singularities in the BVP. These singularities have a physical interpretation. If the reentry is too steep, the spaceship will crash and burn. If the reentry isn't steep enough, the spaceship will hit Earth's atmosphere and bounce back into space.
+
+In order to converge to the true optimal solution, the initial solution guesses must be very close to the actual solution. Assume you have no intuition about what guesses might be good for this spacecraft reentry problem. However, the aerodynamics of the problem make it so that the optimal control can be approximated with somthing like
+\[
+\hat{u} = \lambda_1 \erf(\lambda_2(\lambda_3 - \tau))
+\]
+where $\tau = \frac{t}{T}$ and $\erf{x} = \frac{2}{\sqrt{\pi}}\int_0^xe^{-\sigma^2}\,d\sigma$ and $\lambda_1, \lambda_2, \lambda_3$ are unknown constants.
+Recognize that this is not the same optimal control $u$ from the original BVP. However, you can use this to find good initial guesses for $v,\gamma,\xi,p_1,p_2,p_3$. Consider the following auxiliary BVP:
+\begin{align*}
+    \dot{v} &= -\frac{S \rho v^2}{2m}C_D(u) - \frac{g \sin{\gamma}}{(1 + \xi)^2} \\
+    \dot{\gamma} &= \frac{S \rho v}{2m}C_L(u) + \frac{v\cos{\gamma}}{R(1 + \xi)} - \frac{g\cos{\gamma}}{v(1+\xi)^2} \\
+    \dot{\xi} &= \frac{v\sin{\gamma}}{R} \\
+    \dot{\lambda_1} &= 0 \\
+    \dot{\lambda_2} &= 0 \\
+    \dot{\lambda_3} &= 0
+\end{align*}
+with boundary conditions
+\begin{align*}
+    v(0) &= .36 \\
+    \gamma{(0)} &= -8.1\degree \frac{\pi}{180\degree} \\
+    \xi(0) &= \frac{4}{R} \\
+    v(T) &= .27 \\
+    \gamma(T) &= 0 \\
+    \xi(T) &= \frac{2.5}{R} \\
+    T &= 230.
+\end{align*}
+The solution to the auxiliary BVP finds $\hat{u}$ such that the constants $\lambda_1,\lambda_2,\lambda_3$ are optimized for the equations $v,\gamma,\xi$. Even though it is not optimal for the original BVP, $\hat{u}$ is a close enough approximation to get good guesses for $v(t)$,$\gamma(t)$, and $\xi(t)$ via integration.
+
+\subsection*{Problem 3}
+Compute approximations to $v(t)$, $\gamma(t)$, and $\xi(t)$ by solving the auxiliary BVP.
+
+\subsection*{Problem 4}
+Compute the solution to the original BVP. Choose as initial guesses the results from Problem 3 and the following guesses
+\begin{align*}
+    p_1 &= -1 \\
+    p_2 &= -\frac{3}{2}v\tan(u) \\
+    p_3 &= \frac{-10v^3\sqrt{\rho}+\dot{v} + \frac{3}{2}v\tan(u)\dot{\gamma}}{\dot{\xi}} \\
+    T &= 230.
+\end{align*}
+\end{document}
+
