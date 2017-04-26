@@ -1,10 +1,9 @@
 # Merging Derek's Optimal Reentry into Original
 
 import numpy as np
-#from scipy.integrate import solve_bvp
+from scipy.integrate import solve_bvp
 from scipy.special import erf
 import matplotlib.pyplot as plt
-from scikits import bvp_solver
 
 # Ones Derek doesn't have
 from mpl_toolkits.axes_grid1 import host_subplot
@@ -157,173 +156,184 @@ def bcs_auxiliary(ya,yb):
                       xiT-2.5/R])
     return out1, out2
 
+def solve_using_scipy():
+    x = np.linspace(0,T,241)
+    y = np.ones(shape=(7,241))
+    sol = solve_bvp(ode,lambda x,y: np.concatenate(bcs(x,y)),x,y)
+
+
+
+
+### SOLVE WITH SCIKITS ###
 ################################################################
 #--------------------------------------------------------------#
-problem_auxiliary = bvp_solver.ProblemDefinition( num_ODE = 6,
-                                                  num_parameters = 0,
-                                                  num_left_boundary_conditions = 3,
-                                                  boundary_points = (0, T),
-                                                  function = ode_auxiliary,
-                                                  boundary_conditions = bcs_auxiliary )
-
-solution_auxiliary = bvp_solver.solve( problem_auxiliary,
-                                       solution_guess = guess_auxiliary,
-                                       trace = 0,
-                                       max_subintervals = 20000 )
-
-N = 240 
-x_guess = np.linspace(0,T,N+1) # 240 time steps to the guess of 230 as the final time
-# the solution to the auxiliary BVP gives a good initial guess for the original BVP
-initial_guess = solution_auxiliary(x_guess)
-# redefine T to be 230?
-T = x_guess[-1]
-# Generate a guess for the solution of the ODE. These values are specified in the text.
-# v,gamma,xi,Lv,Lgamma,Lxi = sol_guess
-# add a Time vector as shown below
-sol_guess = np.concatenate( (initial_guess,T*np.ones((1,len(x_guess)))) ,axis=0)
-# Lv
-sol_guess[3,:] = -1 # Lv < 0 since cos(u) > 0
-p1, p2, p3 = sol_guess[3,0], sol_guess[4,0], sol_guess[5,0] # initial values to iterate through
-# approximate optimal control u
-u = p1*erf( p2*(p3-x_guess/T) )
-# Lgamma
-# derived from tan(u) = 6*Lgamma/(9*v*Lv) => Lgamma = (9/6)*v*Lv*tan(u)
-sol_guess[4,:] = 1.5*sol_guess[0,:]*sol_guess[3,:]*np.tan(u)
-# Lxi
-# derived from Hamiltonian
-L = list()
-L2 = list()
-G = list()
-for j in range(len(sol_guess[5,:])):
-    y = sol_guess[:6,j] # use y to prevent memory handling errors
-    # you can verify that crazy things happen by uncommenting the L, L2, and G lists
-    # and uncomment their corresponding plot functions below
-    #L.append(y[1])
-    def new_func(x):
-        #y[1] = y[1]
-        #L2.append(y[1])
-        #gamma = y[1]
-        #G.append(gamma)
-        if y[1] < 0 and y[1] > -.05: 
-            print "1\t",j
-            y[1] = -.05
-        if y[1] > 0 and y[1] < .05: 
-            print "2\t",j
-            y[1] = .05
-        y[5] = x
-        return H(y[0],y[1],y[2],y[3],y[4],y[5]) # use y to prevent memory handling errors
-    sol = root(new_func,-8)
-    if j>0:
-        if sol.success == True: 
-            sol_guess[5,j] = sol.x
-        else: 
-            sol_guess[5,j] = sol_guess[5,j-1]
-    else: 
-        if sol.success == True: 
-            sol_guess[5,0] = sol.x
-#plt.plot(L)
-#plt.plot(L2)
-#plt.title("y[1] (blue) and y[1]=y[1] (red)")
-#plt.show()
-#plt.plot(G)
-#plt.title("gamma, same as y[1]=y[1] but no longer converges")
-#plt.show()
-problem = bvp_solver.ProblemDefinition( num_ODE = 7,
-                                        num_parameters = 0,
-                                        num_left_boundary_conditions = 3,
-                                        boundary_points = (0., 1),
-                                        function = ode, 
-                                        boundary_conditions = bcs )
-                                    
-solution = bvp_solver.solve( problem,
-                             solution_guess = sol_guess,
-                             initial_mesh = np.linspace(0,1,len(x_guess)),
-                             max_subintervals=1000,
-                             trace = 1 )
-
-# For more info on the available options for bvp_solver, look at 
-# the docstrings for bvp_solver.ProblemDefinition and bvp_solver.solve
+def solve_using_scikits():
+    from scikits import bvp_solver
+    problem_auxiliary = bvp_solver.ProblemDefinition( num_ODE = 6,
+                                                      num_parameters = 0,
+                                                      num_left_boundary_conditions = 3,
+                                                      boundary_points = (0, T),
+                                                      function = ode_auxiliary,
+                                                      boundary_conditions = bcs_auxiliary )
     
-numerical_soln = solution(np.linspace(0,1,N+1))
-u =  np.arctan((6*numerical_soln[4,:])/(9*numerical_soln[0,:]*numerical_soln[3,:] )) 
-domain = np.linspace(0,numerical_soln[6,0],N+1)
-
-soln =  ( domain,
-          numerical_soln[0,:],
-          numerical_soln[1,:],
-          numerical_soln[2,:], 
-          numerical_soln[3,:],
-          numerical_soln[4,:],
-          numerical_soln[5,:],
-          u )
-
-
-
-
-
-################################################################
-
-def plot_reentry_trajectory(var):
-    plt.figure(figsize=(10,10))
-    plt.plot(var[-1],color='gray',lw=3)
-    plt.title("optimal control u")
-    plt.show()
-    plt.figure(figsize=(20,6))
-    plt.subplot(1,3,1)
-    plt.plot(var[0],var[1],color='gray',lw=3)
-    plt.title("velocity")
-    plt.subplot(1,3,2)
-    plt.plot(var[0][::4],var[2][::4],color='gray',lw=3)
-    plt.title("angle of trajectory")
-    plt.subplot(1,3,3)
-    plt.plot(var[0][::6],209*var[3][::6],color='gray',lw=3)
-    plt.title("altitude")
-    plt.show()
-
-
-def plot_graph_from_book(var):
-    if 1:
-        # plt.rc("font", size=16)
-        host = host_subplot(111, axes_class=AA.Axes)
-        plt.subplots_adjust(right=0.75)
-
-        par1 = host.twinx()
-        par2 = host.twinx()
-
-        offset = 80
-        new_fixed_axis = par2.get_grid_helper().new_fixed_axis
-        par2.axis["right"] = new_fixed_axis(loc='right',axes=par2,offset=(offset, 0))
-
-        par2.axis["right"].toggle(all=True)
-        host.set_xlim(0, var[0][-1])
-        host.set_ylim(.26, .38)
-
-        host.set_xlabel("time (sec)",fontsize=24)
-        host.set_ylabel("$v$",fontsize=24)
-        par1.set_ylabel(r"$\gamma$",fontsize=24)
-        par2.set_ylabel(r"$h$",fontsize=24)
-        p1, = host.plot(var[0], var[1],color='blue',linewidth=2.0,label="velocity")
-        p2, = par1.plot(var[0][::4], var[2][::4],color='red',linewidth=2.0,label="angle of trajectory")
-        p3, = par2.plot(var[0][::6],209*var[3][::6], '--',color='green',linewidth=2.0,label="altitude")
-
-        par1.set_ylim(-.15,.05)
-        # par2.set_ylim(.008,.02)
-        par2.set_ylim(1.5,4.5)
-        host.legend(loc='right')
-
-        host.axis["left"].label.set_fontsize(18)
-        host.axis["left"].label.set_color(p1.get_color())
-        par1.axis["right"].label.set_fontsize(18)
-        par1.axis["right"].label.set_color(p2.get_color())
-        par2.axis["right"].label.set_fontsize(18)
-        par2.axis["right"].label.set_color(p3.get_color())
-
-        plt.draw()
-        plt.show(); plt.clf()
-    return
-
-
-plot_reentry_trajectory(soln)
-plot_graph_from_book(soln)
-
-
+    solution_auxiliary = bvp_solver.solve( problem_auxiliary,
+                                           solution_guess = guess_auxiliary,
+                                           trace = 0,
+                                           max_subintervals = 20000 )
+    
+    N = 240 
+    x_guess = np.linspace(0,T,N+1) # 240 time steps to the guess of 230 as the final time
+    # the solution to the auxiliary BVP gives a good initial guess for the original BVP
+    initial_guess = solution_auxiliary(x_guess)
+    # redefine T to be 230?
+    T = x_guess[-1]
+    # Generate a guess for the solution of the ODE. These values are specified in the text.
+    # v,gamma,xi,Lv,Lgamma,Lxi = sol_guess
+    # add a Time vector as shown below
+    sol_guess = np.concatenate( (initial_guess,T*np.ones((1,len(x_guess)))) ,axis=0)
+    # Lv
+    sol_guess[3,:] = -1 # Lv < 0 since cos(u) > 0
+    p1, p2, p3 = sol_guess[3,0], sol_guess[4,0], sol_guess[5,0] # initial values to iterate through
+    # approximate optimal control u
+    u = p1*erf( p2*(p3-x_guess/T) )
+    # Lgamma
+    # derived from tan(u) = 6*Lgamma/(9*v*Lv) => Lgamma = (9/6)*v*Lv*tan(u)
+    sol_guess[4,:] = 1.5*sol_guess[0,:]*sol_guess[3,:]*np.tan(u)
+    # Lxi
+    # derived from Hamiltonian
+    L = list()
+    L2 = list()
+    G = list()
+    for j in range(len(sol_guess[5,:])):
+        y = sol_guess[:6,j] # use y to prevent memory handling errors
+        # you can verify that crazy things happen by uncommenting the L, L2, and G lists
+        # and uncomment their corresponding plot functions below
+        #L.append(y[1])
+        def new_func(x):
+            #y[1] = y[1]
+            #L2.append(y[1])
+            #gamma = y[1]
+            #G.append(gamma)
+            if y[1] < 0 and y[1] > -.05: 
+                print "1\t",j
+                y[1] = -.05
+            if y[1] > 0 and y[1] < .05: 
+                print "2\t",j
+                y[1] = .05
+            y[5] = x
+            return H(y[0],y[1],y[2],y[3],y[4],y[5]) # use y to prevent memory handling errors
+        sol = root(new_func,-8)
+        if j>0:
+            if sol.success == True: 
+                sol_guess[5,j] = sol.x
+            else: 
+                sol_guess[5,j] = sol_guess[5,j-1]
+        else: 
+            if sol.success == True: 
+                sol_guess[5,0] = sol.x
+    #plt.plot(L)
+    #plt.plot(L2)
+    #plt.title("y[1] (blue) and y[1]=y[1] (red)")
+    #plt.show()
+    #plt.plot(G)
+    #plt.title("gamma, same as y[1]=y[1] but no longer converges")
+    #plt.show()
+    problem = bvp_solver.ProblemDefinition( num_ODE = 7,
+                                            num_parameters = 0,
+                                            num_left_boundary_conditions = 3,
+                                            boundary_points = (0., 1),
+                                            function = ode, 
+                                            boundary_conditions = bcs )
+                                        
+    solution = bvp_solver.solve( problem,
+                                 solution_guess = sol_guess,
+                                 initial_mesh = np.linspace(0,1,len(x_guess)),
+                                 max_subintervals=1000,
+                                 trace = 1 )
+    
+    # For more info on the available options for bvp_solver, look at 
+    # the docstrings for bvp_solver.ProblemDefinition and bvp_solver.solve
+        
+    numerical_soln = solution(np.linspace(0,1,N+1))
+    u =  np.arctan((6*numerical_soln[4,:])/(9*numerical_soln[0,:]*numerical_soln[3,:] )) 
+    domain = np.linspace(0,numerical_soln[6,0],N+1)
+    
+    soln =  ( domain,
+              numerical_soln[0,:],
+              numerical_soln[1,:],
+              numerical_soln[2,:], 
+              numerical_soln[3,:],
+              numerical_soln[4,:],
+              numerical_soln[5,:],
+              u )
+    
+    
+    
+    
+    
+    ################################################################
+    
+    def plot_reentry_trajectory(var):
+        plt.figure(figsize=(10,10))
+        plt.plot(var[-1],color='gray',lw=3)
+        plt.title("optimal control u")
+        plt.show()
+        plt.figure(figsize=(20,6))
+        plt.subplot(1,3,1)
+        plt.plot(var[0],var[1],color='gray',lw=3)
+        plt.title("velocity")
+        plt.subplot(1,3,2)
+        plt.plot(var[0][::4],var[2][::4],color='gray',lw=3)
+        plt.title("angle of trajectory")
+        plt.subplot(1,3,3)
+        plt.plot(var[0][::6],209*var[3][::6],color='gray',lw=3)
+        plt.title("altitude")
+        plt.show()
+    
+    
+    def plot_graph_from_book(var):
+        if 1:
+            # plt.rc("font", size=16)
+            host = host_subplot(111, axes_class=AA.Axes)
+            plt.subplots_adjust(right=0.75)
+    
+            par1 = host.twinx()
+            par2 = host.twinx()
+    
+            offset = 80
+            new_fixed_axis = par2.get_grid_helper().new_fixed_axis
+            par2.axis["right"] = new_fixed_axis(loc='right',axes=par2,offset=(offset, 0))
+    
+            par2.axis["right"].toggle(all=True)
+            host.set_xlim(0, var[0][-1])
+            host.set_ylim(.26, .38)
+    
+            host.set_xlabel("time (sec)",fontsize=24)
+            host.set_ylabel("$v$",fontsize=24)
+            par1.set_ylabel(r"$\gamma$",fontsize=24)
+            par2.set_ylabel(r"$h$",fontsize=24)
+            p1, = host.plot(var[0], var[1],color='blue',linewidth=2.0,label="velocity")
+            p2, = par1.plot(var[0][::4], var[2][::4],color='red',linewidth=2.0,label="angle of trajectory")
+            p3, = par2.plot(var[0][::6],209*var[3][::6], '--',color='green',linewidth=2.0,label="altitude")
+    
+            par1.set_ylim(-.15,.05)
+            # par2.set_ylim(.008,.02)
+            par2.set_ylim(1.5,4.5)
+            host.legend(loc='right')
+    
+            host.axis["left"].label.set_fontsize(18)
+            host.axis["left"].label.set_color(p1.get_color())
+            par1.axis["right"].label.set_fontsize(18)
+            par1.axis["right"].label.set_color(p2.get_color())
+            par2.axis["right"].label.set_fontsize(18)
+            par2.axis["right"].label.set_color(p3.get_color())
+    
+            plt.draw()
+            plt.show(); plt.clf()
+        return
+    
+    
+    plot_reentry_trajectory(soln)
+    plot_graph_from_book(soln)
+    
+solve_using_scipy()
