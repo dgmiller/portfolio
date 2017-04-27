@@ -160,7 +160,7 @@ def bcs_auxiliary(ya,yb):
 ### SOLVE WITH SCIKITS ###
 ################################################################
 #--------------------------------------------------------------#
-def solve_using_scikits(T=240):
+def solve_using_scikits(T=230,N=240):
     from scikits import bvp_solver
     problem_auxiliary = bvp_solver.ProblemDefinition( num_ODE = 6,
                                                       num_parameters = 0,
@@ -174,19 +174,11 @@ def solve_using_scikits(T=240):
                                            trace = 0,
                                            max_subintervals = 20000 )
     
-    N = 240 
     x_guess = np.linspace(0,T,N+1) # 240 time steps to the guess of 230 as the final time
     # the solution to the auxiliary BVP gives a good initial guess for the original BVP
     yyy = guess_auxiliary(x_guess)
     initial_guess = solution_auxiliary(x_guess)
-    plt.figure(figsize=(20,5))
-    for i in xrange(3):
-        plt.subplot(1,3,i+1)
-        plt.plot(yyy[i,:],color='gray',lw=8,alpha=.5,label="initial guess")
-        plt.plot(initial_guess[i,:],'--',color='red',label="auxiliary solution")
-        plt.legend()
-    plt.show()
-    # redefine T to be 230?
+        # redefine T to be 230?
     T = x_guess[-1]
     # Generate a guess for the solution of the ODE. These values are specified in the text.
     # v,gamma,xi,Lv,Lgamma,Lxi = sol_guess
@@ -197,6 +189,7 @@ def solve_using_scikits(T=240):
     p1, p2, p3 = sol_guess[3,0], sol_guess[4,0], sol_guess[5,0] # initial values to iterate through
     # approximate optimal control u
     u = p1*erf( p2*(p3-x_guess/T) )
+    aux_u = u.copy()
     # Lgamma
     # derived from tan(u) = 6*Lgamma/(9*v*Lv) => Lgamma = (9/6)*v*Lv*tan(u)
     sol_guess[4,:] = 1.5*sol_guess[0,:]*sol_guess[3,:]*np.tan(u)
@@ -258,16 +251,24 @@ def solve_using_scikits(T=240):
     numerical_soln = solution(np.linspace(0,1,N+1))
     u =  np.arctan((6*numerical_soln[4,:])/(9*numerical_soln[0,:]*numerical_soln[3,:] )) 
     domain = np.linspace(0,numerical_soln[6,0],N+1)
-    plt.figure(figsize=(20,10))
+
+    ### PLOT SOLUTIONS ###
+    names = ["Velocity","Angle","Altitude","p1","p2","p3"]
+    fig = plt.figure(figsize=(20,20))
     for i in xrange(6):
-        plt.subplot(2,3,i+1)
-        if i < 3:
-            plt.plot(initial_guess[i,:],lw=8,alpha=.5,color='gray',label="auxiliary guess")
-            plt.plot(numerical_soln[i,:],'--',color='r',label="optimal solution")
-            plt.legend()
+        if i<3:
+            ax = fig.add_subplot(2,3,i+1)
+            ax.plot(yyy[i,:],':',color='gray',lw=8,alpha=.3,label="guess")
+            ax.plot(initial_guess[i,:],'--',lw=4,color='gray',alpha=.5,label="auxiliary")
+            ax.plot(numerical_soln[i,:],color='r',lw=2,label="optimal")
+            ax.set(title=names[i])
+            if i == 0:
+                ax.legend(loc='best')
         else:
-            plt.plot(numerical_soln[i,:],color='gray',lw=3)
-            plt.legend()
+            ax = fig.add_subplot(2,3,i+1)
+            ax.plot(numerical_soln[i,:],color='gray',alpha=.5,lw=8)
+            ax.set_title("BVP Costate: %s" % names[i])
+    fig.suptitle("Auxiliary vs Optimal BVP")
     plt.show()
     
     soln =  ( domain,
@@ -285,9 +286,10 @@ def solve_using_scikits(T=240):
     
     ################################################################
     
-    def plot_reentry_trajectory(var):
+    def plot_reentry_trajectory():
         plt.figure(figsize=(10,10))
-        plt.plot(var[-1],color='gray',lw=3)
+        plt.plot(u,color='red',lw=2)
+        plt.plot(aux_u[::-1],'--',color='gray',lw=8,alpha=.5)
         plt.title("optimal control u")
         plt.show()
    
@@ -334,7 +336,7 @@ def solve_using_scikits(T=240):
         return
     
     
-    plot_reentry_trajectory(soln)
-    #plot_graph_from_book(soln)
+    plot_reentry_trajectory()
+    plot_graph_from_book(soln)
     
 solve_using_scikits()
