@@ -3,6 +3,7 @@
 import numpy as np
 from scipy.integrate import solve_bvp
 from scipy.special import erf
+from scipy.signal import savgol_filter
 import matplotlib.pyplot as plt
 
 # Ones Derek doesn't have
@@ -75,7 +76,7 @@ def  Lxidot(v,gamma,xi,Lv,Lgamma,Lxi,Rho,u):
 
 def  Tdot(F, u, Rho):
     "The derivative ofTimewith respect to time."
-    return 0
+    return np.zeros_like(u)
 
 ### SOLVE THE BVP ###
 def ode(x,y):
@@ -96,7 +97,7 @@ def ode(x,y):
                           Lvdot(v, gamma, xi, p1, p2, p3, Rho, u),
                           Lgammadot(v,gamma,xi,p1,p2,p3,Rho,u), 
                           Lxidot(v,gamma,xi,p1,p2,p3,Rho,u), 
-                          Tdot(y, u, Rho)])
+                          Tdot(y, u, Rho)],dtype=np.float128)
     return out
 
 def bcs(ya,yb):
@@ -113,12 +114,12 @@ def bcs(ya,yb):
     vT,gammaT,xiT,LvT,LgammaT,LxiT,TimeT = yb
     out1 = np.array([ v0-.36,
                       gamma0+8.1*np.pi/180,
-                      xi0-4/R])
+                      xi0-4/R],dtype=np.float128)
     out2 = np.array([ vT-.27,
                       gammaT,
                       xiT-2.5/R,
-                      H(vT,gammaT,xiT,LvT,LgammaT,LxiT)])
-    return out1, out2
+                      H(vT,gammaT,xiT,LvT,LgammaT,LxiT)],dtype=np.float128)
+    return np.concatenate((out1, out2),axis=0)
 
 ### AUXILIARY BVP ###
 
@@ -130,7 +131,7 @@ def guess_auxiliary(x):
 		1.4*np.cosh(.025*(x-.25*T))**(-2.) ),
 		p1*np.ones(x.shape),
 		p2*np.ones(x.shape),
-		p3*np.ones(x.shape)])
+		p3*np.ones(x.shape)],dtype=np.float128)
 	return out
 
 def ode_auxiliary(x,y):
@@ -140,9 +141,9 @@ def ode_auxiliary(x,y):
     out = np.array([ vdot(v,gamma,xi,u_aux),
                      gammadot(v,gamma,xi,u_aux),
                      xidot(v,gamma,xi,u_aux),
-                     0,
-                     0,
-                     0 ])
+                     np.zeros_like(v),
+                     np.zeros_like(gamma),
+                     np.zeros_like(xi) ],dtype=np.float128)
     return out
 
 def bcs_auxiliary(ya,yb):
@@ -150,17 +151,85 @@ def bcs_auxiliary(ya,yb):
     vT,gammaT,xiT,LvT,LgammaT,LxiT = yb
     out1 = np.array([ v0-.36,
                       gamma0+8.1*np.pi/180,
-                      xi0-4/R])
+                      xi0-4/R],dtype=np.float128)
     out2 = np.array([ vT-.27,
                       gammaT,
-                      xiT-2.5/R])
-    return out1, out2
+                      xiT-2.5/R],dtype=np.float128)
+    return np.concatenate((out1, out2),axis=0)
+
+### SOLVE WITH SCIPY SOLVE_BVP ###
+################################################################
+#--------------------------------------------------------------#
+
+def solve_using_scipy(T=230,N=240):
+    # Solve the Auxiliary Problem
+    x_aux = np.linspace(0,T,241)
+    y_aux = guess_auxiliary(x_aux) # initial guess
+    sol = solve_bvp(ode_auxiliary,bcs_auxiliary,x_aux,y_aux,tol=1e-5,verbose=1)
+    if not sol.success:
+        print sol.message
+    plt.figure(figsize=(20,10))
+    for i in xrange(3):
+        plt.subplot(1,3,i+1)
+        plt.plot(y_aux[i,:],color='gray',lw=3,label="initial guess")
+        plt.scatter(x_aux,sol.sol(x_aux)[i],color='red',lw=0,alpha=.7,label="spline")
+        plt.legend(loc="best")
+    plt.show()
+    raw_input("continue?")
+    # Solve the original BVP
+    sol_guess = np.row_stack((sol.y[:,:241],T*np.ones_like(x_aux)))
+    sol_guess[3,:] = -1
+    p1, p2, p3 = sol_guess[3,0], sol_guess[4,0], sol_guess[5,0] # initial values to iterate through
+    # approximate optimal control u
+    u = p1*erf( p2*(p3-x_aux/T) )
+    # Lgamma
+    # derived from tan(u) = 6*Lgamma/(9*v*Lv) => Lgamma = (9/6)*v*Lv*tan(u)
+    sol_guess[4,:] = 1.5*sol_guess[0,:]*sol_guess[3,:]*np.tan(u)
+    # Lxi
+    # derived from Hamiltonian
+    for j in range(len(sol_guess[5,:])):
+        y = sol_guess[:6,j] # use y to prevent memory handling errors
+        def new_func(x):
+            if y[1] < 0 and y[1] > -.05: 
+                y[1] = -.05
+            if y[1] > 0 and y[1] < .05: 
+                y[1] = .05
+            y[5] = x
+            return H(y[0],y[1],y[2],y[3],y[4],y[5])
+        sol_root = root(new_func,-8)
+        if j>0:
+            if sol_root.success == True: 
+                sol_guess[5,j] = sol_root.x
+            else: 
+                sol_guess[5,j] = sol_guess[5,j-1]
+        else: 
+            if sol_root.success == True: 
+                sol_guess[5,0] = sol_root.x
+    x = np.linspace(0,1,241)
+    solution = solve_bvp(ode,bcs,x,sol_guess)
+    numerical_soln = solution.y
+    print solution.y.shape
+    print solution.status
+    raw_input("continue?")
+    u =  np.arctan((6*numerical_soln[4,:])/(9*numerical_soln[0,:]*numerical_soln[3,:] )) 
+    domain = np.linspace(0,numerical_soln[6,0],N+1)
+    soln =  ( domain,
+              numerical_soln[0,:],
+              numerical_soln[1,:],
+              numerical_soln[2,:], 
+              numerical_soln[3,:],
+              numerical_soln[4,:],
+              numerical_soln[5,:],
+              u )
+    return soln
+ 
+
 
 
 ### SOLVE WITH SCIKITS ###
 ################################################################
 #--------------------------------------------------------------#
-def solve_using_scikits(T=240):
+def solve_using_scikits(T=230):
     from scikits import bvp_solver
     problem_auxiliary = bvp_solver.ProblemDefinition( num_ODE = 6,
                                                       num_parameters = 0,
@@ -177,15 +246,7 @@ def solve_using_scikits(T=240):
     N = 240 
     x_guess = np.linspace(0,T,N+1) # 240 time steps to the guess of 230 as the final time
     # the solution to the auxiliary BVP gives a good initial guess for the original BVP
-    yyy = guess_auxiliary(x_guess)
     initial_guess = solution_auxiliary(x_guess)
-    plt.figure(figsize=(20,5))
-    for i in xrange(3):
-        plt.subplot(1,3,i+1)
-        plt.plot(yyy[i,:],color='gray',lw=8,alpha=.5,label="initial guess")
-        plt.plot(initial_guess[i,:],'--',color='red',label="auxiliary solution")
-        plt.legend()
-    plt.show()
     # redefine T to be 230?
     T = x_guess[-1]
     # Generate a guess for the solution of the ODE. These values are specified in the text.
@@ -258,17 +319,6 @@ def solve_using_scikits(T=240):
     numerical_soln = solution(np.linspace(0,1,N+1))
     u =  np.arctan((6*numerical_soln[4,:])/(9*numerical_soln[0,:]*numerical_soln[3,:] )) 
     domain = np.linspace(0,numerical_soln[6,0],N+1)
-    plt.figure(figsize=(20,10))
-    for i in xrange(6):
-        plt.subplot(2,3,i+1)
-        if i < 3:
-            plt.plot(initial_guess[i,:],lw=8,alpha=.5,color='gray',label="auxiliary guess")
-            plt.plot(numerical_soln[i,:],'--',color='r',label="optimal solution")
-            plt.legend()
-        else:
-            plt.plot(numerical_soln[i,:],color='gray',lw=3)
-            plt.legend()
-    plt.show()
     
     soln =  ( domain,
               numerical_soln[0,:],
@@ -278,63 +328,28 @@ def solve_using_scikits(T=240):
               numerical_soln[4,:],
               numerical_soln[5,:],
               u )
-    
-    
-    
-    
-    
-    ################################################################
-    
-    def plot_reentry_trajectory(var):
-        plt.figure(figsize=(10,10))
-        plt.plot(var[-1],color='gray',lw=3)
-        plt.title("optimal control u")
-        plt.show()
-   
-    
-    def plot_graph_from_book(var):
-        if 1:
-            # plt.rc("font", size=16)
-            host = host_subplot(111, axes_class=AA.Axes)
-            plt.subplots_adjust(right=0.75)
-    
-            par1 = host.twinx()
-            par2 = host.twinx()
-    
-            offset = 80
-            new_fixed_axis = par2.get_grid_helper().new_fixed_axis
-            par2.axis["right"] = new_fixed_axis(loc='right',axes=par2,offset=(offset, 0))
-    
-            par2.axis["right"].toggle(all=True)
-            host.set_xlim(0, var[0][-1])
-            host.set_ylim(.26, .38)
-    
-            host.set_xlabel("time (sec)",fontsize=24)
-            host.set_ylabel("$v$",fontsize=24)
-            par1.set_ylabel(r"$\gamma$",fontsize=24)
-            par2.set_ylabel(r"$h$",fontsize=24)
-            p1, = host.plot(var[0], var[1],color='blue',linewidth=2.0,label="velocity")
-            p2, = par1.plot(var[0][::4], var[2][::4],color='red',linewidth=2.0,label="angle of trajectory")
-            p3, = par2.plot(var[0][::6],209*var[3][::6], '--',color='green',linewidth=2.0,label="altitude")
-    
-            par1.set_ylim(-.15,.05)
-            # par2.set_ylim(.008,.02)
-            par2.set_ylim(1.5,4.5)
-            host.legend(loc='right')
-    
-            host.axis["left"].label.set_fontsize(18)
-            host.axis["left"].label.set_color(p1.get_color())
-            par1.axis["right"].label.set_fontsize(18)
-            par1.axis["right"].label.set_color(p2.get_color())
-            par2.axis["right"].label.set_fontsize(18)
-            par2.axis["right"].label.set_color(p3.get_color())
-    
-            plt.draw()
-            plt.show(); plt.clf()
-        return
-    
-    
-    plot_reentry_trajectory(soln)
-    #plot_graph_from_book(soln)
-    
-solve_using_scikits()
+    return soln
+
+################################################################
+
+def plot_reentry_trajectory(var):
+    plt.figure(figsize=(10,10))
+    plt.plot(var[-1],color='gray',lw=3)
+    plt.title("optimal control u")
+    plt.show()
+    plt.figure(figsize=(20,6))
+    plt.subplot(1,3,1)
+    plt.plot(var[0],var[1],color='gray',lw=3)
+    plt.title("velocity")
+    plt.subplot(1,3,2)
+    plt.plot(var[0][::4],var[2][::4],color='gray',lw=3)
+    plt.title("angle of trajectory")
+    plt.subplot(1,3,3)
+    plt.plot(var[0][::6],209*var[3][::6],color='gray',lw=3)
+    plt.title("altitude")
+    plt.show()
+
+
+
+soln = solve_using_scipy()
+plot_reentry_trajectory(soln)
