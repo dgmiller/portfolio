@@ -25,7 +25,8 @@ class listener(StreamListener):
                 F.write(data)
         except:
             print('error')
-        len_of_time = 60*60*2
+        len_of_time = 60*60*8 # 2 hours = 60*60*2
+        #len_of_time = 10
         if time.time() - start > len_of_time:
             return False
         return True
